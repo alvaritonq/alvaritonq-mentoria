@@ -1,0 +1,18 @@
+# Data local — no subir al repo
+students/
+applications/
+accounting/
+logs/
+__pycache__/
+*.pyc
+.env
+config.txt
+*.pid
+
+# Python
+.venv/
+venv/
+*.egg-info/
+
+# Mac
+.DS_Store

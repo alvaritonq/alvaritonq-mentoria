@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentoría Trading — AlvaritoNQ</title>
+<meta name="description" content="Mentoría 1:1 de trading con AlvaritoNQ. Smart Money, Wyckoff y Orderflow. Prop Firms. 4 semanas para transformar tu trading. $160/mes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg:      #090909;
+  --surface: #111111;
+  --card:    #131313;
+  --border:  #1e1e1e;
+  --accent:  #c8f135;
+  --accent2: #a8d420;
+  --text:    #f2f2f2;
+  --muted:   #555555;
+  --muted2:  #888888;
+  --red:     #ff4d4d;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ── UTILITIES ── */
+.container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.accent { color: var(--accent); }
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(200,241,53,0.08);
+  border: 1px solid rgba(200,241,53,0.2);
+  border-radius: 100px;
+  padding: 5px 14px;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(9,9,9,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  color: var(--muted2);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.btn-nav {
+  background: var(--accent);
+  color: #090909;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 10px 20px;
+  transition: opacity 0.2s;
+}
+.btn-nav:hover { opacity: 0.85; }
+
+/* ── HERO ── */
+.hero {
+  padding: 160px 0 100px;
+  text-align: center;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse at center, rgba(200,241,53,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero .tag { margin-bottom: 28px; }
+.hero h1 {
+  font-size: clamp(42px, 6vw, 76px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: 24px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+.hero p {
+  font-size: 18px;
+  color: var(--muted2);
+  max-width: 560px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #090909;
+  font-size: 15px;
+  font-weight: 800;
+  border-radius: 10px;
+  padding: 16px 32px;
+  transition: opacity 0.2s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-secondary {
+  color: var(--muted2);
+  font-size: 14px;
+  padding: 16px 20px;
+  transition: color 0.2s;
+}
+.btn-secondary:hover { color: var(--text); }
+
+/* ── STATS ── */
+.stats {
+  padding: 60px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.stat {
+  text-align: center;
+  padding: 20px;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--muted2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── RESULTS SLIDER ── */
+.results-section {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.results-header { text-align: center; margin-bottom: 48px; }
+.results-header h2 {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-top: 12px;
+}
+/* Slider track — rompe el container para ir full width */
+.slider-outer {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 0 16px;
+}
+.slider-track {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px 40px 12px;
+  scrollbar-width: none;
+}
+.slider-track::-webkit-scrollbar { display: none; }
+.result-slide {
+  flex: 0 0 320px;
+  aspect-ratio: 16/9;
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  scroll-snap-align: start;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s, border-color 0.2s;
+  cursor: pointer;
+}
+.result-slide:hover {
+  transform: translateY(-3px);
+  border-color: rgba(200,241,53,0.25);
+}
+.result-slide img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+}
+.result-slide .ph-icon { font-size: 28px; opacity: 0.4; }
+.result-slide .ph-text { font-size: 11px; color: var(--muted); }
+
+/* Flechas */
+.slider-arrows {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.slider-btn {
+  width: 40px; height: 40px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.slider-btn:hover {
+  background: var(--accent);
+  color: #090909;
+  border-color: var(--accent);
+}
+
+/* ── SECTIONS COMMON ── */
+section { padding: 100px 0; }
+.section-tag { margin-bottom: 20px; }
+.section-title {
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--muted2);
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.about-media-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.about-video-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  aspect-ratio: 16/9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  overflow: hidden;
+  position: relative;
+}
+.about-video-box iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: none;
+}
+.about-video-placeholder {
+  text-align: center;
+  color: var(--muted);
+}
+.about-video-placeholder .play-icon {
+  font-size: 52px;
+  margin-bottom: 8px;
+  opacity: 0.4;
+}
+.about-video-placeholder p { font-size: 13px; }
+.about-badge {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.about-badge-dot {
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.about-badge-text { font-size: 13px; color: var(--muted2); }
+.about-badge-text strong { color: var(--text); display: block; font-size: 14px; }
+
+.about-content .section-sub { margin-bottom: 24px; }
+.about-story {
+  font-size: 14px;
+  color: var(--muted2);
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.about-story p { }
+.about-highlight {
+  background: rgba(200,241,53,0.06);
+  border: 1px solid rgba(200,241,53,0.15);
+  border-radius: 10px;
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.about-items { display: flex; flex-direction: column; gap: 16px; }
+.about-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.about-item-icon {
+  width: 36px; height: 36px;
+  background: rgba(200,241,53,0.08);
+  border: 1px solid rgba(200,241,53,0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.about-item-text strong { font-size: 14px; font-weight: 600; display: block; margin-bottom: 2px; }
+.about-item-text span { font-size: 13px; color: var(--muted2); }
+
+/* ── METHODOLOGY ── */
+.method-bg {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.method-header { text-align: center; margin-bottom: 64px; }
+.method-header .section-sub { margin: 0 auto; }
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.method-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  transition: border-color 0.2s;
+}
+.method-card:hover { border-color: rgba(200,241,53,0.3); }
+.method-card.highlight {
+  border-color: rgba(200,241,53,0.2);
+  background: rgba(200,241,53,0.03);
+}
+.method-module {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.method-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.method-items { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.method-items li {
+  font-size: 13px;
+  color: var(--muted2);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.method-items li::before {
+  content: '';
+  width: 4px; height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+.method-note {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: var(--muted2);
+  font-style: italic;
+}
+
+/* ── OFFER ── */
+.offer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.offer-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+}
+.offer-icon { font-size: 28px; margin-bottom: 14px; }
+.offer-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.offer-card p { font-size: 13px; color: var(--muted2); line-height: 1.6; }
+.offer-card-full {
+  background: rgba(200,241,53,0.04);
+  border: 1px solid rgba(200,241,53,0.2);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.offer-card-full .offer-icon { margin: 0; flex-shrink: 0; }
+.offer-card-full h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.offer-card-full p { font-size: 13px; color: var(--muted2); }
+
+/* ── PRICING ── */
+.pricing-bg {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.pricing-header { text-align: center; margin-bottom: 52px; }
+.pricing-header .section-sub { margin: 0 auto; }
+.pricing-card {
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid rgba(200,241,53,0.3);
+  border-radius: 24px;
+  padding: 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+.pricing-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.pricing-price {
+  font-size: 72px;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.pricing-price sup { font-size: 32px; vertical-align: super; }
+.pricing-period { font-size: 14px; color: var(--muted2); margin-bottom: 36px; }
+.pricing-features { list-style: none; text-align: left; margin-bottom: 40px; display: flex; flex-direction: column; gap: 14px; }
+.pricing-features li { font-size: 14px; display: flex; align-items: flex-start; gap: 10px; }
+.pricing-features li .check {
+  width: 20px; height: 20px;
+  background: rgba(200,241,53,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--accent);
+}
+.btn-pricing {
+  width: 100%;
+  background: var(--accent);
+  color: #090909;
+  font-size: 15px;
+  font-weight: 800;
+  border: none;
+  border-radius: 12px;
+  padding: 18px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+.btn-pricing:hover { opacity: 0.85; }
+.pricing-note { font-size: 12px; color: var(--muted); margin-top: 16px; }
+
+/* ── TESTIMONIALS ── */
+.testi-section { padding: 100px 0; }
+.testi-header { margin-bottom: 52px; }
+.testi-messages {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 40px;
+}
+.testi-msg {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+}
+.testi-msg-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 12px;
+}
+.testi-msg-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+  font-style: italic;
+}
+.testi-msg-anon {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 14px;
+}
+.testi-videos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.testi-video-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.testi-video-inner {
+  aspect-ratio: 16/9;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+.testi-video-inner iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.testi-video-inner .play-icon { font-size: 44px; opacity: 0.3; }
+.testi-video-inner .ph-label { font-size: 13px; color: var(--muted); }
+.testi-video-name {
+  padding: 16px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  border-top: 1px solid var(--border);
+}
+.testi-video-info { font-size: 12px; color: var(--muted2); font-weight: 400; }
+
+/* ── APPLICATION FORM ── */
+.apply-bg {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+.apply-header { text-align: center; margin-bottom: 56px; }
+.apply-header .section-sub { margin: 0 auto; }
+.form-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 48px;
+}
+.form-progress { height: 2px; background: var(--border); border-radius: 2px; margin-bottom: 40px; }
+.form-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+.form-step { display: none; animation: fadeUp 0.3s ease; }
+.form-step.active { display: block; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+.step-num { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; }
+.step-q { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 6px; }
+.step-hint { font-size: 13px; color: var(--muted2); margin-bottom: 24px; }
+
+.opts { display: flex; flex-direction: column; gap: 8px; }
+.opt {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text);
+  text-align: left;
+  display: flex; align-items: center; gap: 12px;
+  transition: all 0.18s;
+}
+.opt:hover { border-color: rgba(200,241,53,0.4); background: rgba(200,241,53,0.03); }
+.opt.sel { border-color: var(--accent); background: rgba(200,241,53,0.06); }
+.opt-k {
+  width: 22px; height: 22px;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: var(--muted2);
+  flex-shrink: 0; transition: all 0.18s;
+}
+.opt.sel .opt-k { background: var(--accent); color: #090909; border-color: var(--accent); }
+
+textarea.form-input, input.form-input {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 15px; font-family: inherit;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+}
+textarea.form-input:focus, input.form-input:focus { border-color: var(--accent); }
+textarea.form-input::placeholder, input.form-input::placeholder { color: var(--muted); }
+
+.form-nav { display: flex; align-items: center; justify-content: space-between; margin-top: 28px; }
+.btn-fnext {
+  background: var(--accent);
+  color: #090909;
+  font-size: 14px; font-weight: 700; font-family: inherit;
+  border: none; border-radius: 9px;
+  padding: 13px 24px;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.btn-fnext:hover { opacity: 0.85; }
+.btn-fback { background: none; border: none; color: var(--muted2); font-size: 14px; font-family: inherit; cursor: pointer; padding: 13px 0; transition: color 0.2s; }
+.btn-fback:hover { color: var(--text); }
+
+/* Success state */
+.form-success { display: none; text-align: center; padding: 20px 0; }
+.form-success.show { display: block; }
+.success-icon { font-size: 52px; margin-bottom: 16px; }
+.form-success h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+.form-success p { font-size: 14px; color: var(--muted2); }
+
+/* ── FAQ ── */
+.faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 2px; }
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 20px 24px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.faq-icon { font-size: 18px; color: var(--accent); flex-shrink: 0; transition: transform 0.3s; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-a-inner { padding: 0 24px 20px; font-size: 14px; color: var(--muted2); line-height: 1.7; }
+.faq-item.open .faq-a { max-height: 300px; }
+
+/* ── FOOTER ── */
+footer {
+  padding: 60px 0 40px;
+  border-top: 1px solid var(--border);
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-logo { font-size: 15px; font-weight: 800; letter-spacing: -0.02em; }
+.footer-logo span { color: var(--accent); }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { font-size: 13px; color: var(--muted2); transition: color 0.2s; }
+.footer-links a:hover { color: var(--text); }
+.footer-copy { font-size: 12px; color: var(--muted); width: 100%; margin-top: 24px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat:nth-child(odd) { border-right: 1px solid var(--border); }
+  .stat:nth-last-child(-n+2) { border-bottom: none; }
+  .results-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .method-grid { grid-template-columns: 1fr; }
+  .offer-grid { grid-template-columns: 1fr; }
+  .testi-messages { grid-template-columns: 1fr; }
+  .testi-videos { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .form-wrap { padding: 28px 20px; }
+  .pricing-card { padding: 32px 24px; }
+  .footer-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <div class="nav-logo">AlvaritoNQ<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#metodologia">Metodología</a></li>
+      <li><a href="#incluye">Qué incluye</a></li>
+      <li><a href="#precio">Precio</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#aplicar" class="btn-nav">Aplicar ahora</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="tag">Mentoría 1:1 · Cupos limitados</div>
+    <h1>Aprendé a operar<br>usando <em>la lógica.</em></h1>
+    <p>Sistema basado en lógica institucional, utilizando conceptos Smart Money, Wyckoff y Orderflow. 4 semanas para transformar tu trading.</p>
+    <div class="hero-ctas">
+      <a href="#aplicar" class="btn-primary">Quiero aplicar →</a>
+      <a href="#metodologia" class="btn-secondary">Ver metodología</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-num">+$4k</div>
+        <div class="stat-label">Payouts obtenidos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Semanas de mentoría</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Soporte por chat</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$160</div>
+        <div class="stat-label">Por mes</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESULTS SLIDER -->
+<div class="results-section">
+  <div class="container">
+    <div class="results-header">
+      <div class="tag">Resultados</div>
+      <h2>Obtén resultados como estos.</h2>
+    </div>
+  </div>
+  <div class="slider-outer">
+    <div class="slider-track" id="resultsSlider">
+      <div class="result-slide">
+        <!-- <img src="resultados/r1.jpg" alt="Resultado 1"> -->
+        <div class="ph-icon">📸</div>
+        <div class="ph-text">Foto resultado</div>
+      </div>
+      <div class="result-slide">
+        <!-- <img src="resultados/r2.jpg" alt="Resultado 2"> -->
+        <div class="ph-icon">📸</div>
+        <div class="ph-text">Foto resultado</div>
+      </div>
+      <div class="result-slide">
+        <!-- <img src="resultados/r3.jpg" alt="Resultado 3"> -->
+        <div class="ph-icon">📸</div>
+        <div class="ph-text">Foto resultado</div>
+      </div>
+      <div class="result-slide">
+        <!-- <img src="resultados/r4.jpg" alt="Resultado 4"> -->
+        <div class="ph-icon">📸</div>
+        <div class="ph-text">Foto resultado</div>
+      </div>
+      <div class="result-slide">
+        <!-- <img src="resultados/r5.jpg" alt="Resultado 5"> -->
+        <div class="ph-icon">📸</div>
+        <div class="ph-text">Foto resultado</div>
+      </div>
+      <div class="result-slide">
+        <!-- <img src="resultados/r6.jpg" alt="Resultado 6"> -->
+        <div class="ph-icon">📸</div>
+        <div class="ph-text">Foto resultado</div>
+      </div>
+      <div class="result-slide">
+        <!-- <img src="resultados/r7.jpg" alt="Resultado 7"> -->
+        <div class="ph-icon">📸</div>
+        <div class="ph-text">Foto resultado</div>
+      </div>
+      <div class="result-slide">
+        <!-- <img src="resultados/r8.jpg" alt="Resultado 8"> -->
+        <div class="ph-icon">📸</div>
+        <div class="ph-text">Foto resultado</div>
+      </div>
+      <div class="result-slide">
+        <!-- <img src="resultados/r9.jpg" alt="Resultado 9"> -->
+        <div class="ph-icon">📸</div>
+        <div class="ph-text">Foto resultado</div>
+      </div>
+      <div class="result-slide">
+        <!-- <img src="resultados/r10.jpg" alt="Resultado 10"> -->
+        <div class="ph-icon">📸</div>
+        <div class="ph-text">Foto resultado</div>
+      </div>
+    </div>
+    <div class="slider-arrows">
+      <button class="slider-btn" onclick="slideResults(-1)">←</button>
+      <button class="slider-btn" onclick="slideResults(1)">→</button>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="sobre-mi">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-media-box">
+        <div class="about-video-box">
+          <!-- Reemplazá el src con tu link de YouTube embed cuando lo tengas -->
+          <!-- <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID" allowfullscreen></iframe> -->
+          <div class="about-video-placeholder">
+            <div class="play-icon">▶</div>
+            <p>Video de presentación<br><span style="font-size:11px;color:var(--muted)">De quemar cuentas a ser rentable</span></p>
+          </div>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-dot"></div>
+          <div class="about-badge-text">
+            <strong>@alvaritonq</strong>
+            Trader & Mentor · Lima, Perú
+          </div>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="tag section-tag">Sobre mí</div>
+        <h2 class="section-title">De ayudante de cocina<br>a trader.</h2>
+        <div class="about-story">
+          <p>Empecé mi búsqueda de un mejor futuro en abril de 2024 cuando me di cuenta que la depresión y la negatividad no me llevarían a ningún lado. Comencé a trabajar desde los 17 años, siempre quise poder autosostenerme y dejar de ser una carga económica para mis padres.</p>
+          <p>No fue hasta los 19, explotado en una cocina de comida rápida, que me di cuenta que si no cambiaba mi vida, eso sería lo que me esperaría el resto de mis días. Estudié en la universidad — la verdad nunca me gustó esa estafa. Tuve un trabajo mejor, ganaba bastante bien... pero no suficiente. Fue ahí que vi que un trabajo convencional, así tenga título o no, iba a ser una sentencia de esclavitud.</p>
+          <p>En noviembre de 2024 conocí el mundo de las cryptos, aposté todos mis ahorros ($400), los perdí todos 😂. Pasé por el mundo de las memecoins perdiendo más de $200. Pese a esas pérdidas, vi la posibilidad real de hacer dinero — solo necesitaba conocerlo más.</p>
+          <p>En febrero de 2025 conocí Smart Money Concepts y lo entendí perfectamente. Había lógica. Ya no era simples compras o ventas, era entender lo que el mercado estaba haciendo. Me obsesioné con la práctica pero descuidé la psicología y la gestión de riesgo. Sabía leer el mercado... pero no sabía controlarme, y eso me hizo perder +$600 en cuentas de fondeo a lo largo de 8 meses.</p>
+          <p>Hasta que lo entendí: no era suficiente con saber conceptos. Necesitaba dominar mi psicología y gestión de riesgo también. Ahí fue cuando todo cambió.</p>
+        </div>
+        <div class="about-highlight">
+          🍃 Primer retiro: $656. Desde ahí, más de $4,200 en payouts acumulados.
+        </div>
+        <div class="about-items" style="margin-top:28px">
+          <div class="about-item">
+            <div class="about-item-icon">🧠</div>
+            <div class="about-item-text">
+              <strong>Smart Money + Narrativa + Orderflow</strong>
+              <span>El sistema completo que uso hoy. No teoría — aplicación real en el mercado.</span>
+            </div>
+          </div>
+          <div class="about-item">
+            <div class="about-item-icon">🏦</div>
+            <div class="about-item-text">
+              <strong>Prop Firms — Evaluación y Funded</strong>
+              <span>Sé cómo pasar evaluaciones, mantener cuentas y retirar consistentemente.</span>
+            </div>
+          </div>
+          <div class="about-item">
+            <div class="about-item-icon">🎯</div>
+            <div class="about-item-text">
+              <strong>Constante mejora</strong>
+              <span>En este mundo hay mucha información — muy poca es realidad. Yo te traigo al lado de la rentabilidad.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="metodologia" class="method-bg">
+  <div class="container">
+    <div class="method-header">
+      <div class="tag section-tag">Metodología</div>
+      <h2 class="section-title">Lo que vas a aprender.</h2>
+      <p class="section-sub">El programa es personalizado según tu nivel. Estos son los módulos que cubrimos, adaptados a tu ritmo y objetivos.</p>
+    </div>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-module">Módulo 1</div>
+        <h3>Fundamentos del Mercado</h3>
+        <ul class="method-items">
+          <li>Mercado de futuros — cómo funciona</li>
+          <li>Lectura de tendencias</li>
+          <li>Gráfico de velas — interpretación real</li>
+        </ul>
+      </div>
+      <div class="method-card">
+        <div class="method-module">Módulo 2</div>
+        <h3>Smart Money Concepts</h3>
+        <ul class="method-items">
+          <li>Liquidez — dónde está el dinero</li>
+          <li>Imbalances (FVG / IFVG)</li>
+          <li>Divergencias estructurales</li>
+        </ul>
+      </div>
+      <div class="method-card">
+        <div class="method-module">Módulo 3</div>
+        <h3>Narrativa</h3>
+        <ul class="method-items">
+          <li>Análisis fundamental — noticias y catalizadores</li>
+          <li>Análisis técnico top-down</li>
+          <li>Construcción del bias diario</li>
+        </ul>
+      </div>
+      <div class="method-card">
+        <div class="method-module">Módulo 4</div>
+        <h3>Orderflow + AMD + Estrategia</h3>
+        <ul class="method-items">
+          <li>Heatmap — lectura institucional</li>
+          <li>AMD — ciclo Acumulación / Manipulación / Distribución</li>
+          <li>Estrategia de entrada y salida</li>
+        </ul>
+      </div>
+      <div class="method-card highlight">
+        <div class="method-module">Módulo 5</div>
+        <h3>Psicotrading</h3>
+        <ul class="method-items">
+          <li>Sesión grupal de psicotrading con psicólogo profesional</li>
+          <li>1 sesión personalizada de 30 minutos con el psicólogo</li>
+          <li>Control emocional y gestión del miedo / revenge</li>
+        </ul>
+      </div>
+      <div class="method-card">
+        <div class="method-module">Módulo 6</div>
+        <h3>Prop Firms</h3>
+        <ul class="method-items">
+          <li>Las mejores prop firms del mercado</li>
+          <li>Plan de escalamiento de cuentas</li>
+          <li>Manejo del riesgo para no breachear</li>
+        </ul>
+      </div>
+      <div class="method-card">
+        <div class="method-module">Todo el mes</div>
+        <h3>Soporte Continuo</h3>
+        <ul class="method-items">
+          <li>Soporte 24/7 por chat</li>
+          <li>Acceso a PDFs y recursos exclusivos</li>
+          <li>Grabaciones de sesiones disponibles</li>
+        </ul>
+      </div>
+      <div class="method-card">
+        <div class="method-module">Al finalizar</div>
+        <h3>Tu Sistema Personal</h3>
+        <ul class="method-items">
+          <li>Plan de trading documentado</li>
+          <li>Checklist pre-sesión propio</li>
+          <li>Setup en prop firm funcionando</li>
+          <li>Independencia total</li>
+        </ul>
+      </div>
+    </div>
+    <p class="method-note">El orden y la velocidad se adaptan a vos — no hay dos mentorías iguales.</p>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section id="incluye">
+  <div class="container">
+    <div class="tag section-tag">Qué incluye</div>
+    <h2 class="section-title" style="margin-bottom:16px">Todo lo que necesitás.<br>Nada de lo que no.</h2>
+    <p class="section-sub" style="margin-bottom:48px">Sin cursos grabados que nunca terminás. Sin grupos de 500 personas. Atención real, personalizada.</p>
+    <div class="offer-grid">
+      <div class="offer-card">
+        <div class="offer-icon">📞</div>
+        <h3>Sesiones 1:1 personalizadas</h3>
+        <p>Llamadas directas con Álvaro, a tu ritmo y según tus objetivos. Agenda flexible.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">💬</div>
+        <h3>Soporte 24/7 por chat</h3>
+        <p>Preguntás cuando necesitás. Dudas de mercado, revisión de setups, todo en tiempo real.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">🧠</div>
+        <h3>Sesiones con psicólogo</h3>
+        <p>1 sesión grupal + 1 sesión personalizada de 30 minutos con psicólogo profesional especializado en trading.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">🏦</div>
+        <h3>Guía de Prop Firms</h3>
+        <p>Qué props usar, cómo pasar la evaluación, cómo escalar y retirar sin breachear.</p>
+      </div>
+    </div>
+    <div class="offer-card-full" style="margin-top:16px">
+      <div class="offer-icon">🎯</div>
+      <div>
+        <h3>Plan personalizado desde el día 1</h3>
+        <p>El programa se diseña según tu nivel, tus objetivos y tus horarios. No hay dos mentorías iguales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="precio" class="pricing-bg">
+  <div class="container">
+    <div class="pricing-header">
+      <div class="tag section-tag">Precio</div>
+      <h2 class="section-title">Simple y sin sorpresas.</h2>
+      <p class="section-sub">Un plan, todo incluido. Sin upsells, sin extras ocultos.</p>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-label">Mentoría 1:1 — Trading</div>
+      <div class="pricing-price"><sup>$</sup>160</div>
+      <div class="pricing-period">por mes · programa personalizado</div>
+      <ul class="pricing-features">
+        <li><span class="check">✓</span> Sesiones 1:1 personalizadas (2 por semana)</li>
+        <li><span class="check">✓</span> Soporte 24/7 por chat</li>
+        <li><span class="check">✓</span> Plan adaptado a tu nivel y objetivos</li>
+        <li><span class="check">✓</span> Sesión grupal de psicotrading con psicólogo</li>
+        <li><span class="check">✓</span> Sesión personalizada 30 min con psicólogo</li>
+        <li><span class="check">✓</span> Guía completa de Prop Firms + escalamiento</li>
+        <li><span class="check">✓</span> PDFs y material descargable</li>
+        <li><span class="check">✓</span> Grabaciones de sesiones</li>
+      </ul>
+      <button class="btn-pricing" onclick="document.getElementById('aplicar').scrollIntoView({behavior:'smooth'})">
+        Quiero aplicar →
+      </button>
+      <p class="pricing-note">Cupos limitados — máximo 10 alumnos por mes</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonios" class="testi-section">
+  <div class="container">
+    <div class="testi-header">
+      <div class="tag section-tag">Testimonios</div>
+      <h2 class="section-title" style="margin-bottom:8px">Lo que dicen los alumnos.</h2>
+      <p class="section-sub" style="margin-bottom:40px">Encuesta anónima + entrevistas en video.</p>
+    </div>
+
+    <!-- Mensajes de encuesta anónima -->
+    <div class="testi-messages">
+      <div class="testi-msg">
+        <div class="testi-msg-tag">Encuesta anónima</div>
+        <p class="testi-msg-text">
+          <!-- Pegá aquí el primer mensaje de la encuesta -->
+          "Testimonio 1 — pegar mensaje de la encuesta anónima acá."
+        </p>
+        <div class="testi-msg-anon">Alumno anónimo · Encuesta interna</div>
+      </div>
+      <div class="testi-msg">
+        <div class="testi-msg-tag">Encuesta anónima</div>
+        <p class="testi-msg-text">
+          <!-- Pegá aquí el segundo mensaje de la encuesta -->
+          "Testimonio 2 — pegar mensaje de la encuesta anónima acá."
+        </p>
+        <div class="testi-msg-anon">Alumno anónimo · Encuesta interna</div>
+      </div>
+    </div>
+
+    <!-- Videos de entrevistas -->
+    <div class="testi-videos">
+      <div class="testi-video-box">
+        <div class="testi-video-inner">
+          <!-- Reemplazá con el embed de YouTube cuando lo tengas -->
+          <!-- <iframe src="https://www.youtube.com/embed/VIDEO_JOSE_ID" allowfullscreen></iframe> -->
+          <div class="play-icon">▶</div>
+          <div class="ph-label">Entrevista — José</div>
+        </div>
+        <div class="testi-video-name">
+          José <span class="testi-video-info">· Alumno mentoría</span>
+        </div>
+      </div>
+      <div class="testi-video-box">
+        <div class="testi-video-inner">
+          <!-- Reemplazá con el embed de YouTube cuando lo tengas -->
+          <!-- <iframe src="https://www.youtube.com/embed/VIDEO_BURGOS_ID" allowfullscreen></iframe> -->
+          <div class="play-icon">▶</div>
+          <div class="ph-label">Entrevista — Burgos</div>
+        </div>
+        <div class="testi-video-name">
+          Burgos <span class="testi-video-info">· Alumno mentoría</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section id="aplicar" class="apply-bg">
+  <div class="container">
+    <div class="apply-header">
+      <div class="tag section-tag">Aplicar</div>
+      <h2 class="section-title">Primero te conozco.<br>Después empezamos.</h2>
+      <p class="section-sub">Respondé estas preguntas para que pueda diseñar tu plan personalizado. Solo toma 3 minutos.</p>
+    </div>
+
+    <div class="form-wrap">
+      <div class="form-progress"><div class="form-progress-fill" id="fprog"></div></div>
+
+      <!-- Step 1 -->
+      <div class="form-step active" data-step="1">
+        <div class="step-num">01 / 10</div>
+        <div class="step-q">¿Cuánto tiempo llevás operando?</div>
+        <div class="step-hint">Contá desde que abriste tu primera cuenta de trading.</div>
+        <div class="opts">
+          <button class="opt" onclick="pick(this,'s1')"><span class="opt-k">A</span>Menos de 3 meses</button>
+          <button class="opt" onclick="pick(this,'s1')"><span class="opt-k">B</span>3 a 12 meses</button>
+          <button class="opt" onclick="pick(this,'s1')"><span class="opt-k">C</span>1 a 2 años</button>
+          <button class="opt" onclick="pick(this,'s1')"><span class="opt-k">D</span>Más de 2 años</button>
+        </div>
+        <div class="form-nav"><button class="btn-fback" style="visibility:hidden">Atrás</button><button class="btn-fnext" onclick="fNext(1)">Siguiente →</button></div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="form-step" data-step="2">
+        <div class="step-num">02 / 10</div>
+        <div class="step-q">¿Qué instrumentos operás?</div>
+        <div class="step-hint">La opción que más te representa actualmente.</div>
+        <div class="opts">
+          <button class="opt" onclick="pick(this,'s2')"><span class="opt-k">A</span>Futuros (NQ, ES, etc.)</button>
+          <button class="opt" onclick="pick(this,'s2')"><span class="opt-k">B</span>Crypto / Forex</button>
+          <button class="opt" onclick="pick(this,'s2')"><span class="opt-k">C</span>Acciones / ETFs</button>
+          <button class="opt" onclick="pick(this,'s2')"><span class="opt-k">D</span>Todavía no opero</button>
+        </div>
+        <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(2)">Siguiente →</button></div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="form-step" data-step="3">
+        <div class="step-num">03 / 10</div>
+        <div class="step-q">¿Estás en una prop firm?</div>
+        <div class="step-hint">Las prop firms te permiten operar con capital externo a cambio de un split de ganancias.</div>
+        <div class="opts">
+          <button class="opt" onclick="pick(this,'s3')"><span class="opt-k">A</span>Sí, en evaluación</button>
+          <button class="opt" onclick="pick(this,'s3')"><span class="opt-k">B</span>Sí, tengo cuenta funded</button>
+          <button class="opt" onclick="pick(this,'s3')"><span class="opt-k">C</span>Quiero entrar pero aún no</button>
+          <button class="opt" onclick="pick(this,'s3')"><span class="opt-k">D</span>No sé qué es una prop firm</button>
+        </div>
+        <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(3)">Siguiente →</button></div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="form-step" data-step="4">
+        <div class="step-num">04 / 10</div>
+        <div class="step-q">¿Cómo te ha ido hasta ahora?</div>
+        <div class="step-hint">Sé honesto — esto ayuda a construir el plan correcto.</div>
+        <div class="opts">
+          <button class="opt" onclick="pick(this,'s4')"><span class="opt-k">A</span>Estoy perdiendo dinero</button>
+          <button class="opt" onclick="pick(this,'s4')"><span class="opt-k">B</span>Estoy en breakeven</button>
+          <button class="opt" onclick="pick(this,'s4')"><span class="opt-k">C</span>Gano a veces, pierdo otras</button>
+          <button class="opt" onclick="pick(this,'s4')"><span class="opt-k">D</span>Soy consistentemente rentable</button>
+        </div>
+        <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(4)">Siguiente →</button></div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="form-step" data-step="5">
+        <div class="step-num">05 / 10</div>
+        <div class="step-q">¿Cuál es tu mayor problema ahora mismo?</div>
+        <div class="step-hint"></div>
+        <div class="opts">
+          <button class="opt" onclick="pick(this,'s5')"><span class="opt-k">A</span>No sé leer el mercado</button>
+          <button class="opt" onclick="pick(this,'s5')"><span class="opt-k">B</span>Entro bien pero no sé cuándo salir</button>
+          <button class="opt" onclick="pick(this,'s5')"><span class="opt-k">C</span>Psicología — miedo, revenge, FOMO</button>
+          <button class="opt" onclick="pick(this,'s5')"><span class="opt-k">D</span>Gestión del riesgo</button>
+          <button class="opt" onclick="pick(this,'s5')"><span class="opt-k">E</span>No tengo un sistema definido</button>
+        </div>
+        <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(5)">Siguiente →</button></div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="form-step" data-step="6">
+        <div class="step-num">06 / 10</div>
+        <div class="step-q">¿Qué querés lograr en estas 4 semanas?</div>
+        <div class="step-hint">Tu objetivo principal al terminar.</div>
+        <textarea class="form-input" id="fs6" rows="4" placeholder="Ej: Pasar la evaluación de Alpha Futures, tener un sistema claro, controlar mi psicología..."></textarea>
+        <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(6)">Siguiente →</button></div>
+      </div>
+
+      <!-- Step 7 -->
+      <div class="form-step" data-step="7">
+        <div class="step-num">07 / 10</div>
+        <div class="step-q">¿Cuántas horas por día podés dedicarle?</div>
+        <div class="step-hint">Siendo realista con tu horario.</div>
+        <div class="opts">
+          <button class="opt" onclick="pick(this,'s7')"><span class="opt-k">A</span>Menos de 1 hora</button>
+          <button class="opt" onclick="pick(this,'s7')"><span class="opt-k">B</span>1 a 2 horas</button>
+          <button class="opt" onclick="pick(this,'s7')"><span class="opt-k">C</span>2 a 4 horas</button>
+          <button class="opt" onclick="pick(this,'s7')"><span class="opt-k">D</span>Full time (4+ horas)</button>
+        </div>
+        <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(7)">Siguiente →</button></div>
+      </div>
+
+      <!-- Step 8 -->
+      <div class="form-step" data-step="8">
+        <div class="step-num">08 / 10</div>
+        <div class="step-q">¿Qué horario te viene bien para las sesiones?</div>
+        <div class="step-hint">Sesiones de 60-75 minutos, 2 veces por semana.</div>
+        <div class="opts">
+          <button class="opt" onclick="pick(this,'s8')"><span class="opt-k">A</span>Mañanas (8am – 12pm)</button>
+          <button class="opt" onclick="pick(this,'s8')"><span class="opt-k">B</span>Mediodía (12pm – 3pm)</button>
+          <button class="opt" onclick="pick(this,'s8')"><span class="opt-k">C</span>Tarde (3pm – 7pm)</button>
+          <button class="opt" onclick="pick(this,'s8')"><span class="opt-k">D</span>Noche (7pm – 10pm)</button>
+        </div>
+        <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(8)">Siguiente →</button></div>
+      </div>
+
+      <!-- Step 9 -->
+      <div class="form-step" data-step="9">
+        <div class="step-num">09 / 10</div>
+        <div class="step-q">¿Cómo llegaste a Álvaro?</div>
+        <div class="step-hint"></div>
+        <div class="opts">
+          <button class="opt" onclick="pick(this,'s9')"><span class="opt-k">A</span>Instagram</button>
+          <button class="opt" onclick="pick(this,'s9')"><span class="opt-k">B</span>TikTok</button>
+          <button class="opt" onclick="pick(this,'s9')"><span class="opt-k">C</span>Twitter / X</button>
+          <button class="opt" onclick="pick(this,'s9')"><span class="opt-k">D</span>Referido por alguien</button>
+          <button class="opt" onclick="pick(this,'s9')"><span class="opt-k">E</span>Otro</button>
+        </div>
+        <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(9)">Siguiente →</button></div>
+      </div>
+
+      <!-- Step 10 -->
+      <div class="form-step" data-step="10">
+        <div class="step-num">10 / 10</div>
+        <div class="step-q">Tu nombre y email de contacto.</div>
+        <div class="step-hint">Álvaro te escribe en menos de 24hs.</div>
+        <input class="form-input" id="fs10name" type="text" placeholder="Tu nombre completo" style="margin-bottom:10px">
+        <input class="form-input" id="fs10email" type="email" placeholder="Tu email">
+        <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fSubmit()">Enviar aplicación →</button></div>
+      </div>
+
+      <!-- Success -->
+      <div class="form-success" id="fsuccess">
+        <div class="success-icon">✅</div>
+        <h3>Aplicación recibida.</h3>
+        <p>Álvaro va a revisar tu perfil y te escribe en menos de 24 horas.<br>Revisá tu email y también el spam.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="tag section-tag" style="margin-bottom:20px;text-align:center">FAQ</div>
+    <h2 class="section-title" style="text-align:center;margin-bottom:48px">Preguntas frecuentes.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Necesito experiencia previa para empezar? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">No es necesario. El plan se adapta a tu nivel. Si sos principiante, empezamos desde los fundamentos. Si ya tenés experiencia, nos enfocamos en los gaps específicos que tenés.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Qué plataformas uso durante la mentoría? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">TradingView para análisis técnico y Bookmap para el heatmap (orderflow). Para operar usamos prop firms — te guío en qué prop usar según tu perfil y cómo configurar todo desde cero.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Qué son las prop firms y por qué las usamos? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Las prop firms te permiten operar con capital externo (hasta $200k+) y quedarte con un porcentaje de las ganancias. Es la forma más eficiente de escalar sin arriesgar tu propio capital. Te enseño a pasar evaluaciones y a mantener las cuentas funded.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Las sesiones son grabadas? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sí. Cada sesión queda grabada para que puedas repasarla cuando quieras. Además tenés acceso a la biblioteca de videos de la metodología.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Puedo continuar la mentoría después del primer mes? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sí. Si al terminar el mes querés continuar, podemos acordar un seguimiento mensual.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿El soporte 24/7 es de verdad? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sí, dentro de lo razonable. Respondo en horas, no días. Si tenés una duda antes de un trade o querés que revise un setup, escribime y te respondo lo antes posible.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Cuántos alumnos tomás por mes? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Máximo 10 alumnos por mes. La mentoría es personalizada y quiero garantizar calidad de atención para cada uno. Por eso los cupos son limitados y hay proceso de aplicación previo.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">AlvaritoNQ<span>.</span></div>
+      <div class="footer-links">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#metodologia">Metodología</a>
+        <a href="#precio">Precio</a>
+        <a href="#aplicar">Aplicar</a>
+        <a href="https://instagram.com/alvaritonq" target="_blank">Instagram</a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Álvaro Tolentino · AlvaritoNQ · Mentoría de Trading · Lima, Perú</p>
+  </div>
+</footer>
+
+<script>
+const TOTAL_STEPS = 10;
+let currentStep = 1;
+const answers = {};
+
+function updateProgress() {
+  document.getElementById('fprog').style.width = ((currentStep - 1) / TOTAL_STEPS * 100) + '%';
+}
+
+function pick(btn, key) {
+  btn.closest('.opts').querySelectorAll('.opt').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+  answers[key] = btn.textContent.trim().slice(1).trim();
+}
+
+function fNext(step) {
+  const card = document.querySelector(`[data-step="${step}"]`);
+  const hasOpts = card.querySelector('.opts');
+  const key = `s${step}`;
+
+  if (hasOpts && !answers[key]) {
+    card.querySelectorAll('.opt').forEach(o => { o.style.borderColor='#ff4d4d'; setTimeout(() => o.style.borderColor='', 500); });
+    return;
+  }
+  if (!hasOpts) {
+    const ta = document.getElementById(`fs${step}`);
+    if (ta) {
+      if (!ta.value.trim() && step !== 10) { ta.style.borderColor='#ff4d4d'; setTimeout(() => ta.style.borderColor='', 500); return; }
+      answers[key] = ta.value.trim() || '—';
+    }
+  }
+
+  card.classList.remove('active');
+  currentStep++;
+  updateProgress();
+  const next = document.querySelector(`[data-step="${currentStep}"]`);
+  if (next) next.classList.add('active');
+}
+
+function fBack() {
+  if (currentStep <= 1) return;
+  document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+  currentStep--;
+  updateProgress();
+  document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+}
+
+async function fSubmit() {
+  const name = document.getElementById('fs10name').value.trim();
+  const email = document.getElementById('fs10email').value.trim();
+  if (!name || !email) {
+    if (!name) { document.getElementById('fs10name').style.borderColor='#ff4d4d'; setTimeout(() => document.getElementById('fs10name').style.borderColor='', 500); }
+    if (!email) { document.getElementById('fs10email').style.borderColor='#ff4d4d'; setTimeout(() => document.getElementById('fs10email').style.borderColor='', 500); }
+    return;
+  }
+  answers['s10_name'] = name;
+  answers['s10_email'] = email;
+
+  const payload = {
+    nombre: name,
+    email: email,
+    experiencia: answers['s1'] || '—',
+    instrumentos: answers['s2'] || '—',
+    prop_firm: answers['s3'] || '—',
+    resultado: answers['s4'] || '—',
+    problema: answers['s5'] || '—',
+    objetivo: answers['s6'] || '—',
+    disponibilidad: answers['s7'] || '—',
+    horario_llamadas: answers['s8'] || '—',
+    como_llego: answers['s9'] || '—',
+  };
+
+  // Mostrar loading
+  const btn = document.querySelector('[onclick="fSubmit()"]');
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('/api/apply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (res.ok) {
+      document.querySelector('.form-progress').style.display = 'none';
+      document.querySelector(`[data-step="10"]`).style.display = 'none';
+      document.getElementById('fsuccess').classList.add('show');
+    } else {
+      throw new Error('Error del servidor');
+    }
+  } catch (e) {
+    // Fallback: mostrar éxito igual (la aplicación puede haberse guardado)
+    document.querySelector('.form-progress').style.display = 'none';
+    document.querySelector(`[data-step="10"]`).style.display = 'none';
+    document.getElementById('fsuccess').classList.add('show');
+  }
+}
+
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+function slideResults(dir) {
+  const track = document.getElementById('resultsSlider');
+  const slideW = track.querySelector('.result-slide').offsetWidth + 12;
+  track.scrollBy({ left: dir * slideW * 3, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

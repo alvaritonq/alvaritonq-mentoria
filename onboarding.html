@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentoría Álvaro Tolentino — Onboarding</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: #222222;
+    --accent: #c8f135;
+    --text: #f0f0f0;
+    --muted: #666666;
+    --input-bg: #161616;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 60px 20px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 620px;
+  }
+
+  /* Header */
+  .header {
+    margin-bottom: 56px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .header p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .divider {
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin: 24px 0;
+  }
+
+  /* Progress */
+  .progress-bar {
+    width: 100%;
+    height: 2px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-bottom: 48px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  /* Question card */
+  .question-card {
+    display: none;
+    animation: fadeUp 0.35s ease;
+  }
+
+  .question-card.active {
+    display: block;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .q-number {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .q-text {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+
+  .q-hint {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 28px;
+    line-height: 1.5;
+  }
+
+  /* Inputs */
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 15px;
+    font-family: inherit;
+    padding: 16px 18px;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+    appearance: none;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--accent);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--muted);
+  }
+
+  /* Option buttons */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option-btn {
+    width: 100%;
+    background: var(--input-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: inherit;
+    padding: 14px 18px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .option-btn .opt-key {
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .option-btn:hover {
+    border-color: var(--accent);
+    background: #161f00;
+  }
+
+  .option-btn.selected {
+    border-color: var(--accent);
+    background: #161f00;
+  }
+
+  .option-btn.selected .opt-key {
+    background: var(--accent);
+    color: #0a0a0a;
+    border-color: var(--accent);
+  }
+
+  /* Navigation */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 36px;
+  }
+
+  .btn-next {
+    background: var(--accent);
+    color: #0a0a0a;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-next:hover { opacity: 0.85; }
+
+  .btn-back {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 14px 0;
+    transition: color 0.2s;
+  }
+
+  .btn-back:hover { color: var(--text); }
+
+  .q-counter {
+    font-size: 12px;
+    color: var(--muted);
+    margin-left: auto;
+    margin-right: 20px;
+  }
+
+  /* Summary screen */
+  .summary {
+    display: none;
+    animation: fadeUp 0.35s ease;
+  }
+
+  .summary.active { display: block; }
+
+  .summary h2 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .summary > p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 36px;
+  }
+
+  .answer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 40px;
+  }
+
+  .answer-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+
+  .answer-item .a-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .answer-item .a-value {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .btn-copy {
+    width: 100%;
+    background: var(--accent);
+    color: #0a0a0a;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    padding: 16px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    letter-spacing: 0.01em;
+  }
+
+  .btn-copy:hover { opacity: 0.85; }
+
+  .copy-note {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="badge">@alvaritonq · Mentoría Trading</div>
+    <h1>Bienvenido.<br>Empecemos por conocerte.</h1>
+    <div class="divider"></div>
+    <p>Respondé estas preguntas antes de tu primera sesión.<br>Solo toma 3 minutos.</p>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress"></div>
+  </div>
+
+  <!-- PREGUNTAS -->
+
+  <!-- Q1 -->
+  <div class="question-card active" data-q="1">
+    <div class="q-number">01 / 10</div>
+    <div class="q-text">¿Cuánto tiempo llevás operando?</div>
+    <div class="q-hint">Contá desde que abriste tu primera cuenta de trading.</div>
+    <div class="options">
+      <button class="option-btn" onclick="selectOption(this, 'q1')"><span class="opt-key">A</span> Menos de 3 meses</button>
+      <button class="option-btn" onclick="selectOption(this, 'q1')"><span class="opt-key">B</span> 3 a 12 meses</button>
+      <button class="option-btn" onclick="selectOption(this, 'q1')"><span class="opt-key">C</span> 1 a 2 años</button>
+      <button class="option-btn" onclick="selectOption(this, 'q1')"><span class="opt-key">D</span> Más de 2 años</button>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="goBack()" style="visibility:hidden">Atrás</button>
+      <span class="q-counter" id="counter-1"></span>
+      <button class="btn-next" onclick="goNext(1)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question-card" data-q="2">
+    <div class="q-number">02 / 10</div>
+    <div class="q-text">¿Qué instrumentos operás actualmente?</div>
+    <div class="q-hint">Podés elegir la opción que más te representa.</div>
+    <div class="options">
+      <button class="option-btn" onclick="selectOption(this, 'q2')"><span class="opt-key">A</span> Acciones / ETFs</button>
+      <button class="option-btn" onclick="selectOption(this, 'q2')"><span class="opt-key">B</span> Futuros (NQ, ES, etc.)</button>
+      <button class="option-btn" onclick="selectOption(this, 'q2')"><span class="opt-key">C</span> Forex</button>
+      <button class="option-btn" onclick="selectOption(this, 'q2')"><span class="opt-key">D</span> Crypto</button>
+      <button class="option-btn" onclick="selectOption(this, 'q2')"><span class="opt-key">E</span> Todavía no opero</button>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="goBack()">Atrás</button>
+      <span class="q-counter"></span>
+      <button class="btn-next" onclick="goNext(2)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="question-card" data-q="3">
+    <div class="q-number">03 / 10</div>
+    <div class="q-text">¿Estás en una prop firm?</div>
+    <div class="q-hint">Evaluación, cuenta funded, o querés entrar a una.</div>
+    <div class="options">
+      <button class="option-btn" onclick="selectOption(this, 'q3')"><span class="opt-key">A</span> Sí, en evaluación</button>
+      <button class="option-btn" onclick="selectOption(this, 'q3')"><span class="opt-key">B</span> Sí, ya tengo cuenta funded</button>
+      <button class="option-btn" onclick="selectOption(this, 'q3')"><span class="opt-key">C</span> Quiero entrar pero aún no</button>
+      <button class="option-btn" onclick="selectOption(this, 'q3')"><span class="opt-key">D</span> No me interesa la prop firm</button>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="goBack()">Atrás</button>
+      <span class="q-counter"></span>
+      <button class="btn-next" onclick="goNext(3)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question-card" data-q="4">
+    <div class="q-number">04 / 10</div>
+    <div class="q-text">¿Cómo te ha ido hasta ahora?</div>
+    <div class="q-hint">Sé honesto — esto nos ayuda a construir el plan correcto.</div>
+    <div class="options">
+      <button class="option-btn" onclick="selectOption(this, 'q4')"><span class="opt-key">A</span> Estoy perdiendo dinero</button>
+      <button class="option-btn" onclick="selectOption(this, 'q4')"><span class="opt-key">B</span> Estoy en breakeven</button>
+      <button class="option-btn" onclick="selectOption(this, 'q4')"><span class="opt-key">C</span> Gano a veces, pierdo otras</button>
+      <button class="option-btn" onclick="selectOption(this, 'q4')"><span class="opt-key">D</span> Estoy siendo consistentemente rentable</button>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="goBack()">Atrás</button>
+      <span class="q-counter"></span>
+      <button class="btn-next" onclick="goNext(4)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question-card" data-q="5">
+    <div class="q-number">05 / 10</div>
+    <div class="q-text">¿Cuál es tu mayor problema ahorita?</div>
+    <div class="q-hint">El obstáculo que más te está frenando en este momento.</div>
+    <div class="options">
+      <button class="option-btn" onclick="selectOption(this, 'q5')"><span class="opt-key">A</span> No sé leer el mercado (análisis)</button>
+      <button class="option-btn" onclick="selectOption(this, 'q5')"><span class="opt-key">B</span> Entro bien pero no sé cuándo salir</button>
+      <button class="option-btn" onclick="selectOption(this, 'q5')"><span class="opt-key">C</span> Psicología — miedo, revenge trading, FOMO</button>
+      <button class="option-btn" onclick="selectOption(this, 'q5')"><span class="opt-key">D</span> Gestión del riesgo y tamaño de posición</button>
+      <button class="option-btn" onclick="selectOption(this, 'q5')"><span class="opt-key">E</span> No tengo un sistema definido</button>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="goBack()">Atrás</button>
+      <span class="q-counter"></span>
+      <button class="btn-next" onclick="goNext(5)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="question-card" data-q="6">
+    <div class="q-number">06 / 10</div>
+    <div class="q-text">¿Qué querés lograr en estas 4 semanas?</div>
+    <div class="q-hint">Tu objetivo principal al terminar la mentoría.</div>
+    <textarea id="q6" rows="4" placeholder="Ej: Pasar la evaluación de Alpha Futures, tener un sistema claro para operar NQ, entender el heatmap y las paredes institucionales..."></textarea>
+    <div class="nav">
+      <button class="btn-back" onclick="goBack()">Atrás</button>
+      <span class="q-counter"></span>
+      <button class="btn-next" onclick="goNext(6)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question-card" data-q="7">
+    <div class="q-number">07 / 10</div>
+    <div class="q-text">¿Cuántas horas por día podés dedicarle al trading?</div>
+    <div class="q-hint">Siendo realista con tu horario actual.</div>
+    <div class="options">
+      <button class="option-btn" onclick="selectOption(this, 'q7')"><span class="opt-key">A</span> Menos de 1 hora</button>
+      <button class="option-btn" onclick="selectOption(this, 'q7')"><span class="opt-key">B</span> 1 a 2 horas</button>
+      <button class="option-btn" onclick="selectOption(this, 'q7')"><span class="opt-key">C</span> 2 a 4 horas</button>
+      <button class="option-btn" onclick="selectOption(this, 'q7')"><span class="opt-key">D</span> Full time (4+ horas)</button>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="goBack()">Atrás</button>
+      <span class="q-counter"></span>
+      <button class="btn-next" onclick="goNext(7)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="question-card" data-q="8">
+    <div class="q-number">08 / 10</div>
+    <div class="q-text">¿Qué horario te viene bien para las llamadas semanales?</div>
+    <div class="q-hint">Las sesiones duran entre 60 y 75 minutos.</div>
+    <div class="options">
+      <button class="option-btn" onclick="selectOption(this, 'q8')"><span class="opt-key">A</span> Mañanas (8am – 12pm)</button>
+      <button class="option-btn" onclick="selectOption(this, 'q8')"><span class="opt-key">B</span> Mediodía (12pm – 3pm)</button>
+      <button class="option-btn" onclick="selectOption(this, 'q8')"><span class="opt-key">C</span> Tarde (3pm – 7pm)</button>
+      <button class="option-btn" onclick="selectOption(this, 'q8')"><span class="opt-key">D</span> Noche (7pm – 10pm)</button>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="goBack()">Atrás</button>
+      <span class="q-counter"></span>
+      <button class="btn-next" onclick="goNext(8)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="question-card" data-q="9">
+    <div class="q-number">09 / 10</div>
+    <div class="q-text">¿Cómo llegaste a Álvaro?</div>
+    <div class="q-hint">Nos ayuda a saber qué está funcionando.</div>
+    <div class="options">
+      <button class="option-btn" onclick="selectOption(this, 'q9')"><span class="opt-key">A</span> Instagram</button>
+      <button class="option-btn" onclick="selectOption(this, 'q9')"><span class="opt-key">B</span> TikTok</button>
+      <button class="option-btn" onclick="selectOption(this, 'q9')"><span class="opt-key">C</span> Twitter / X</button>
+      <button class="option-btn" onclick="selectOption(this, 'q9')"><span class="opt-key">D</span> Referido por alguien</button>
+      <button class="option-btn" onclick="selectOption(this, 'q9')"><span class="opt-key">E</span> Otro</button>
+    </div>
+    <div class="nav">
+      <button class="btn-back" onclick="goBack()">Atrás</button>
+      <span class="q-counter"></span>
+      <button class="btn-next" onclick="goNext(9)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="question-card" data-q="10">
+    <div class="q-number">10 / 10</div>
+    <div class="q-text">¿Algo más que Álvaro deba saber sobre vos?</div>
+    <div class="q-hint">Opcional. Contexto personal, situación especial, lo que quieras agregar.</div>
+    <textarea id="q10" rows="4" placeholder="Opcional — podés dejarlo en blanco si no hay nada más."></textarea>
+    <div class="nav">
+      <button class="btn-back" onclick="goBack()">Atrás</button>
+      <span class="q-counter"></span>
+      <button class="btn-next" onclick="showSummary()">Ver resumen →</button>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="summary" id="summary">
+    <div class="badge">Listo</div>
+    <h2>Perfil completo.</h2>
+    <p>Álvaro va a revisar esto antes de tu primera sesión.</p>
+    <div class="answer-list" id="answer-list"></div>
+    <button class="btn-copy" onclick="copyAnswers()">Copiar respuestas</button>
+    <p class="copy-note">Copiá y pegá esto en el chat con Álvaro.</p>
+  </div>
+
+</div>
+
+<script>
+  const TOTAL = 10;
+  let current = 1;
+  const answers = {};
+  const labels = {
+    q1: "Experiencia en trading",
+    q2: "Instrumentos que opera",
+    q3: "Prop firm",
+    q4: "Resultados hasta ahora",
+    q5: "Mayor problema",
+    q6: "Objetivo en 4 semanas",
+    q7: "Horas por día",
+    q8: "Horario para llamadas",
+    q9: "Cómo llegó a Álvaro",
+    q10: "Notas adicionales",
+  };
+
+  function updateProgress() {
+    const pct = ((current - 1) / TOTAL) * 100;
+    document.getElementById("progress").style.width = pct + "%";
+  }
+
+  function selectOption(btn, key) {
+    const parent = btn.closest(".options");
+    parent.querySelectorAll(".option-btn").forEach(b => b.classList.remove("selected"));
+    btn.classList.add("selected");
+    answers[key] = btn.querySelector(".opt-key").nextSibling.textContent.trim();
+  }
+
+  function getTextAnswer(q) {
+    const el = document.getElementById(`q${q}`);
+    return el ? el.value.trim() : "";
+  }
+
+  function goNext(q) {
+    // Validar opción seleccionada para preguntas de opciones
+    const card = document.querySelector(`[data-q="${q}"]`);
+    const hasOptions = card.querySelector(".options");
+    const hasTextarea = card.querySelector("textarea");
+
+    if (hasOptions && !answers[`q${q}`]) {
+      const opts = card.querySelectorAll(".option-btn");
+      opts.forEach(o => { o.style.borderColor = "#ff4444"; });
+      setTimeout(() => opts.forEach(o => { o.style.borderColor = ""; }), 600);
+      return;
+    }
+
+    if (hasTextarea && q !== 10) {
+      const val = getTextAnswer(q);
+      if (!val) { document.getElementById(`q${q}`).style.borderColor = "#ff4444"; setTimeout(() => document.getElementById(`q${q}`).style.borderColor = "", 600); return; }
+      answers[`q${q}`] = val;
+    }
+
+    if (hasTextarea && q === 10) {
+      answers[`q${q}`] = getTextAnswer(q) || "—";
+    }
+
+    card.classList.remove("active");
+    current++;
+    updateProgress();
+    const next = document.querySelector(`[data-q="${current}"]`);
+    if (next) next.classList.add("active");
+  }
+
+  function goBack() {
+    if (current <= 1) return;
+    const card = document.querySelector(`[data-q="${current}"]`);
+    if (card) card.classList.remove("active");
+    current--;
+    updateProgress();
+    const prev = document.querySelector(`[data-q="${current}"]`);
+    if (prev) prev.classList.add("active");
+  }
+
+  function showSummary() {
+    const q10val = getTextAnswer(10);
+    answers["q10"] = q10val || "—";
+
+    document.querySelector(`[data-q="10"]`).classList.remove("active");
+    document.getElementById("progress").style.width = "100%";
+
+    const list = document.getElementById("answer-list");
+    list.innerHTML = "";
+    for (let i = 1; i <= 10; i++) {
+      const key = `q${i}`;
+      const val = answers[key] || "—";
+      list.innerHTML += `
+        <div class="answer-item">
+          <div class="a-label">${labels[key]}</div>
+          <div class="a-value">${val}</div>
+        </div>`;
+    }
+
+    document.getElementById("summary").classList.add("active");
+  }
+
+  function copyAnswers() {
+    let txt = "ONBOARDING — Mentoría Álvaro Tolentino\n";
+    txt += "─".repeat(40) + "\n";
+    for (let i = 1; i <= 10; i++) {
+      const key = `q${i}`;
+      txt += `\n${labels[key]}:\n${answers[key] || "—"}\n`;
+    }
+    navigator.clipboard.writeText(txt).then(() => {
+      const btn = document.querySelector(".btn-copy");
+      btn.textContent = "✓ Copiado";
+      setTimeout(() => btn.textContent = "Copiar respuestas", 2000);
+    });
+  }
+
+  updateProgress();
+</script>
+</body>
+</html>
