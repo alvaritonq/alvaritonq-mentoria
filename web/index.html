@@ -1195,134 +1195,103 @@ footer {
 
       <!-- Step 1 -->
       <div class="form-step active" data-step="1">
-        <div class="step-num">01 / 10</div>
-        <div class="step-q">¿Cuánto tiempo llevás operando?</div>
-        <div class="step-hint">Contá desde que abriste tu primera cuenta de trading.</div>
-        <div class="opts">
-          <button class="opt" onclick="pick(this,'s1')"><span class="opt-k">A</span>Menos de 3 meses</button>
-          <button class="opt" onclick="pick(this,'s1')"><span class="opt-k">B</span>3 a 12 meses</button>
-          <button class="opt" onclick="pick(this,'s1')"><span class="opt-k">C</span>1 a 2 años</button>
-          <button class="opt" onclick="pick(this,'s1')"><span class="opt-k">D</span>Más de 2 años</button>
-        </div>
+        <div class="step-num">01 / 08</div>
+        <div class="step-q">Contanos tu experiencia en trading.</div>
+        <div class="step-hint">¿Cuánto tiempo llevás operando, qué instrumentos usás y si estás en alguna prop firm?</div>
+        <textarea class="form-input" id="fs1" rows="4" placeholder="Ej: Llevo 1 año operando futuros NQ, estoy en evaluación con Alpha Futures, todavía no soy consistente..."></textarea>
         <div class="form-nav"><button class="btn-fback" style="visibility:hidden">Atrás</button><button class="btn-fnext" onclick="fNext(1)">Siguiente →</button></div>
       </div>
 
       <!-- Step 2 -->
       <div class="form-step" data-step="2">
-        <div class="step-num">02 / 10</div>
-        <div class="step-q">¿Qué instrumentos operás?</div>
-        <div class="step-hint">La opción que más te representa actualmente.</div>
+        <div class="step-num">02 / 08</div>
+        <div class="step-q">¿Cómo te ha ido hasta ahora?</div>
+        <div class="step-hint">Sé honesto — esto ayuda a construir el plan correcto.</div>
         <div class="opts">
-          <button class="opt" onclick="pick(this,'s2')"><span class="opt-k">A</span>Futuros (NQ, ES, etc.)</button>
-          <button class="opt" onclick="pick(this,'s2')"><span class="opt-k">B</span>Crypto / Forex</button>
-          <button class="opt" onclick="pick(this,'s2')"><span class="opt-k">C</span>Acciones / ETFs</button>
-          <button class="opt" onclick="pick(this,'s2')"><span class="opt-k">D</span>Todavía no opero</button>
+          <button class="opt" onclick="pick(this,'s2')"><span class="opt-k">A</span>Estoy perdiendo dinero</button>
+          <button class="opt" onclick="pick(this,'s2')"><span class="opt-k">B</span>Estoy en breakeven</button>
+          <button class="opt" onclick="pick(this,'s2')"><span class="opt-k">C</span>Gano a veces, pierdo otras</button>
+          <button class="opt" onclick="pick(this,'s2')"><span class="opt-k">D</span>Soy consistentemente rentable</button>
         </div>
         <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(2)">Siguiente →</button></div>
       </div>
 
       <!-- Step 3 -->
       <div class="form-step" data-step="3">
-        <div class="step-num">03 / 10</div>
-        <div class="step-q">¿Estás en una prop firm?</div>
-        <div class="step-hint">Las prop firms te permiten operar con capital externo a cambio de un split de ganancias.</div>
+        <div class="step-num">03 / 08</div>
+        <div class="step-q">¿Cuál es tu mayor problema ahora mismo?</div>
+        <div class="step-hint"></div>
         <div class="opts">
-          <button class="opt" onclick="pick(this,'s3')"><span class="opt-k">A</span>Sí, en evaluación</button>
-          <button class="opt" onclick="pick(this,'s3')"><span class="opt-k">B</span>Sí, tengo cuenta funded</button>
-          <button class="opt" onclick="pick(this,'s3')"><span class="opt-k">C</span>Quiero entrar pero aún no</button>
-          <button class="opt" onclick="pick(this,'s3')"><span class="opt-k">D</span>No sé qué es una prop firm</button>
+          <button class="opt" onclick="pick(this,'s3')"><span class="opt-k">A</span>No sé leer el mercado</button>
+          <button class="opt" onclick="pick(this,'s3')"><span class="opt-k">B</span>Entro bien pero no sé cuándo salir</button>
+          <button class="opt" onclick="pick(this,'s3')"><span class="opt-k">C</span>Psicología — miedo, revenge, FOMO</button>
+          <button class="opt" onclick="pick(this,'s3')"><span class="opt-k">D</span>Gestión del riesgo</button>
+          <button class="opt" onclick="pick(this,'s3')"><span class="opt-k">E</span>No tengo un sistema definido</button>
         </div>
         <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(3)">Siguiente →</button></div>
       </div>
 
       <!-- Step 4 -->
       <div class="form-step" data-step="4">
-        <div class="step-num">04 / 10</div>
-        <div class="step-q">¿Cómo te ha ido hasta ahora?</div>
-        <div class="step-hint">Sé honesto — esto ayuda a construir el plan correcto.</div>
-        <div class="opts">
-          <button class="opt" onclick="pick(this,'s4')"><span class="opt-k">A</span>Estoy perdiendo dinero</button>
-          <button class="opt" onclick="pick(this,'s4')"><span class="opt-k">B</span>Estoy en breakeven</button>
-          <button class="opt" onclick="pick(this,'s4')"><span class="opt-k">C</span>Gano a veces, pierdo otras</button>
-          <button class="opt" onclick="pick(this,'s4')"><span class="opt-k">D</span>Soy consistentemente rentable</button>
-        </div>
+        <div class="step-num">04 / 08</div>
+        <div class="step-q">¿Qué querés lograr en estas 4 semanas?</div>
+        <div class="step-hint">Tu objetivo principal al terminar.</div>
+        <textarea class="form-input" id="fs4" rows="4" placeholder="Ej: Pasar la evaluación de Alpha Futures, tener un sistema claro, controlar mi psicología..."></textarea>
         <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(4)">Siguiente →</button></div>
       </div>
 
       <!-- Step 5 -->
       <div class="form-step" data-step="5">
-        <div class="step-num">05 / 10</div>
-        <div class="step-q">¿Cuál es tu mayor problema ahora mismo?</div>
-        <div class="step-hint"></div>
+        <div class="step-num">05 / 08</div>
+        <div class="step-q">¿Cuántas horas por día podés dedicarle?</div>
+        <div class="step-hint">Siendo realista con tu horario.</div>
         <div class="opts">
-          <button class="opt" onclick="pick(this,'s5')"><span class="opt-k">A</span>No sé leer el mercado</button>
-          <button class="opt" onclick="pick(this,'s5')"><span class="opt-k">B</span>Entro bien pero no sé cuándo salir</button>
-          <button class="opt" onclick="pick(this,'s5')"><span class="opt-k">C</span>Psicología — miedo, revenge, FOMO</button>
-          <button class="opt" onclick="pick(this,'s5')"><span class="opt-k">D</span>Gestión del riesgo</button>
-          <button class="opt" onclick="pick(this,'s5')"><span class="opt-k">E</span>No tengo un sistema definido</button>
+          <button class="opt" onclick="pick(this,'s5')"><span class="opt-k">A</span>Menos de 1 hora</button>
+          <button class="opt" onclick="pick(this,'s5')"><span class="opt-k">B</span>1 a 2 horas</button>
+          <button class="opt" onclick="pick(this,'s5')"><span class="opt-k">C</span>2 a 4 horas</button>
+          <button class="opt" onclick="pick(this,'s5')"><span class="opt-k">D</span>Full time (4+ horas)</button>
         </div>
         <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(5)">Siguiente →</button></div>
       </div>
 
       <!-- Step 6 -->
       <div class="form-step" data-step="6">
-        <div class="step-num">06 / 10</div>
-        <div class="step-q">¿Qué querés lograr en estas 4 semanas?</div>
-        <div class="step-hint">Tu objetivo principal al terminar.</div>
-        <textarea class="form-input" id="fs6" rows="4" placeholder="Ej: Pasar la evaluación de Alpha Futures, tener un sistema claro, controlar mi psicología..."></textarea>
+        <div class="step-num">06 / 08</div>
+        <div class="step-q">¿Qué horario te viene bien para las sesiones?</div>
+        <div class="step-hint">Sesiones de 60-75 minutos, 2 veces por semana.</div>
+        <div class="opts">
+          <button class="opt" onclick="pick(this,'s6')"><span class="opt-k">A</span>Mañanas (8am – 12pm)</button>
+          <button class="opt" onclick="pick(this,'s6')"><span class="opt-k">B</span>Mediodía (12pm – 3pm)</button>
+          <button class="opt" onclick="pick(this,'s6')"><span class="opt-k">C</span>Tarde (3pm – 7pm)</button>
+          <button class="opt" onclick="pick(this,'s6')"><span class="opt-k">D</span>Noche (7pm – 10pm)</button>
+        </div>
         <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(6)">Siguiente →</button></div>
       </div>
 
       <!-- Step 7 -->
       <div class="form-step" data-step="7">
-        <div class="step-num">07 / 10</div>
-        <div class="step-q">¿Cuántas horas por día podés dedicarle?</div>
-        <div class="step-hint">Siendo realista con tu horario.</div>
+        <div class="step-num">07 / 08</div>
+        <div class="step-q">¿Cómo llegaste a Álvaro?</div>
+        <div class="step-hint"></div>
         <div class="opts">
-          <button class="opt" onclick="pick(this,'s7')"><span class="opt-k">A</span>Menos de 1 hora</button>
-          <button class="opt" onclick="pick(this,'s7')"><span class="opt-k">B</span>1 a 2 horas</button>
-          <button class="opt" onclick="pick(this,'s7')"><span class="opt-k">C</span>2 a 4 horas</button>
-          <button class="opt" onclick="pick(this,'s7')"><span class="opt-k">D</span>Full time (4+ horas)</button>
+          <button class="opt" onclick="pick(this,'s7')"><span class="opt-k">A</span>Instagram</button>
+          <button class="opt" onclick="pick(this,'s7')"><span class="opt-k">B</span>TikTok</button>
+          <button class="opt" onclick="pick(this,'s7')"><span class="opt-k">C</span>Twitter / X</button>
+          <button class="opt" onclick="pick(this,'s7')"><span class="opt-k">D</span>Referido por alguien</button>
+          <button class="opt" onclick="pick(this,'s7')"><span class="opt-k">E</span>Otro</button>
         </div>
         <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(7)">Siguiente →</button></div>
       </div>
 
       <!-- Step 8 -->
       <div class="form-step" data-step="8">
-        <div class="step-num">08 / 10</div>
-        <div class="step-q">¿Qué horario te viene bien para las sesiones?</div>
-        <div class="step-hint">Sesiones de 60-75 minutos, 2 veces por semana.</div>
-        <div class="opts">
-          <button class="opt" onclick="pick(this,'s8')"><span class="opt-k">A</span>Mañanas (8am – 12pm)</button>
-          <button class="opt" onclick="pick(this,'s8')"><span class="opt-k">B</span>Mediodía (12pm – 3pm)</button>
-          <button class="opt" onclick="pick(this,'s8')"><span class="opt-k">C</span>Tarde (3pm – 7pm)</button>
-          <button class="opt" onclick="pick(this,'s8')"><span class="opt-k">D</span>Noche (7pm – 10pm)</button>
-        </div>
-        <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(8)">Siguiente →</button></div>
-      </div>
-
-      <!-- Step 9 -->
-      <div class="form-step" data-step="9">
-        <div class="step-num">09 / 10</div>
-        <div class="step-q">¿Cómo llegaste a Álvaro?</div>
-        <div class="step-hint"></div>
-        <div class="opts">
-          <button class="opt" onclick="pick(this,'s9')"><span class="opt-k">A</span>Instagram</button>
-          <button class="opt" onclick="pick(this,'s9')"><span class="opt-k">B</span>TikTok</button>
-          <button class="opt" onclick="pick(this,'s9')"><span class="opt-k">C</span>Twitter / X</button>
-          <button class="opt" onclick="pick(this,'s9')"><span class="opt-k">D</span>Referido por alguien</button>
-          <button class="opt" onclick="pick(this,'s9')"><span class="opt-k">E</span>Otro</button>
-        </div>
-        <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fNext(9)">Siguiente →</button></div>
-      </div>
-
-      <!-- Step 10 -->
-      <div class="form-step" data-step="10">
-        <div class="step-num">10 / 10</div>
-        <div class="step-q">Tu nombre y email de contacto.</div>
+        <div class="step-num">08 / 08</div>
+        <div class="step-q">Tus datos de contacto.</div>
         <div class="step-hint">Álvaro te escribe en menos de 24hs.</div>
-        <input class="form-input" id="fs10name" type="text" placeholder="Tu nombre completo" style="margin-bottom:10px">
-        <input class="form-input" id="fs10email" type="email" placeholder="Tu email">
+        <input class="form-input" id="fs8name" type="text" placeholder="Tu nombre completo" style="margin-bottom:10px">
+        <input class="form-input" id="fs8email" type="email" placeholder="Tu email" style="margin-bottom:10px">
+        <input class="form-input" id="fs8tel" type="tel" placeholder="Tu número de teléfono (con código de país)" style="margin-bottom:10px">
+        <input class="form-input" id="fs8ig" type="text" placeholder="Tu usuario de Instagram (@usuario)">
         <div class="form-nav"><button class="btn-fback" onclick="fBack()">Atrás</button><button class="btn-fnext" onclick="fSubmit()">Enviar aplicación →</button></div>
       </div>
 
@@ -1393,7 +1362,7 @@ footer {
 </footer>
 
 <script>
-const TOTAL_STEPS = 10;
+const TOTAL_STEPS = 8;
 let currentStep = 1;
 const answers = {};
 
@@ -1440,31 +1409,30 @@ function fBack() {
 }
 
 async function fSubmit() {
-  const name = document.getElementById('fs10name').value.trim();
-  const email = document.getElementById('fs10email').value.trim();
-  if (!name || !email) {
-    if (!name) { document.getElementById('fs10name').style.borderColor='#ff4d4d'; setTimeout(() => document.getElementById('fs10name').style.borderColor='', 500); }
-    if (!email) { document.getElementById('fs10email').style.borderColor='#ff4d4d'; setTimeout(() => document.getElementById('fs10email').style.borderColor='', 500); }
-    return;
-  }
-  answers['s10_name'] = name;
-  answers['s10_email'] = email;
+  const name  = document.getElementById('fs8name').value.trim();
+  const email = document.getElementById('fs8email').value.trim();
+  const tel   = document.getElementById('fs8tel').value.trim();
+  const ig    = document.getElementById('fs8ig').value.trim();
+
+  let valid = true;
+  if (!name)  { document.getElementById('fs8name').style.borderColor='#ff4d4d';  setTimeout(() => document.getElementById('fs8name').style.borderColor='', 500);  valid=false; }
+  if (!email) { document.getElementById('fs8email').style.borderColor='#ff4d4d'; setTimeout(() => document.getElementById('fs8email').style.borderColor='', 500); valid=false; }
+  if (!valid) return;
 
   const payload = {
-    nombre: name,
-    email: email,
-    experiencia: answers['s1'] || '—',
-    instrumentos: answers['s2'] || '—',
-    prop_firm: answers['s3'] || '—',
-    resultado: answers['s4'] || '—',
-    problema: answers['s5'] || '—',
-    objetivo: answers['s6'] || '—',
-    disponibilidad: answers['s7'] || '—',
-    horario_llamadas: answers['s8'] || '—',
-    como_llego: answers['s9'] || '—',
+    nombre:           name,
+    email:            email,
+    telefono:         tel  || '—',
+    instagram:        ig   || '—',
+    experiencia:      answers['s1'] || '—',
+    resultado:        answers['s2'] || '—',
+    problema:         answers['s3'] || '—',
+    objetivo:         answers['s4'] || '—',
+    disponibilidad:   answers['s5'] || '—',
+    horario_llamadas: answers['s6'] || '—',
+    como_llego:       answers['s7'] || '—',
   };
 
-  // Mostrar loading
   const btn = document.querySelector('[onclick="fSubmit()"]');
   btn.textContent = 'Enviando...';
   btn.disabled = true;
@@ -1477,15 +1445,14 @@ async function fSubmit() {
     });
     if (res.ok) {
       document.querySelector('.form-progress').style.display = 'none';
-      document.querySelector(`[data-step="10"]`).style.display = 'none';
+      document.querySelector(`[data-step="8"]`).style.display = 'none';
       document.getElementById('fsuccess').classList.add('show');
     } else {
       throw new Error('Error del servidor');
     }
   } catch (e) {
-    // Fallback: mostrar éxito igual (la aplicación puede haberse guardado)
     document.querySelector('.form-progress').style.display = 'none';
-    document.querySelector(`[data-step="10"]`).style.display = 'none';
+    document.querySelector(`[data-step="8"]`).style.display = 'none';
     document.getElementById('fsuccess').classList.add('show');
   }
 }

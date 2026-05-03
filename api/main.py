@@ -13,6 +13,8 @@ import sys
 import json
 import urllib.request
 import urllib.parse
+import smtplib
+from email.mime.text import MIMEText
 from pathlib import Path
 from datetime import datetime
 from typing import Optional
@@ -97,15 +99,15 @@ app.add_middleware(
 class ApplicationForm(BaseModel):
     nombre: str
     email: str
-    experiencia: Optional[str] = ""      # s1 — tiempo operando
-    instrumentos: Optional[str] = ""     # s2 — qué instrumentos
-    prop_firm: Optional[str] = ""        # s3 — prop firm
-    resultado: Optional[str] = ""        # s4 — cómo le ha ido
-    problema: Optional[str] = ""         # s5 — mayor problema
-    objetivo: Optional[str] = ""         # s6 — qué quiere lograr (textarea)
-    disponibilidad: Optional[str] = ""   # s7 — horas por día
-    horario_llamadas: Optional[str] = "" # s8 — horario sesiones
-    como_llego: Optional[str] = ""       # s9 — cómo llegó
+    telefono: Optional[str] = ""         # teléfono con código de país
+    instagram: Optional[str] = ""        # usuario de instagram
+    experiencia: Optional[str] = ""      # s1 — experiencia libre (tiempo + instrumentos + prop firm)
+    resultado: Optional[str] = ""        # s2 — cómo le ha ido
+    problema: Optional[str] = ""         # s3 — mayor problema
+    objetivo: Optional[str] = ""         # s4 — qué quiere lograr (textarea)
+    disponibilidad: Optional[str] = ""   # s5 — horas por día
+    horario_llamadas: Optional[str] = "" # s6 — horario sesiones
+    como_llego: Optional[str] = ""       # s7 — cómo llegó
 
 class HealthResponse(BaseModel):
     status: str
@@ -147,10 +149,10 @@ def notify_telegram(form: "ApplicationForm"):
     texto = (
         f"🔔 *Nueva aplicación — Mentoría*\n\n"
         f"👤 *{form.nombre}*\n"
-        f"📧 {form.email}\n\n"
+        f"📧 {form.email}\n"
+        f"📱 {form.telefono}\n"
+        f"📸 {form.instagram}\n\n"
         f"⏱ Experiencia: {form.experiencia}\n"
-        f"📊 Instrumentos: {form.instrumentos}\n"
-        f"🏦 Prop firm: {form.prop_firm}\n"
         f"📈 Resultados: {form.resultado}\n"
         f"🔥 Problema: {form.problema}\n"
         f"🎯 Objetivo: {form.objetivo}\n"
@@ -171,6 +173,35 @@ def notify_telegram(form: "ApplicationForm"):
         log_api(f"Telegram notificado: {form.nombre}")
     except Exception as e:
         log_api(f"Telegram error (no crítico): {e}")
+
+def send_confirmation_email(form: "ApplicationForm"):
+    """Manda email de confirmación al aplicante."""
+    gmail_user = os.environ.get("GMAIL_USER", "")
+    gmail_pass = os.environ.get("GMAIL_APP_PASSWORD", "")
+    if not gmail_user or not gmail_pass:
+        return
+
+    body = f"""Hola {form.nombre} 👋
+
+Recibí tu aplicación a la mentoría. Voy a revisarla y te escribo en menos de 24 horas.
+
+Mientras tanto, si tenés alguna pregunta podés escribirme directamente por Instagram: @alvaritonq
+
+¡Hablamos pronto!
+Álvaro
+"""
+    try:
+        msg = MIMEText(body, "plain", "utf-8")
+        msg["Subject"] = "Aplicación recibida — Mentoría AlvaritoNQ"
+        msg["From"]    = f"AlvaritoNQ <{gmail_user}>"
+        msg["To"]      = form.email
+
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+            smtp.login(gmail_user, gmail_pass)
+            smtp.sendmail(gmail_user, form.email, msg.as_string())
+        log_api(f"Email confirmación enviado a {form.email}")
+    except Exception as e:
+        log_api(f"Email error (no crítico): {e}")
 
 SYSTEM_ONBOARDING = """Sos el agente de Onboarding de la mentoría de trading de Álvaro Tolentino.
 Tu trabajo es hacer el diagnóstico inicial de un nuevo alumno a partir de sus respuestas.
@@ -322,8 +353,9 @@ def apply(form: ApplicationForm):
 
     log_api(f"APPLICATION SAVED: {form.nombre} → students/{slug}/")
 
-    # Notificar por Telegram
+    # Notificar por Telegram y enviar confirmación al aplicante
     notify_telegram(form)
+    send_confirmation_email(form)
 
     return {
         "success": True,
