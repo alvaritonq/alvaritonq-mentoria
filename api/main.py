@@ -380,9 +380,11 @@ def list_students():
 # Si existe el directorio web/, lo sirve en /
 # Esto permite deployar todo desde un solo server (opcional)
 if WEB_DIR.exists():
-    # html=True → sirve index.html en "/" y los archivos estáticos en sus rutas directas
-    # Las rutas /api/* y /health definidas antes tienen prioridad sobre el mount
-    app.mount("/", StaticFiles(directory=str(WEB_DIR), html=True), name="static")
+    app.mount("/assets", StaticFiles(directory=str(WEB_DIR)), name="static")
+
+    @app.get("/")
+    def serve_index():
+        return FileResponse(str(WEB_DIR / "index.html"))
 
 # ── Entry point ───────────────────────────────────────────────────────────────
 if __name__ == "__main__":
