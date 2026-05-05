@@ -284,6 +284,26 @@ nav {
   border-color: var(--accent);
 }
 
+/* ── ABOUT PHOTOS GRID ── */
+.about-photos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.about-photo-item {
+  aspect-ratio: 4/5;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+.about-photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* ── SECTIONS COMMON ── */
 section { padding: 100px 0; }
 .section-tag { margin-bottom: 20px; }
@@ -887,20 +907,6 @@ footer {
       <div class="result-slide">
         <img src="/assets/resultado-06.jpg" alt="Resultado 6">
       </div>
-      <div class="result-slide">
-        <img src="/assets/resultado-07.jpg" alt="Resultado 7">
-      </div>
-      <div class="result-slide">
-        <img src="/assets/resultado-08.jpg" alt="Resultado 8">
-      </div>
-      <div class="result-slide" style="background:#111; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px;">
-        <div class="ph-icon">📸</div>
-        <div class="ph-text">Foto resultado</div>
-      </div>
-      <div class="result-slide" style="background:#111; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:8px;">
-        <div class="ph-icon">📸</div>
-        <div class="ph-text">Foto resultado</div>
-      </div>
     </div>
     <div class="slider-arrows">
       <button class="slider-btn" onclick="slideResults(-1)">←</button>
@@ -927,6 +933,20 @@ footer {
           <div class="about-badge-text">
             <strong>@alvaritonq</strong>
             Trader & Mentor · Lima, Perú
+          </div>
+        </div>
+        <div class="about-photos-grid">
+          <div class="about-photo-item">
+            <img src="/assets/666109926_1521195412956914_7571805280896335591_n.jpg" alt="Álvaro Tolentino">
+          </div>
+          <div class="about-photo-item">
+            <img src="/assets/678237677_1996922347871292_2385819071186287935_n.jpg" alt="Álvaro Tolentino">
+          </div>
+          <div class="about-photo-item">
+            <img src="/assets/682376822_1465043931206208_4863908318324478473_n.jpg" alt="Álvaro Tolentino">
+          </div>
+          <div class="about-photo-item">
+            <img src="/assets/679083299_889883086844684_6054525717096261763_n.png" alt="Álvaro Tolentino">
           </div>
         </div>
       </div>
@@ -1154,30 +1174,27 @@ footer {
       </div>
     </div>
 
-    <!-- Videos de entrevistas -->
-    <div class="testi-videos">
-      <div class="testi-video-box">
-        <div class="testi-video-inner">
-          <!-- Reemplazá con el embed de YouTube cuando lo tengas -->
-          <!-- <iframe src="https://www.youtube.com/embed/VIDEO_JOSE_ID" allowfullscreen></iframe> -->
-          <div class="play-icon">▶</div>
-          <div class="ph-label">Entrevista — José</div>
-        </div>
-        <div class="testi-video-name">
-          José <span class="testi-video-info">· Alumno mentoría</span>
-        </div>
-      </div>
-      <div class="testi-video-box">
-        <div class="testi-video-inner">
-          <!-- Reemplazá con el embed de YouTube cuando lo tengas -->
-          <!-- <iframe src="https://www.youtube.com/embed/VIDEO_BURGOS_ID" allowfullscreen></iframe> -->
-          <div class="play-icon">▶</div>
-          <div class="ph-label">Entrevista — Burgos</div>
-        </div>
-        <div class="testi-video-name">
-          Burgos <span class="testi-video-info">· Alumno mentoría</span>
+    <!-- Videos de entrevistas - swipe mode -->
+  </div>
+  <div class="slider-outer" style="margin-top:32px;">
+    <div class="slider-track" id="videosSlider">
+      <div class="result-slide">
+        <video controls preload="metadata" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:14px;">
+          <source src="/assets/entrevista%20burgos%20420.mp4" type="video/mp4">
+        </video>
+        <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.75));padding:12px 16px;border-radius:0 0 14px 14px;pointer-events:none;">
+          <div style="font-size:13px;font-weight:600;">Burgos420 <span style="font-size:12px;font-weight:400;color:#aaa;">· Alumno mentoría</span></div>
         </div>
       </div>
+      <div class="result-slide" style="background:#111;flex-direction:column;gap:8px;">
+        <div style="font-size:44px;opacity:0.3;">▶</div>
+        <div style="font-size:13px;color:var(--muted);">Entrevista — José</div>
+        <div style="font-size:11px;color:var(--muted);">Próximamente</div>
+      </div>
+    </div>
+    <div class="slider-arrows">
+      <button class="slider-btn" onclick="slideVideos(-1)">←</button>
+      <button class="slider-btn" onclick="slideVideos(1)">→</button>
     </div>
   </div>
 </section>
@@ -1469,6 +1486,12 @@ function slideResults(dir) {
   const track = document.getElementById('resultsSlider');
   const slideW = track.querySelector('.result-slide').offsetWidth + 12;
   track.scrollBy({ left: dir * slideW * 3, behavior: 'smooth' });
+}
+
+function slideVideos(dir) {
+  const track = document.getElementById('videosSlider');
+  const slideW = track.querySelector('.result-slide').offsetWidth + 12;
+  track.scrollBy({ left: dir * slideW, behavior: 'smooth' });
 }
 </script>
 </body>
