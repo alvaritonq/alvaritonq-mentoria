@@ -1522,23 +1522,17 @@ function updateActiveSlide(trackId) {
   }
 });
 
-function slideResults(dir) {
-  const track = document.getElementById('resultsSlider');
+function slideTrack(trackId, dir) {
+  const track = document.getElementById(trackId);
   const slideW = track.querySelector('.result-slide').offsetWidth + 12;
-  track.scrollBy({ left: dir * slideW, behavior: 'smooth' });
+  const maxScroll = track.scrollWidth - track.offsetWidth;
+  const next = Math.max(0, Math.min(track.scrollLeft + dir * slideW, maxScroll));
+  track.scrollTo({ left: next, behavior: 'smooth' });
 }
 
-function slideCerts(dir) {
-  const track = document.getElementById('certsSlider');
-  const slideW = track.querySelector('.result-slide').offsetWidth + 12;
-  track.scrollBy({ left: dir * slideW, behavior: 'smooth' });
-}
-
-function slideVideos(dir) {
-  const track = document.getElementById('videosSlider');
-  const slideW = track.querySelector('.result-slide').offsetWidth + 12;
-  track.scrollBy({ left: dir * slideW, behavior: 'smooth' });
-}
+function slideResults(dir) { slideTrack('resultsSlider', dir); }
+function slideCerts(dir)   { slideTrack('certsSlider', dir); }
+function slideVideos(dir)  { slideTrack('videosSlider', dir); }
 </script>
 </body>
 </html>
