@@ -890,22 +890,19 @@ footer {
   <div class="slider-outer">
     <div class="slider-track" id="resultsSlider">
       <div class="result-slide">
-        <img src="/assets/WhatsApp%20Image%202026-05-03%20at%2015.38.39.jpeg" alt="Certificado 1">
+        <img src="/assets/WhatsApp%20Image%202026-05-04%20at%2019.36.53.jpeg" alt="Elvis Burgos — Lifetime Payout $585">
       </div>
       <div class="result-slide">
-        <img src="/assets/WhatsApp%20Image%202026-05-03%20at%2015.38.39%20(1).jpeg" alt="Certificado 2">
+        <img src="/assets/666109926_1521195412956914_7571805280896335591_n.jpg" alt="Certificado">
       </div>
       <div class="result-slide">
-        <img src="/assets/WhatsApp%20Image%202026-05-03%20at%2015.38.39%20(2).jpeg" alt="Certificado 3">
+        <img src="/assets/678237677_1996922347871292_2385819071186287935_n.jpg" alt="Certificado">
       </div>
       <div class="result-slide">
-        <img src="/assets/WhatsApp%20Image%202026-05-03%20at%2015.38.40.jpeg" alt="Certificado 4">
+        <img src="/assets/682376822_1465043931206208_4863908318324478473_n.jpg" alt="Certificado">
       </div>
       <div class="result-slide">
-        <img src="/assets/WhatsApp%20Image%202026-05-03%20at%2015.38.40%20(1).jpeg" alt="Certificado 5">
-      </div>
-      <div class="result-slide">
-        <img src="/assets/WhatsApp%20Image%202026-05-04%20at%2019.36.53.jpeg" alt="Certificado 6">
+        <img src="/assets/679083299_889883086844684_6054525717096261763_n.png" alt="Certificado">
       </div>
     </div>
     <div class="slider-arrows">
@@ -933,20 +930,6 @@ footer {
           <div class="about-badge-text">
             <strong>@alvaritonq</strong>
             Trader & Mentor · Lima, Perú
-          </div>
-        </div>
-        <div class="about-photos-grid">
-          <div class="about-photo-item">
-            <img src="/assets/666109926_1521195412956914_7571805280896335591_n.jpg" alt="Álvaro Tolentino">
-          </div>
-          <div class="about-photo-item">
-            <img src="/assets/678237677_1996922347871292_2385819071186287935_n.jpg" alt="Álvaro Tolentino">
-          </div>
-          <div class="about-photo-item">
-            <img src="/assets/682376822_1465043931206208_4863908318324478473_n.jpg" alt="Álvaro Tolentino">
-          </div>
-          <div class="about-photo-item">
-            <img src="/assets/679083299_889883086844684_6054525717096261763_n.png" alt="Álvaro Tolentino">
           </div>
         </div>
       </div>
@@ -990,6 +973,33 @@ footer {
     </div>
   </div>
 </section>
+
+<!-- CERTIFICADOS SLIDER -->
+<div class="results-section" style="border-top: 1px solid var(--border);">
+  <div class="slider-outer">
+    <div class="slider-track" id="certsSlider">
+      <div class="result-slide">
+        <img src="/assets/WhatsApp%20Image%202026-05-03%20at%2015.38.39.jpeg" alt="Certificado">
+      </div>
+      <div class="result-slide">
+        <img src="/assets/WhatsApp%20Image%202026-05-03%20at%2015.38.39%20(1).jpeg" alt="Certificado">
+      </div>
+      <div class="result-slide">
+        <img src="/assets/WhatsApp%20Image%202026-05-03%20at%2015.38.39%20(2).jpeg" alt="Certificado">
+      </div>
+      <div class="result-slide">
+        <img src="/assets/WhatsApp%20Image%202026-05-03%20at%2015.38.40.jpeg" alt="Certificado">
+      </div>
+      <div class="result-slide">
+        <img src="/assets/WhatsApp%20Image%202026-05-03%20at%2015.38.40%20(1).jpeg" alt="Certificado">
+      </div>
+    </div>
+    <div class="slider-arrows">
+      <button class="slider-btn" onclick="slideCerts(-1)">←</button>
+      <button class="slider-btn" onclick="slideCerts(1)">→</button>
+    </div>
+  </div>
+</div>
 
 <!-- METHODOLOGY -->
 <section id="metodologia" class="method-bg">
@@ -1484,6 +1494,12 @@ function slideResults(dir) {
   const track = document.getElementById('resultsSlider');
   const slideW = track.querySelector('.result-slide').offsetWidth + 12;
   track.scrollBy({ left: dir * slideW * 3, behavior: 'smooth' });
+}
+
+function slideCerts(dir) {
+  const track = document.getElementById('certsSlider');
+  const slideW = track.querySelector('.result-slide').offsetWidth + 12;
+  track.scrollBy({ left: dir * slideW, behavior: 'smooth' });
 }
 
 function slideVideos(dir) {
