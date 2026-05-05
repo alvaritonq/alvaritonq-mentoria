@@ -72,6 +72,7 @@ nav {
   font-size: 15px;
   font-weight: 800;
   letter-spacing: -0.02em;
+  margin-left: -8px;
 }
 .nav-logo span { color: var(--accent); }
 .nav-links {
@@ -118,6 +119,11 @@ nav {
     rgba(9,9,9,0.95) 100%
   );
   pointer-events: none;
+  z-index: 0;
+}
+.hero .container {
+  position: relative;
+  z-index: 1;
 }
 .hero .tag { margin-bottom: 28px; }
 .hero h1 {
@@ -838,7 +844,7 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="container nav-inner">
-    <a href="#"><img src="/assets/logo.png" alt="AlvaritoNQ" style="height:44px;width:auto;display:block;"></a>
+    <a href="/" class="nav-logo"><img src="/assets/logo.png" alt="AlvaritoNQ" style="height:44px;width:auto;display:block;"></a>
     <ul class="nav-links">
       <li><a href="#metodologia">Metodología</a></li>
       <li><a href="#incluye">Qué incluye</a></li>
