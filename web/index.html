@@ -1525,7 +1525,7 @@ function updateActiveSlide(trackId) {
 function slideResults(dir) {
   const track = document.getElementById('resultsSlider');
   const slideW = track.querySelector('.result-slide').offsetWidth + 12;
-  track.scrollBy({ left: dir * slideW * 3, behavior: 'smooth' });
+  track.scrollBy({ left: dir * slideW, behavior: 'smooth' });
 }
 
 function slideCerts(dir) {
