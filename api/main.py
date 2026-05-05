@@ -416,7 +416,10 @@ if WEB_DIR.exists():
 
     @app.get("/")
     def serve_index():
-        return FileResponse(str(WEB_DIR / "index.html"))
+        return FileResponse(
+            str(WEB_DIR / "index.html"),
+            headers={"Cache-Control": "no-cache, no-store, must-revalidate", "Pragma": "no-cache"}
+        )
 
 # ── Entry point ───────────────────────────────────────────────────────────────
 if __name__ == "__main__":
