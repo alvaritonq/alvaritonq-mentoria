@@ -217,10 +217,11 @@ nav {
   display: flex;
   gap: 12px;
   overflow-x: auto;
+  overflow-y: visible;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  padding: 8px 40px 12px;
+  padding: 20px 40px 20px;
   scrollbar-width: none;
 }
 .slider-track::-webkit-scrollbar { display: none; }
@@ -235,15 +236,20 @@ nav {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   overflow: hidden;
   position: relative;
-  transition: transform 0.2s, border-color 0.2s;
+  transition: transform 0.35s ease, border-color 0.2s, box-shadow 0.35s ease;
   cursor: pointer;
+  transform: scale(0.9);
+  opacity: 0.7;
 }
-.result-slide:hover {
-  transform: translateY(-3px);
-  border-color: rgba(200,241,53,0.25);
+.result-slide.active-slide {
+  transform: scale(1.05);
+  opacity: 1;
+  border-color: rgba(200,241,53,0.35);
+  box-shadow: 0 8px 32px rgba(200,241,53,0.12);
+  z-index: 2;
 }
 .result-slide img {
   position: absolute;
@@ -1494,6 +1500,28 @@ function toggleFaq(btn) {
   document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
   if (!isOpen) item.classList.add('open');
 }
+
+function updateActiveSlide(trackId) {
+  const track = document.getElementById(trackId);
+  if (!track) return;
+  const slides = track.querySelectorAll('.result-slide');
+  const center = track.scrollLeft + track.offsetWidth / 2;
+  let closest = null, minDist = Infinity;
+  slides.forEach(s => {
+    const dist = Math.abs((s.offsetLeft + s.offsetWidth / 2) - center);
+    if (dist < minDist) { minDist = dist; closest = s; }
+  });
+  slides.forEach(s => s.classList.remove('active-slide'));
+  if (closest) closest.classList.add('active-slide');
+}
+
+['resultsSlider','certsSlider','videosSlider'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) {
+    el.addEventListener('scroll', () => updateActiveSlide(id));
+    updateActiveSlide(id);
+  }
+});
 
 function slideResults(dir) {
   const track = document.getElementById('resultsSlider');
