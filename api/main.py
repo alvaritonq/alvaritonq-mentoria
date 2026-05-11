@@ -454,11 +454,16 @@ def cron_daily_reels(
     x_admin_token: Optional[str] = Header(None),
     token: Optional[str] = None,
     dia: Optional[str] = None,
+    force: int = 0,
+    dry_run: int = 0,
 ):
     """
     Endpoint para que cron-job.org dispare a las 8am Lima los 3 reels del día.
     Acepta token como header `X-Admin-Token` o como query `?token=`.
     Si `dia` no se pasa, usa el día actual (Lima TZ).
+
+    Idempotencia: si ya se envió ese día, devuelve {already_sent: true}.
+    Para forzar reenvío usar ?force=1.
     """
     # Si no vino por header, aceptar por query (cron-job.org valida la URL
     # sin headers, así que necesitamos esta vía para que el preview pase).
@@ -473,6 +478,36 @@ def cron_daily_reels(
     reels_hoy = ERD.REELS.get(dia_label, [])
     if not reels_hoy:
         raise HTTPException(status_code=404, detail=f"No hay reels para {dia_label}")
+
+    # ── Idempotencia: chequear si ya se envió hoy ──────────────────────
+    state_file = DATA_DIR / "reels_sent_state.json"
+    state = {}
+    if state_file.exists():
+        try:
+            state = json.loads(state_file.read_text())
+        except Exception:
+            state = {}
+
+    if state.get(fecha_iso) and not force:
+        return {
+            "already_sent": True,
+            "dia": dia_label,
+            "fecha": fecha_iso,
+            "sent_at": state[fecha_iso].get("sent_at"),
+            "message": "Ya se enviaron los reels de este día. Usá ?force=1 para reenviar."
+        }
+
+    # dry_run=1 → marca como enviado sin enviar nada (sirve para "seedar"
+    # el estado y evitar que validadores externos disparen el flujo real).
+    if dry_run:
+        state[fecha_iso] = {
+            "sent_at": datetime.now().isoformat(),
+            "dia": dia_label,
+            "reels_ids": [r["id"] for r in reels_hoy],
+            "dry_run": True,
+        }
+        state_file.write_text(json.dumps(state, indent=2, ensure_ascii=False))
+        return {"dry_run": True, "dia": dia_label, "fecha": fecha_iso, "marked_as_sent": True}
 
     # Header
     header = (
@@ -496,6 +531,14 @@ def cron_daily_reels(
         f"Mañana 8am vuelvo con los 3 siguientes."
     )
     ERD.send_telegram(footer)
+
+    # Marcar como enviado para que llamadas futuras no dupliquen
+    state[fecha_iso] = {
+        "sent_at": datetime.now().isoformat(),
+        "dia": dia_label,
+        "reels_ids": [r["id"] for r in reels_hoy],
+    }
+    state_file.write_text(json.dumps(state, indent=2, ensure_ascii=False))
 
     return {"dia": dia_label, "fecha": fecha_iso, "reels": enviados}
 
