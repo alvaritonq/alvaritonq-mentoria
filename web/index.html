@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mentoría Trading — AlvaritoNQ</title>
-<meta name="description" content="Mentoría 1:1 de trading con AlvaritoNQ. Smart Money, Narrativa y Orderflow. Prop Firms. 4 semanas para transformar tu trading. $160/mes.">
+<title>AlvaritoNQ — Trading institucional · Ebook, Bootcamp y Mentoría</title>
+<meta name="description" content="Aprende a leer el mercado como las instituciones. Ebook 'Pensar como una institución', Bootcamp completo y Mentoría 1:1 con AlvaritoNQ. Smart Money, Narrativa y Orderflow.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -816,6 +816,272 @@ footer {
 .footer-links a:hover { color: var(--text); }
 .footer-copy { font-size: 12px; color: var(--muted); width: 100%; margin-top: 24px; }
 
+/* ── EBOOK SECTION ── */
+.ebook-section {
+  padding: 100px 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(200,241,53,0.02) 50%, transparent 100%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.ebook-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+.ebook-info .tag { margin-bottom: 24px; }
+.ebook-info h2 {
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 12px;
+}
+.ebook-sub {
+  font-size: 17px;
+  color: var(--muted2);
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+.ebook-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.ebook-bullet {
+  font-size: 14px;
+  color: var(--text);
+  padding: 10px 14px;
+  background: rgba(200,241,53,0.04);
+  border: 1px solid rgba(200,241,53,0.12);
+  border-radius: 8px;
+}
+.ebook-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.ebook-currency {
+  font-size: 24px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.ebook-amount {
+  font-size: 64px;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.ebook-format {
+  font-size: 13px;
+  color: var(--muted2);
+  margin-left: 12px;
+}
+.btn-ebook {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.ebook-note {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.ebook-mockup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ebook-cover-img {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow:
+    0 25px 70px rgba(0,0,0,0.7),
+    0 0 50px rgba(200,241,53,0.08);
+  transition: transform 0.4s ease;
+}
+.ebook-cover-img:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 35px 90px rgba(0,0,0,0.8),
+    0 0 70px rgba(200,241,53,0.15);
+}
+
+/* ── BOOTCAMP SECTION ── */
+.bootcamp-section {
+  padding: 100px 0;
+  position: relative;
+}
+.bootcamp-card {
+  background: linear-gradient(145deg, rgba(200,241,53,0.04) 0%, rgba(9,9,9,0.6) 100%);
+  border: 1px solid rgba(200,241,53,0.18);
+  border-radius: 20px;
+  padding: 0 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+.bootcamp-card::before {
+  content: '';
+  position: absolute;
+  top: 40%; right: -20%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(200,241,53,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.bootcamp-hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+  margin-bottom: 40px;
+}
+.bootcamp-hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 480px;
+  object-fit: cover;
+  object-position: center;
+}
+.bootcamp-hero-overlay {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.bootcamp-intro {
+  padding: 0 48px;
+  margin-bottom: 40px;
+}
+.bootcamp-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #090909;
+  background: var(--accent);
+  border-radius: 100px;
+  padding: 8px 18px;
+  box-shadow: 0 4px 20px rgba(200,241,53,0.4);
+}
+.bootcamp-section h2 {
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+.bootcamp-sub {
+  font-size: 17px;
+  color: var(--muted2);
+  margin-bottom: 0;
+}
+.bootcamp-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 48px;
+}
+.bootcamp-savedate {
+  margin-bottom: 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(200,241,53,0.25);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5), 0 0 30px rgba(200,241,53,0.06);
+}
+.bootcamp-savedate-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.bootcamp-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.bootcamp-feature {
+  padding: 16px 18px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.bootcamp-feature strong {
+  font-size: 15px;
+  color: var(--text);
+  font-weight: 700;
+}
+.bootcamp-feature span {
+  font-size: 13px;
+  color: var(--muted2);
+}
+.bootcamp-price-box {
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(200,241,53,0.2);
+  border-radius: 14px;
+  padding: 32px 28px;
+  text-align: center;
+}
+.bootcamp-price-old {
+  font-size: 22px;
+  color: var(--muted);
+  text-decoration: line-through;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.bootcamp-price-new {
+  font-size: 72px;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 8px;
+}
+.bootcamp-price-new span {
+  font-size: 32px;
+  vertical-align: top;
+  margin-right: 2px;
+}
+.bootcamp-discount {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.btn-bootcamp {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.bootcamp-disclaimer {
+  font-size: 12px;
+  color: var(--muted2);
+  line-height: 1.55;
+}
+.bootcamp-disclaimer strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -832,6 +1098,13 @@ footer {
   .form-wrap { padding: 28px 20px; }
   .pricing-card { padding: 32px 24px; }
   .footer-links { display: none; }
+  .ebook-grid { grid-template-columns: 1fr; gap: 40px; }
+  .ebook-mockup { order: -1; }
+  .ebook-cover-img { max-width: 260px; }
+  .bootcamp-content { grid-template-columns: 1fr; gap: 32px; padding: 0 24px; }
+  .bootcamp-card { padding: 0 0 36px; }
+  .bootcamp-intro { padding: 0 24px; }
+  .bootcamp-hero-img { max-height: 340px; }
 }
 </style>
 </head>
@@ -842,9 +1115,9 @@ footer {
   <div class="container nav-inner">
     <a href="/" class="nav-logo"><img src="/assets/logo.png" alt="AlvaritoNQ" style="height:44px;width:auto;display:block;"></a>
     <ul class="nav-links">
-      <li><a href="#metodologia">Metodología</a></li>
-      <li><a href="#incluye">Qué incluye</a></li>
-      <li><a href="#precio">Precio</a></li>
+      <li><a href="#ebook">Ebook</a></li>
+      <li><a href="#bootcamp">Bootcamp</a></li>
+      <li><a href="#metodologia">Mentoría</a></li>
       <li><a href="#testimonios">Testimonios</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
@@ -888,6 +1161,91 @@ footer {
     </div>
   </div>
 </div>
+
+<!-- EBOOK -->
+<section id="ebook" class="ebook-section">
+  <div class="container">
+    <div class="ebook-grid">
+      <div class="ebook-info">
+        <div class="tag">Ebook digital · Nuevo</div>
+        <h2>Pensar como una <span class="accent">institución</span>.</h2>
+        <p class="ebook-sub">La lógica del mercado que el 95% nunca entiende. 15 piezas de contenido organizadas en 4 partes: mi historia, el juego real, por qué pierde la mayoría, y el camino que sí funciona.</p>
+        <div class="ebook-bullets">
+          <div class="ebook-bullet">📕 Prólogo + 13 capítulos + Cierre</div>
+          <div class="ebook-bullet">🧠 Lógica institucional — no patrones ni indicadores</div>
+          <div class="ebook-bullet">📊 Datos académicos verificables del 95% que pierde</div>
+          <div class="ebook-bullet">🎯 Las 5 prop firms recomendadas con criterios</div>
+          <div class="ebook-bullet">⚡ Acceso inmediato al PDF tras la compra</div>
+        </div>
+        <div class="ebook-price">
+          <span class="ebook-currency">$</span><span class="ebook-amount">17</span>
+          <span class="ebook-format">PDF digital — descarga inmediata</span>
+        </div>
+        <a href="STRIPE_LINK_EBOOK_AQUI" class="btn-primary btn-ebook" target="_blank" rel="noopener">
+          Comprar ebook →
+        </a>
+        <p class="ebook-note">Pago seguro vía Stripe · Producto digital · Sin reembolsos</p>
+      </div>
+      <div class="ebook-mockup">
+        <img src="/assets/portada-ebook.png" alt="Pensar como una institución — Ebook de AlvaritoNQ" class="ebook-cover-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOTCAMP COMING SOON -->
+<section id="bootcamp" class="bootcamp-section">
+  <div class="container">
+    <div class="bootcamp-card">
+      <div class="bootcamp-hero">
+        <img src="/assets/portada-bootcamp.png" alt="El Bootcamp AlvaritoNQ — De cero a funded en 7 semanas" class="bootcamp-hero-img">
+        <div class="bootcamp-hero-overlay">
+          <div class="bootcamp-badge">🔥 Pre-acceso · 35% OFF · Hasta el 18 de mayo</div>
+        </div>
+      </div>
+
+      <div class="bootcamp-intro">
+        <h2>Reserva tu <span class="accent">pre-acceso</span>.</h2>
+        <p class="bootcamp-sub">El Bootcamp se lanza oficialmente el <strong style="color:var(--accent)">18 de mayo</strong>. Al comprar ahora estás reservando tu acceso anticipado con 35% de descuento — el contenido se libera el día del lanzamiento.</p>
+      </div>
+
+      <div class="bootcamp-content">
+        <div class="bootcamp-features">
+          <div class="bootcamp-feature">
+            <strong>Estás comprando pre-acceso</strong>
+            <span>El bootcamp completo —42 videos, 10 módulos, comunidad activa en Skool— se entrega el 18 de mayo de 2026. Hoy aseguras tu lugar con descuento.</span>
+          </div>
+          <div class="bootcamp-feature">
+            <strong>De cero a funded en 7 semanas</strong>
+            <span>Cuando lance, recibes el sistema completo paso a paso, con ejemplos reales en chart.</span>
+          </div>
+          <div class="bootcamp-feature">
+            <strong>Acceso permanente al curso + comunidad</strong>
+            <span>Pago único, sin mensualidades. El material se queda contigo de por vida.</span>
+          </div>
+          <div class="bootcamp-feature">
+            <strong>Después del 18 de mayo: precio sube a $87</strong>
+            <span>El descuento del 35% es exclusivo de la ventana de pre-acceso, hasta el día del lanzamiento.</span>
+          </div>
+        </div>
+        <div class="bootcamp-price-box">
+          <div class="bootcamp-savedate">
+            <img src="/assets/teaser-18-mayo.png" alt="Lanzamiento oficial 18 de mayo" class="bootcamp-savedate-img">
+          </div>
+          <div class="bootcamp-price-old">$87</div>
+          <div class="bootcamp-price-new"><span>$</span>57</div>
+          <div class="bootcamp-discount">35% OFF · Pre-acceso</div>
+          <a href="STRIPE_LINK_BOOTCAMP_AQUI" class="btn-primary btn-bootcamp" target="_blank" rel="noopener">
+            Reservar mi pre-acceso →
+          </a>
+          <p class="bootcamp-disclaimer">
+            <strong>Estás comprando pre-acceso al bootcamp</strong>, no el contenido inmediato. El curso completo —42 videos, 10 módulos, comunidad Skool— se libera oficialmente el <strong>18 de mayo de 2026</strong>. Producto digital — sin reembolsos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- RESULTS SLIDER -->
 <div class="results-section">

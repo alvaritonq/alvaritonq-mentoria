@@ -1,4 +1,13 @@
+---
+tags: [web, deploy, referencia]
+tipo: documentacion
+agente: "[[forge]]"
+moc: "[[MOC Web]]"
+---
+
 # Deploy — Sistema MENTORIA
+
+> [[INDEX|🟢 Hub]] · [[MOC Web]] · [[forge]]
 
 ## Stack
 

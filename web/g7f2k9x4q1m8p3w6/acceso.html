@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Tu ebook está listo — AlvaritoNQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg:      #090909;
+  --surface: #111111;
+  --card:    #131313;
+  --border:  #1e1e1e;
+  --accent:  #c8f135;
+  --text:    #f2f2f2;
+  --muted:   #555555;
+  --muted2:  #888888;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+.container { width: 100%; max-width: 640px; text-align: center; }
+.checkmark {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: rgba(200,241,53,0.1);
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 32px;
+  font-size: 48px;
+  color: var(--accent);
+}
+h1 {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+h1 span { color: var(--accent); }
+.subtitle {
+  font-size: 18px;
+  color: var(--muted2);
+  margin-bottom: 48px;
+  line-height: 1.5;
+}
+.download-card {
+  background: var(--card);
+  border: 1px solid rgba(200,241,53,0.2);
+  border-radius: 16px;
+  padding: 40px 32px;
+  margin-bottom: 32px;
+}
+.book-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.book-icon {
+  width: 56px;
+  height: 72px;
+  background: linear-gradient(155deg, #0a0a0a 0%, #050505 100%);
+  border: 1px solid rgba(200,241,53,0.3);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  position: relative;
+}
+.book-icon::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 4px;
+  width: 1px;
+  background: rgba(200,241,53,0.3);
+}
+.book-title-info {
+  text-align: left;
+}
+.book-title-info strong {
+  font-size: 17px;
+  display: block;
+  margin-bottom: 4px;
+}
+.book-title-info span {
+  font-size: 13px;
+  color: var(--muted2);
+}
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #090909;
+  font-size: 17px;
+  font-weight: 800;
+  border-radius: 12px;
+  padding: 18px 36px;
+  width: 100%;
+  max-width: 380px;
+  transition: opacity 0.2s, transform 0.2s;
+  text-decoration: none;
+}
+.btn-download:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-download .arrow { font-size: 20px; }
+.next-steps {
+  background: rgba(200,241,53,0.04);
+  border: 1px solid rgba(200,241,53,0.15);
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 32px;
+  text-align: left;
+}
+.next-steps h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.next-steps p {
+  font-size: 14px;
+  color: var(--muted2);
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+.next-steps a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+.next-steps a:hover { text-decoration: underline; }
+.support {
+  margin-top: 40px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.support a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+.support a:hover { text-decoration: underline; }
+.back-home {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--muted2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.back-home:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="checkmark">✓</div>
+  <h1>Tu ebook está <span>listo</span>.</h1>
+  <p class="subtitle">Gracias por tu compra. Descarga el PDF abajo y guárdalo en un lugar seguro.</p>
+
+  <div class="download-card">
+    <div class="book-info">
+      <div class="book-icon">📕</div>
+      <div class="book-title-info">
+        <strong>Pensar como una institución</strong>
+        <span>La lógica del mercado que el 95% nunca entiende</span>
+      </div>
+    </div>
+    <a href="/files/pensar-como-una-institucion-alvaritonq-v1.pdf" class="btn-download" download>
+      Descargar tu ebook <span class="arrow">↓</span>
+    </a>
+  </div>
+
+  <div class="next-steps">
+    <h3>El siguiente paso</h3>
+    <p>El ebook es el primer paso. Si quieres profundizar en el sistema operativo completo, mantente atento a mis canales — ahí publico el contenido extendido y la versión técnica detallada del método.</p>
+    <p><a href="https://instagram.com/alvaritonq" target="_blank" rel="noopener">@alvaritonq en Instagram</a> · <a href="https://alvaritonq.me" target="_blank" rel="noopener">alvaritonq.me</a></p>
+  </div>
+
+  <p class="support">¿Algún problema con la descarga? Escríbeme a <a href="https://instagram.com/alvaritonq" target="_blank" rel="noopener">@alvaritonq</a> en Instagram con tu comprobante de pago y te reenvío el archivo manualmente.</p>
+
+  <a href="/" class="back-home">← Volver al inicio</a>
+</div>
+</body>
+</html>

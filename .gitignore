@@ -1,7 +1,11 @@
-# Data local — no subir al repo
+# ──────────────────────────────────────────────────────────────────
+# DATOS LOCALES — NO SUBIR AL REPO
+# ──────────────────────────────────────────────────────────────────
 students/
 applications/
 accounting/
+contabilidad/
+alumnos/
 logs/
 __pycache__/
 *.pyc
@@ -9,11 +13,46 @@ __pycache__/
 config.txt
 *.pid
 
+# ──────────────────────────────────────────────────────────────────
+# SISTEMA INTERNO NEXUS — Multi-agente Claude (no público)
+# ──────────────────────────────────────────────────────────────────
+.claude/
+.obsidian/
+.tools/
+INDEX.md
+_guia-del-vault.md
+_mocs/
+conceptos/
+bootcamp/
+marketing/
+content/
+teleprompter/
+
+# ──────────────────────────────────────────────────────────────────
 # Python
+# ──────────────────────────────────────────────────────────────────
 .venv/
 venv/
 *.egg-info/
 
-# Mac
+# ──────────────────────────────────────────────────────────────────
+# Sistema operativo
+# ──────────────────────────────────────────────────────────────────
 .DS_Store
+*.swp
+*.swo
+
+# ──────────────────────────────────────────────────────────────────
+# Archivos grandes / temporales en web/ (no commitear)
+# ──────────────────────────────────────────────────────────────────
 web/entrevista burgos 420.mp4
+web/*.mov
+web/*.MP4
+web/ChatGPT*.png
+web/206579a7*.png
+
+# ──────────────────────────────────────────────────────────────────
+# Scripts internos generadores
+# ──────────────────────────────────────────────────────────────────
+_connect_orphans.py
+_link_modules_to_scripts.py
