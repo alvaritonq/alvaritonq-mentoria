@@ -54,7 +54,12 @@ nav {
 .nav-back:hover { color: var(--accent); }
 
 /* HERO */
-.hero { padding: 50px 0 40px; text-align: center; }
+.hero {
+  padding: 60px 0 50px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(200,241,53,0.025), transparent 60%);
+}
 .tag {
   display: inline-block;
   font-size: 11px;
@@ -180,6 +185,10 @@ nav {
 section.steps, section.includes, section.faq {
   padding: 50px 0;
   border-top: 1px solid var(--border);
+}
+section.steps-first {
+  padding-top: 60px;
+  border-top: none;
 }
 .section-heading {
   text-align: center;
@@ -325,7 +334,34 @@ footer a { color: var(--accent); text-decoration: none; }
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- 3 STEPS (ahora primero) -->
+<section class="steps steps-first">
+  <div class="container">
+    <div class="section-heading">Cómo funciona</div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-icon">💳</div>
+        <h3>Pagas con tarjeta</h3>
+        <p>Pago único de $57 vía Stripe. Quedas dentro de la primera cohorte.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-icon">📩</div>
+        <h3>Me mandas DM</h3>
+        <p>Escribime por Instagram a <strong style="color:var(--accent)">@alvaritonq</strong> con tu comprobante.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-icon">🎬</div>
+        <h3>El 18 de mayo</h3>
+        <p>Te mando link al Skool con los 42 videos y los 9 módulos desbloqueados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HERO (ahora después de los pasos) -->
 <section class="hero">
   <div class="container">
     <div class="tag">🎬 Bootcamp · Pre-acceso</div>
@@ -348,33 +384,6 @@ footer a { color: var(--accent); text-decoration: none; }
     <div class="stripe-trust">
       <span>🔒 Pago seguro vía</span>
       <span class="stripe-badge">stripe</span>
-    </div>
-  </div>
-</section>
-
-<!-- 3 STEPS -->
-<section class="steps">
-  <div class="container">
-    <div class="section-heading">Cómo funciona</div>
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-num">1</div>
-        <div class="step-icon">💳</div>
-        <h3>Pagas con tarjeta</h3>
-        <p>Pago único de $57 vía Stripe. Quedas dentro de la primera cohorte.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">2</div>
-        <div class="step-icon">📩</div>
-        <h3>Me mandas DM</h3>
-        <p>Escribime por Instagram a <strong style="color:var(--accent)">@alvaritonq</strong> con tu comprobante.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">3</div>
-        <div class="step-icon">🎬</div>
-        <h3>El 18 de mayo</h3>
-        <p>Te mando link al Skool con los 42 videos y los 9 módulos desbloqueados.</p>
-      </div>
     </div>
   </div>
 </section>

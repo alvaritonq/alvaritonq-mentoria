@@ -54,8 +54,10 @@ nav {
 
 /* HERO */
 .hero {
-  padding: 60px 0 40px;
+  padding: 60px 0 50px;
   text-align: center;
+  border-top: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(200,241,53,0.025), transparent 60%);
 }
 .tag {
   display: inline-block;
@@ -148,6 +150,10 @@ nav {
 section.steps, section.includes, section.faq {
   padding: 50px 0;
   border-top: 1px solid var(--border);
+}
+section.steps-first {
+  padding-top: 60px;
+  border-top: none;
 }
 .section-heading {
   text-align: center;
@@ -310,28 +316,8 @@ footer a {
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <div class="tag">Ebook digital · PDF</div>
-    <h1>Pensar como<br><em>una institución.</em></h1>
-    <p class="hero-sub">13 capítulos · escrito por Álvaro Tolentino</p>
-    <div class="price-row">
-      <span class="price"><span class="price-curr">$</span>17</span>
-      <span class="price-meta">USD · pago único</span>
-    </div>
-    <a href="https://buy.stripe.com/5kQ14g16Ne5c10obZq8AE09" target="_blank" rel="noopener" class="btn-pay">
-      Pagar ahora →
-    </a>
-    <div class="stripe-trust">
-      <span>🔒 Pago seguro vía</span>
-      <span class="stripe-badge">stripe</span>
-    </div>
-  </div>
-</section>
-
-<!-- 3 STEPS -->
-<section class="steps">
+<!-- 3 STEPS (ahora primero) -->
+<section class="steps steps-first">
   <div class="container">
     <div class="section-heading">Cómo funciona</div>
     <div class="steps-grid">
@@ -353,6 +339,26 @@ footer a {
         <h3>Recibís el PDF</h3>
         <p>Te lo paso en menos de 24 horas. Es tuyo para siempre.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- HERO (ahora después de los pasos) -->
+<section class="hero">
+  <div class="container">
+    <div class="tag">Ebook digital · PDF</div>
+    <h1>Pensar como<br><em>una institución.</em></h1>
+    <p class="hero-sub">13 capítulos · escrito por Álvaro Tolentino</p>
+    <div class="price-row">
+      <span class="price"><span class="price-curr">$</span>17</span>
+      <span class="price-meta">USD · pago único</span>
+    </div>
+    <a href="https://buy.stripe.com/5kQ14g16Ne5c10obZq8AE09" target="_blank" rel="noopener" class="btn-pay">
+      Pagar ahora →
+    </a>
+    <div class="stripe-trust">
+      <span>🔒 Pago seguro vía</span>
+      <span class="stripe-badge">stripe</span>
     </div>
   </div>
 </section>
