@@ -5,6 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AlvaritoNQ — Trading institucional · Ebook, Bootcamp y Mentoría</title>
 <meta name="description" content="Aprende a leer el mercado como las instituciones. Ebook 'Pensar como una institución', Bootcamp completo y Mentoría 1:1 con AlvaritoNQ. Smart Money, Narrativa y Orderflow.">
+
+<!-- ════════════════════════════════════════════════════════════════════
+     GOOGLE ANALYTICS 4
+     Para activar: reemplazá G-XXXXXXXXXX por tu Measurement ID real.
+     Conseguirlo: analytics.google.com → Admin → Data Streams → Web → tu ID
+     ════════════════════════════════════════════════════════════════════ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    'send_page_view': true,
+    'anonymize_ip': true
+  });
+
+  // Eventos custom para tracking de funnel
+  function trackCTA(label) {
+    if (typeof gtag === 'function') {
+      gtag('event', 'cta_click', { 'cta_label': label });
+    }
+  }
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -677,6 +701,109 @@ section { padding: 100px 0; }
 }
 .btn-pricing:hover { opacity: 0.85; }
 .pricing-note { font-size: 12px; color: var(--muted); margin-top: 16px; }
+
+/* ── BANNER ESCALERA — alternativas $57/$17 ── */
+.escalera-banner {
+  max-width: 900px;
+  margin: 60px auto 0;
+  padding: 36px 32px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid rgba(200,241,53,0.18);
+  border-radius: 24px;
+  text-align: center;
+}
+.escalera-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.escalera-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.escalera-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+@media (max-width: 640px) {
+  .escalera-grid { grid-template-columns: 1fr; }
+  .escalera-banner { padding: 28px 20px; margin-top: 40px; }
+}
+.escalera-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 22px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: border-color 0.2s, transform 0.15s, background 0.2s;
+}
+.escalera-card:hover {
+  border-color: rgba(200,241,53,0.45);
+  background: rgba(200,241,53,0.04);
+  transform: translateY(-2px);
+}
+.escalera-card-bootcamp {
+  border-color: rgba(200,241,53,0.35);
+}
+.escalera-card-tag {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: var(--accent, #c8f135);
+  color: #0a0a0a;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.escalera-card-price {
+  font-size: 38px;
+  font-weight: 900;
+  color: var(--accent, #c8f135);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.escalera-card-price span {
+  font-size: 22px;
+  vertical-align: super;
+  margin-right: 2px;
+}
+.escalera-card-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.escalera-card-desc {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+.escalera-card-cta {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent, #c8f135);
+  margin-top: auto;
+}
+.escalera-foot {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 14px;
+  font-style: italic;
+}
 
 /* ── CUPOS ── */
 .cupos-section {
@@ -1675,7 +1802,7 @@ footer {
       <li><a href="#testimonios">Testimonios</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a href="#aplicar" class="btn-nav">Aplicar ahora</a>
+    <a href="#aplicar" class="btn-nav" onclick="trackCTA('nav_aplicar')">Aplicar ahora</a>
   </div>
 </nav>
 
@@ -1686,7 +1813,7 @@ footer {
     <h1>Aprende a operar<br>usando <em>la lógica.</em></h1>
     <p>Sistema basado en lógica institucional, utilizando conceptos Smart Money, Narrativa y Orderflow. 4 semanas para transformar tu trading.</p>
     <div class="hero-ctas">
-      <a href="#aplicar" class="btn-primary">Quiero aplicar →</a>
+      <a href="#aplicar" class="btn-primary" onclick="trackCTA('hero_aplicar')">Quiero aplicar →</a>
       <a href="#metodologia" class="btn-secondary">Ver metodología</a>
     </div>
   </div>
@@ -1909,7 +2036,7 @@ footer {
           <span class="ebook-currency">$</span><span class="ebook-amount">17</span>
           <span class="ebook-format">PDF digital — te lo paso por DM</span>
         </div>
-        <a href="/comprar-ebook" class="btn-primary btn-ebook">
+        <a href="/comprar-ebook" class="btn-primary btn-ebook" onclick="trackCTA('seccion_ebook')">
           Comprar ebook por $17 →
         </a>
         <p class="ebook-note">Apenas pagues, escríbeme por DM <a href="https://instagram.com/alvaritonq" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:600">@alvaritonq</a> y te paso el PDF al toque · Pago seguro vía Stripe · No se aceptan reembolsos</p>
@@ -1963,7 +2090,7 @@ footer {
           <div class="bootcamp-price-old">$87</div>
           <div class="bootcamp-price-new"><span>$</span>57</div>
           <div class="bootcamp-discount">35% OFF · Pre-acceso</div>
-          <a href="/comprar-bootcamp" class="btn-primary btn-bootcamp">
+          <a href="/comprar-bootcamp" class="btn-primary btn-bootcamp" onclick="trackCTA('seccion_bootcamp')">
             Reservar pre-acceso por $57 →
           </a>
           <p class="bootcamp-disclaimer">
@@ -2217,7 +2344,7 @@ footer {
           <div class="cupos-legend-item"><span class="cupo-dot"></span> Disponibles (10)</div>
         </div>
       </div>
-      <a href="#aplicar" class="cupos-cta">Quiero uno de los 10 cupos →</a>
+      <a href="#aplicar" class="cupos-cta" onclick="trackCTA('cupos_aplicar')">Quiero uno de los 10 cupos →</a>
     </div>
   </div>
 </section>
@@ -2278,7 +2405,7 @@ footer {
         <div class="valor-final-period">por mes · todo incluido</div>
         <div class="valor-final-savings">Te ahorras $54 · Grupo de 13</div>
         <br>
-        <a href="#aplicar" class="valor-final-cta">Llévate todo por $160 →</a>
+        <a href="#aplicar" class="valor-final-cta" onclick="trackCTA('valor_final_aplicar')">Llévate todo por $160 →</a>
       </div>
     </div>
   </div>
@@ -2308,10 +2435,32 @@ footer {
         <li><span class="check">✓</span> PDFs y material descargable</li>
         <li><span class="check">✓</span> Grabaciones de sesiones</li>
       </ul>
-      <button class="btn-pricing" onclick="document.getElementById('aplicar').scrollIntoView({behavior:'smooth'})">
+      <button class="btn-pricing" onclick="trackCTA('pricing_aplicar');document.getElementById('aplicar').scrollIntoView({behavior:'smooth'})">
         Quiero aplicar →
       </button>
       <p class="pricing-note">10 cupos disponibles · Grupo de 13 alumnos máximo</p>
+    </div>
+
+    <!-- BANNER ESCALERA — alternativas si $160 es mucho -->
+    <div class="escalera-banner">
+      <div class="escalera-title">¿No puedes con $160 ahora?</div>
+      <div class="escalera-sub">Tengo 2 opciones más accesibles. Ambas funcionan por sí solas.</div>
+      <div class="escalera-grid">
+        <a href="/comprar-bootcamp" class="escalera-card escalera-card-bootcamp" onclick="if(typeof gtag==='function'){gtag('event','click_escalera_bootcamp')}">
+          <div class="escalera-card-tag">Recomendado</div>
+          <div class="escalera-card-price"><span>$</span>57</div>
+          <div class="escalera-card-name">Bootcamp completo</div>
+          <div class="escalera-card-desc">42 videos · sistema completo · arranca el 18 de mayo</div>
+          <div class="escalera-card-cta">Reservar pre-acceso →</div>
+        </a>
+        <a href="/comprar-ebook" class="escalera-card escalera-card-ebook" onclick="if(typeof gtag==='function'){gtag('event','click_escalera_ebook')}">
+          <div class="escalera-card-price"><span>$</span>17</div>
+          <div class="escalera-card-name">Ebook</div>
+          <div class="escalera-card-desc">"Pensar como una institución" · entrega inmediata</div>
+          <div class="escalera-card-cta">Comprar ahora →</div>
+        </a>
+      </div>
+      <p class="escalera-foot">Si entras al bootcamp y luego subes a la mentoría, te descuento el bootcamp del precio.</p>
     </div>
   </div>
 </section>
@@ -2586,6 +2735,14 @@ async function fSubmit() {
   document.querySelector('.form-progress').style.display = 'none';
   document.querySelector(`[data-step="8"]`).style.display = 'none';
   document.getElementById('fsuccess').classList.add('show');
+
+  // Tracking de conversión — aplicación enviada
+  if (typeof gtag === 'function') {
+    gtag('event', 'application_submitted', {
+      'event_category': 'lead',
+      'event_label': 'mentoria_application'
+    });
+  }
 
   // Fire-and-forget — no bloqueamos la UI esperando respuesta.
   fetch('/api/apply', {

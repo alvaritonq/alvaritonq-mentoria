@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reservar pre-acceso · Bootcamp AlvaritoNQ</title>
 <meta name="description" content="Pre-acceso al Bootcamp de Trading Institucional · $57 (35% OFF) · Lanzamiento 18 mayo 2026 · Pago seguro vía Stripe">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
+  gtag('event', 'view_purchase_page', { 'product': 'bootcamp_57' });
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -378,7 +389,7 @@ footer a { color: var(--accent); text-decoration: none; }
     </div>
     <div class="price-discount">35% OFF · Solo pre-acceso</div>
     <br>
-    <a href="https://buy.stripe.com/cNi5kw6r75yGcJ60gI8AE06" target="_blank" rel="noopener" class="btn-pay">
+    <a href="https://buy.stripe.com/cNi5kw6r75yGcJ60gI8AE06" target="_blank" rel="noopener" class="btn-pay" onclick="if(typeof gtag==='function'){gtag('event','click_pay_stripe',{'product':'bootcamp_57'})}">
       Reservar mi lugar →
     </a>
     <div class="stripe-trust">
@@ -406,7 +417,7 @@ footer a { color: var(--accent); text-decoration: none; }
 <!-- SECOND CTA -->
 <section class="cta-second">
   <div class="container">
-    <a href="https://buy.stripe.com/cNi5kw6r75yGcJ60gI8AE06" target="_blank" rel="noopener" class="btn-pay">
+    <a href="https://buy.stripe.com/cNi5kw6r75yGcJ60gI8AE06" target="_blank" rel="noopener" class="btn-pay" onclick="if(typeof gtag==='function'){gtag('event','click_pay_stripe',{'product':'bootcamp_57'})}">
       Reservar mi lugar →
     </a>
     <div class="stripe-trust">
