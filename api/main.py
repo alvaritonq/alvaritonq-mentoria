@@ -266,9 +266,9 @@ def analyze_applicant(form: ApplicationForm) -> str:
 
 Nombre: {form.nombre}
 Email: {form.email}
+Teléfono: {form.telefono}
+Instagram: {form.instagram}
 Experiencia en trading: {form.experiencia}
-Instrumentos que opera: {form.instrumentos}
-Prop firm: {form.prop_firm}
 Resultados hasta ahora: {form.resultado}
 Horas disponibles por día: {form.disponibilidad}
 Mayor problema actual: {form.problema}
@@ -340,9 +340,9 @@ def apply(form: ApplicationForm):
         "estado": "aplicante",   # será "activo" cuando Álvaro confirme
         "semana_actual": 1,
         "sesiones_completadas": 0,
+        "telefono": form.telefono,
+        "instagram": form.instagram,
         "experiencia": form.experiencia,
-        "instrumentos": form.instrumentos,
-        "prop_firm": form.prop_firm,
         "resultado": form.resultado,
         "disponibilidad": form.disponibilidad,
         "problema": form.problema,
