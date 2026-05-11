@@ -526,6 +526,72 @@ section { padding: 100px 0; }
 .offer-card-full h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
 .offer-card-full p { font-size: 13px; color: var(--muted2); }
 
+/* ── OFFER BONUS ── */
+.offer-bonus-wrap {
+  margin-top: 56px;
+  padding: 44px 36px;
+  background: linear-gradient(180deg, rgba(200,241,53,0.05) 0%, rgba(200,241,53,0.02) 100%);
+  border: 1px solid rgba(200,241,53,0.25);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.offer-bonus-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+.offer-bonus-header { text-align: center; margin-bottom: 36px; }
+.offer-bonus-title {
+  font-size: clamp(24px, 3.2vw, 32px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 16px 0 12px;
+  letter-spacing: -0.02em;
+}
+.offer-bonus-title em { font-style: normal; color: var(--accent); }
+.offer-bonus-sub {
+  font-size: 14px;
+  color: var(--muted2);
+  line-height: 1.6;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.offer-bonus-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.offer-bonus-card {
+  background: var(--card);
+  border: 1px solid rgba(200,241,53,0.2);
+  border-radius: 16px;
+  padding: 28px;
+  position: relative;
+}
+.offer-bonus-icon { font-size: 30px; margin-bottom: 14px; }
+.offer-bonus-tag {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(200,241,53,0.12);
+  border: 1px solid rgba(200,241,53,0.3);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.offer-bonus-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.offer-bonus-card p { font-size: 13px; color: var(--muted2); line-height: 1.6; }
+@media (max-width: 720px) {
+  .offer-bonus-wrap { padding: 32px 22px; }
+  .offer-bonus-grid { grid-template-columns: 1fr; }
+}
+
 /* ── PRICING ── */
 .pricing-bg {
   background: var(--surface);
@@ -582,6 +648,20 @@ section { padding: 100px 0; }
   margin-top: 1px;
   color: var(--accent);
 }
+.pricing-features li.feat-highlight {
+  background: rgba(200,241,53,0.06);
+  border: 1px solid rgba(200,241,53,0.22);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 0 -2px;
+}
+.pricing-features li.feat-highlight .check {
+  background: var(--accent);
+  color: #090909;
+  font-size: 12px;
+  font-weight: 900;
+}
+.pricing-features li.feat-highlight strong { color: var(--text); font-weight: 700; }
 .btn-pricing {
   width: 100%;
   background: var(--accent);
@@ -597,6 +677,119 @@ section { padding: 100px 0; }
 }
 .btn-pricing:hover { opacity: 0.85; }
 .pricing-note { font-size: 12px; color: var(--muted); margin-top: 16px; }
+
+/* ── CUPOS ── */
+.cupos-section {
+  padding: 80px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.cupos-card {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 56px 36px;
+  background: var(--card);
+  border: 1px solid rgba(200,241,53,0.25);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.cupos-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+.cupos-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 6px 14px;
+  background: rgba(200,241,53,0.08);
+  border: 1px solid rgba(200,241,53,0.3);
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+.cupos-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+.cupos-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+.cupos-sub {
+  font-size: 15px;
+  color: var(--muted2);
+  line-height: 1.65;
+  max-width: 560px;
+  margin: 0 auto 36px;
+}
+.cupos-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+.cupos-dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
+}
+.cupo-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid rgba(200,241,53,0.25);
+  background: transparent;
+  transition: transform 0.2s;
+}
+.cupo-dot.filled {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 14px rgba(200,241,53,0.45);
+}
+.cupos-legend {
+  display: flex;
+  gap: 28px;
+  font-size: 13px;
+  color: var(--muted2);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.cupos-legend-item { display: flex; align-items: center; gap: 8px; }
+.cupos-legend-item .cupo-dot { width: 14px; height: 14px; border-width: 2px; }
+.cupos-cta {
+  margin-top: 36px;
+  display: inline-block;
+  background: var(--accent);
+  color: #090909;
+  font-size: 14px;
+  font-weight: 800;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+.cupos-cta:hover { opacity: 0.85; }
+@media (max-width: 720px) {
+  .cupos-section { padding: 60px 0; }
+  .cupos-card { padding: 40px 24px; }
+  .cupos-dots { gap: 9px; }
+  .cupo-dot { width: 22px; height: 22px; }
+}
 
 /* ── TESTIMONIALS ── */
 .testi-section { padding: 100px 0; }
@@ -1118,6 +1311,7 @@ footer {
       <li><a href="#ebook">Ebook</a></li>
       <li><a href="#bootcamp">Bootcamp</a></li>
       <li><a href="#metodologia">Mentoría</a></li>
+      <li><a href="#cupos">Cupos</a></li>
       <li><a href="#testimonios">Testimonios</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
@@ -1128,7 +1322,7 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="tag">Mentoría 1:1 · Cupos limitados</div>
+    <div class="tag">Mentoría 1:1 · 10 cupos disponibles</div>
     <h1>Aprende a operar<br>usando <em>la lógica.</em></h1>
     <p>Sistema basado en lógica institucional, utilizando conceptos Smart Money, Narrativa y Orderflow. 4 semanas para transformar tu trading.</p>
     <div class="hero-ctas">
@@ -1511,8 +1705,8 @@ footer {
 <section id="incluye">
   <div class="container">
     <div class="tag section-tag">Qué incluye</div>
-    <h2 class="section-title" style="margin-bottom:16px">Todo lo que necesitás.<br>Nada de lo que no.</h2>
-    <p class="section-sub" style="margin-bottom:48px">Sin cursos grabados que nunca terminás. Sin grupos de 500 personas. Atención real, personalizada.</p>
+    <h2 class="section-title" style="margin-bottom:16px">Todo lo que necesitas.<br>Nada de lo que no.</h2>
+    <p class="section-sub" style="margin-bottom:48px">Sin cursos grabados que nunca terminas. Sin grupos de 500 personas. Atención real, personalizada — y todos los recursos del ecosistema incluidos.</p>
     <div class="offer-grid">
       <div class="offer-card">
         <div class="offer-icon">📞</div>
@@ -1522,12 +1716,12 @@ footer {
       <div class="offer-card">
         <div class="offer-icon">💬</div>
         <h3>Soporte 24/7 por chat</h3>
-        <p>Preguntás cuando necesitás. Dudas de mercado, revisión de setups, todo en tiempo real.</p>
+        <p>Preguntas cuando necesitas. Dudas de mercado, revisión de setups, todo en tiempo real.</p>
       </div>
       <div class="offer-card">
         <div class="offer-icon">🧠</div>
         <h3>Sesiones con psicólogo</h3>
-        <p>1 sesión grupal + 1 sesión personalizada de 30 minutos con psicólogo profesional especializado en trading.</p>
+        <p>Conversatorio grupal de 2 horas con psicólogo profesional especializado en trading, más una sesión individual de 30 minutos para reforzar tus puntos específicos.</p>
       </div>
       <div class="offer-card">
         <div class="offer-icon">🏦</div>
@@ -1535,12 +1729,68 @@ footer {
         <p>Qué props usar, cómo pasar la evaluación, cómo escalar y retirar sin breachear.</p>
       </div>
     </div>
-    <div class="offer-card-full" style="margin-top:16px">
+
+    <div class="offer-bonus-wrap">
+      <div class="offer-bonus-header">
+        <div class="tag section-tag" style="background:rgba(200,241,53,0.08);border:1px solid rgba(200,241,53,0.3);color:var(--accent)">Bonos incluidos</div>
+        <h3 class="offer-bonus-title">Además, ya viene <em>todo el ecosistema dentro.</em></h3>
+        <p class="offer-bonus-sub">Cualquier alumno de la mentoría 1:1 recibe automáticamente los dos productos del ecosistema. No pagas extra por ninguno.</p>
+      </div>
+      <div class="offer-bonus-grid">
+        <div class="offer-bonus-card">
+          <div class="offer-bonus-icon">📘</div>
+          <div class="offer-bonus-tag">Incluido</div>
+          <h4>Ebook "Pensar como una institución"</h4>
+          <p>El libro completo en PDF — 15 piezas, 13 capítulos sobre la lógica institucional del mercado.</p>
+        </div>
+        <div class="offer-bonus-card">
+          <div class="offer-bonus-icon">🎬</div>
+          <div class="offer-bonus-tag">Incluido</div>
+          <h4>Acceso completo al Bootcamp</h4>
+          <p>42 videos · comunidad Skool · Smart Money, narrativa, orderflow y ejecución de principio a fin.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="offer-card-full" style="margin-top:32px">
       <div class="offer-icon">🎯</div>
       <div>
         <h3>Plan personalizado desde el día 1</h3>
         <p>El programa se diseña según tu nivel, tus objetivos y tus horarios. No hay dos mentorías iguales.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUPOS -->
+<section id="cupos" class="cupos-section">
+  <div class="container">
+    <div class="cupos-card">
+      <div class="cupos-tag">Cohorte actual</div>
+      <h2 class="cupos-title">10 cupos abiertos.<br><em>13 alumnos en total.</em></h2>
+      <p class="cupos-sub">Trabajo con un máximo de 13 alumnos al mismo tiempo: 3 que ya vienen conmigo (Hilvin, Fátima y Valeria) y 10 cupos nuevos que se abren ahora. Cuando se llenen, cierro la cohorte y el siguiente abre solo si alguien se va.</p>
+      <div class="cupos-visual">
+        <div class="cupos-dots" aria-label="13 cupos totales: 3 ocupados, 10 disponibles">
+          <span class="cupo-dot filled" title="Ocupado"></span>
+          <span class="cupo-dot filled" title="Ocupado"></span>
+          <span class="cupo-dot filled" title="Ocupado"></span>
+          <span class="cupo-dot" title="Disponible"></span>
+          <span class="cupo-dot" title="Disponible"></span>
+          <span class="cupo-dot" title="Disponible"></span>
+          <span class="cupo-dot" title="Disponible"></span>
+          <span class="cupo-dot" title="Disponible"></span>
+          <span class="cupo-dot" title="Disponible"></span>
+          <span class="cupo-dot" title="Disponible"></span>
+          <span class="cupo-dot" title="Disponible"></span>
+          <span class="cupo-dot" title="Disponible"></span>
+          <span class="cupo-dot" title="Disponible"></span>
+        </div>
+        <div class="cupos-legend">
+          <div class="cupos-legend-item"><span class="cupo-dot filled"></span> Ocupados (3)</div>
+          <div class="cupos-legend-item"><span class="cupo-dot"></span> Disponibles (10)</div>
+        </div>
+      </div>
+      <a href="#aplicar" class="cupos-cta">Quiero uno de los 10 cupos →</a>
     </div>
   </div>
 </section>
@@ -1560,17 +1810,19 @@ footer {
       <ul class="pricing-features">
         <li><span class="check">✓</span> Sesiones 1:1 personalizadas (2 por semana)</li>
         <li><span class="check">✓</span> Soporte 24/7 por chat</li>
-        <li><span class="check">✓</span> Plan adaptado a tu nivel y objetivos</li>
-        <li><span class="check">✓</span> Sesión grupal de psicotrading con psicólogo</li>
-        <li><span class="check">✓</span> Sesión personalizada 30 min con psicólogo</li>
+        <li class="feat-highlight"><span class="check">★</span> <strong>Ebook "Pensar como una institución" incluido</strong></li>
+        <li class="feat-highlight"><span class="check">★</span> <strong>Acceso completo al Bootcamp incluido</strong> (42 videos + Skool)</li>
+        <li><span class="check">✓</span> Conversatorio grupal de 2 h con psicólogo</li>
+        <li><span class="check">✓</span> Sesión individual de 30 min con psicólogo</li>
         <li><span class="check">✓</span> Guía completa de Prop Firms + escalamiento</li>
+        <li><span class="check">✓</span> Plan adaptado a tu nivel y objetivos</li>
         <li><span class="check">✓</span> PDFs y material descargable</li>
         <li><span class="check">✓</span> Grabaciones de sesiones</li>
       </ul>
       <button class="btn-pricing" onclick="document.getElementById('aplicar').scrollIntoView({behavior:'smooth'})">
         Quiero aplicar →
       </button>
-      <p class="pricing-note">Cupos limitados — máximo 10 alumnos por mes</p>
+      <p class="pricing-note">10 cupos disponibles · Cohorte de 13 alumnos máximo</p>
     </div>
   </div>
 </section>
@@ -1731,8 +1983,16 @@ footer {
         <div class="faq-a"><div class="faq-a-inner">Sí, dentro de lo razonable. Respondo en horas, no días. Si tenés una duda antes de un trade o querés que revise un setup, escribime y te respondo lo antes posible.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">¿Cuántos alumnos tomás por mes? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Máximo 10 alumnos por mes. La mentoría es personalizada y quiero garantizar calidad de atención para cada uno. Por eso los cupos son limitados y hay proceso de aplicación previo.</div></div>
+        <button class="faq-q" onclick="toggleFaq(this)">¿Cuántos alumnos tomas en total? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Trabajo con un máximo de 13 alumnos al mismo tiempo. Actualmente tengo 3 activos (Hilvin, Fátima y Valeria) y abro 10 cupos nuevos para esta cohorte. Cuando se llenen, cierro inscripciones hasta que se libere un cupo. La mentoría es personalizada y necesito garantizar calidad de atención para cada uno.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿La mentoría incluye el ebook y el bootcamp? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Sí, ambos están incluidos sin costo extra. Al inscribirte recibes el ebook "Pensar como una institución" en PDF y acceso completo al Bootcamp (42 videos + comunidad en Skool). Es todo el ecosistema dentro del precio mensual.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">¿Cómo son las sesiones con el psicólogo? <span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Son dos instancias. Primero un conversatorio grupal de 2 horas con un psicólogo profesional especializado en trading, donde se trabajan los temas comunes (gestión emocional, FOMO, revenge trading, disciplina). Después una sesión individual de 30 minutos para reforzar los puntos específicos que necesites trabajar tú.</div></div>
       </div>
     </div>
   </div>
