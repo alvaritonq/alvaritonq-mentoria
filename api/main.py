@@ -19,11 +19,22 @@ from pathlib import Path
 from datetime import datetime
 from typing import Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Header, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from pydantic import BaseModel
+
+# ── Admin auth ────────────────────────────────────────────────────────────────
+ADMIN_TOKEN = os.environ.get("ADMIN_TOKEN", "").strip()
+
+def require_admin(token: Optional[str]):
+    """Levanta 403 si el token no coincide con ADMIN_TOKEN."""
+    if not ADMIN_TOKEN:
+        # Si no se configuró el token en el server, bloqueamos por defecto
+        raise HTTPException(status_code=503, detail="Admin endpoint not configured")
+    if not token or token != ADMIN_TOKEN:
+        raise HTTPException(status_code=403, detail="Forbidden")
 
 # ── Setup paths ───────────────────────────────────────────────────────────────
 API_DIR   = Path(__file__).parent
@@ -86,14 +97,41 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS — permite requests desde cualquier origen (Netlify, dominio custom, etc.)
+# CORS — restringido a dominios propios
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://alvaritonq.me",
+        "https://www.alvaritonq.me",
+    ],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST"],
     allow_headers=["*"],
 )
+
+# ── Middleware de security headers ────────────────────────────────────────────
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next):
+    response = await call_next(request)
+    # Bloquea iframe embedding (anti-clickjacking)
+    response.headers["X-Frame-Options"] = "DENY"
+    # Fuerza HTTPS por 1 año (HSTS)
+    response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
+    # Bloquea MIME-type sniffing
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    # Política de referrer
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    # CSP básico — ajustar si agregamos más recursos externos
+    response.headers["Content-Security-Policy"] = (
+        "default-src 'self'; "
+        "img-src 'self' data: https:; "
+        "script-src 'self' 'unsafe-inline'; "
+        "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+        "font-src 'self' https://fonts.gstatic.com; "
+        "frame-src https://www.youtube.com https://buy.stripe.com; "
+        "connect-src 'self';"
+    )
+    return response
 
 # ── Schemas ───────────────────────────────────────────────────────────────────
 class ApplicationForm(BaseModel):
@@ -366,8 +404,9 @@ def apply(form: ApplicationForm):
     }
 
 @app.get("/api/applications")
-def list_applications():
+def list_applications(x_admin_token: Optional[str] = Header(None)):
     """Lista todas las aplicaciones recibidas (para uso de Álvaro)."""
+    require_admin(x_admin_token)
     apps = []
     for f in sorted(APPLICATIONS.glob("*.json"), reverse=True):
         try:
@@ -385,8 +424,9 @@ def list_applications():
     return {"total": len(apps), "applications": apps}
 
 @app.get("/api/students")
-def list_students():
+def list_students(x_admin_token: Optional[str] = Header(None)):
     """Lista todos los alumnos activos."""
+    require_admin(x_admin_token)
     acc = load_accounting()
     students = []
     for name, data in acc.get("students", {}).items():

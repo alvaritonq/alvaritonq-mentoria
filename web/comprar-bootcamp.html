@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservar pre-acceso · Bootcamp AlvaritoNQ</title>
+<meta name="description" content="Pre-acceso al Bootcamp de Trading Institucional · $57 (35% OFF) · Lanzamiento 18 mayo 2026 · Pago seguro vía Stripe">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg:      #090909;
+  --surface: #111111;
+  --card:    #131313;
+  --border:  #1e1e1e;
+  --accent:  #c8f135;
+  --warn:    #ffc864;
+  --text:    #f2f2f2;
+  --muted:   #555555;
+  --muted2:  #888888;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+.container { width: 100%; max-width: 680px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+nav {
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+  background: rgba(9,9,9,0.85);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { display: inline-flex; align-items: center; }
+.nav-logo img { height: 36px; width: auto; display: block; }
+.nav-back {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--accent); }
+
+/* HERO */
+.hero { padding: 50px 0 40px; text-align: center; }
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 6px 14px;
+  background: rgba(200,241,53,0.08);
+  border: 1px solid rgba(200,241,53,0.3);
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: clamp(32px, 5vw, 46px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+}
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero-sub {
+  font-size: 15px;
+  color: var(--muted2);
+  margin-bottom: 24px;
+}
+
+/* WARNING BOX */
+.warning-box {
+  background: rgba(255,200,100,0.06);
+  border: 1px solid rgba(255,200,100,0.3);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  text-align: left;
+}
+.warning-box strong { color: var(--warn); }
+.warning-box p {
+  font-size: 13.5px;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+/* PRICE */
+.price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.price-old {
+  font-size: 22px;
+  color: var(--muted);
+  text-decoration: line-through;
+  font-weight: 600;
+}
+.price {
+  font-size: 56px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--accent);
+  line-height: 1;
+}
+.price-curr { font-size: 24px; color: var(--accent); font-weight: 700; vertical-align: super; }
+.price-discount {
+  display: inline-block;
+  background: var(--accent);
+  color: #090909;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 5px 12px;
+  margin-bottom: 24px;
+}
+
+/* BIG CTA */
+.btn-pay {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--accent);
+  color: #090909;
+  font-size: 19px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  border: none;
+  border-radius: 14px;
+  padding: 22px 48px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 10px 40px rgba(200,241,53,0.25);
+}
+.btn-pay:hover { transform: translateY(-2px); box-shadow: 0 14px 50px rgba(200,241,53,0.4); }
+.btn-pay:active { transform: translateY(0); }
+.stripe-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--muted2);
+}
+.stripe-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: #635bff;
+  color: white;
+  font-weight: 700;
+  border-radius: 4px;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+/* SECTIONS */
+section.steps, section.includes, section.faq {
+  padding: 50px 0;
+  border-top: 1px solid var(--border);
+}
+.section-heading {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+
+/* 3 STEPS */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.step-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 18px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.step-card:hover { border-color: rgba(200,241,53,0.25); }
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(200,241,53,0.12);
+  border: 1px solid rgba(200,241,53,0.3);
+  color: var(--accent);
+  border-radius: 50%;
+  font-weight: 900;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+.step-icon { font-size: 32px; margin-bottom: 10px; line-height: 1; }
+.step-card h3 {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.step-card p {
+  font-size: 12.5px;
+  color: var(--muted2);
+  line-height: 1.5;
+}
+
+/* INCLUDES */
+.includes-list { list-style: none; padding: 0; }
+.includes-list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  color: var(--text);
+}
+.includes-list li:last-child { border-bottom: none; }
+.includes-list li::before {
+  content: '✓';
+  color: var(--accent);
+  font-weight: 900;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background: rgba(200,241,53,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* SECOND CTA */
+.cta-second { text-align: center; padding: 30px 0; }
+
+/* FAQ */
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 6px 0;
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 18px 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+.faq-q:hover { color: var(--accent); }
+.faq-icon { color: var(--accent); font-weight: 800; font-size: 18px; transition: transform 0.2s; }
+.faq-q.active .faq-icon { transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s; }
+.faq-a.show { max-height: 400px; }
+.faq-a-inner {
+  padding: 0 0 18px;
+  color: var(--muted2);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  padding: 30px 0;
+  text-align: center;
+}
+footer p { font-size: 12px; color: var(--muted); margin: 0; }
+footer a { color: var(--accent); text-decoration: none; }
+
+@media (max-width: 600px) {
+  .steps-grid { grid-template-columns: 1fr; }
+  .btn-pay { font-size: 17px; padding: 20px 32px; }
+  .price { font-size: 48px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo"><img src="/assets/logo.png" alt="AlvaritoNQ"></a>
+    <a href="/" class="nav-back">← Volver al sitio</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="tag">🎬 Bootcamp · Pre-acceso</div>
+    <h1>Bootcamp<br><em>AlvaritoNQ.</em></h1>
+    <p class="hero-sub">42 videos · 9 módulos · comunidad Skool · acceso vitalicio</p>
+
+    <div class="warning-box">
+      <p><strong>⚠️ ATENCIÓN:</strong> Estás reservando <strong>pre-acceso</strong>, no acceso inmediato al contenido. El bootcamp completo se libera oficialmente el <strong>lunes 18 de mayo de 2026</strong>. Hoy aseguras tu lugar + bloqueas el precio promocional.</p>
+    </div>
+
+    <div class="price-row">
+      <span class="price-old">$87</span>
+      <span class="price"><span class="price-curr">$</span>57</span>
+    </div>
+    <div class="price-discount">35% OFF · Solo pre-acceso</div>
+    <br>
+    <a href="https://buy.stripe.com/cNi5kw6r75yGcJ60gI8AE06" target="_blank" rel="noopener" class="btn-pay">
+      Reservar mi lugar →
+    </a>
+    <div class="stripe-trust">
+      <span>🔒 Pago seguro vía</span>
+      <span class="stripe-badge">stripe</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3 STEPS -->
+<section class="steps">
+  <div class="container">
+    <div class="section-heading">Cómo funciona</div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-icon">💳</div>
+        <h3>Pagas con tarjeta</h3>
+        <p>Pago único de $57 vía Stripe. Quedas dentro de la primera cohorte.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-icon">📩</div>
+        <h3>Me mandas DM</h3>
+        <p>Escribime por Instagram a <strong style="color:var(--accent)">@alvaritonq</strong> con tu comprobante.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-icon">🎬</div>
+        <h3>El 18 de mayo</h3>
+        <p>Te mando link al Skool con los 42 videos y los 9 módulos desbloqueados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDES -->
+<section class="includes">
+  <div class="container">
+    <div class="section-heading">Qué incluye el bootcamp</div>
+    <ul class="includes-list">
+      <li>42 videos en HD organizados en 9 módulos progresivos</li>
+      <li>Acceso vitalicio a la comunidad privada en Skool</li>
+      <li>Smart Money Concepts, narrativa de precio y orderflow</li>
+      <li>Módulo de prop firms: Alpha, GFF, MFF, Tradeify, Lucid</li>
+      <li>PDFs descargables, checklists y hojas de ruta</li>
+      <li>Actualizaciones gratuitas mientras el bootcamp esté activo</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECOND CTA -->
+<section class="cta-second">
+  <div class="container">
+    <a href="https://buy.stripe.com/cNi5kw6r75yGcJ60gI8AE06" target="_blank" rel="noopener" class="btn-pay">
+      Reservar mi lugar →
+    </a>
+    <div class="stripe-trust">
+      <span>🔒 Pago seguro vía</span>
+      <span class="stripe-badge">stripe</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="section-heading">Preguntas frecuentes</div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">¿Por qué se libera el 18 de mayo y no hoy? <span class="faq-icon">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Porque sos parte de la primera cohorte. El pre-acceso te bloquea el lugar y te asegura el precio de $57. El día del lanzamiento (lunes 18 mayo) abro la comunidad Skool con todos los videos y módulos a la vez para que todos los alumnos arrancan al mismo tiempo.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">¿Stripe es seguro? <span class="faq-icon">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Sí. Stripe es la pasarela de pagos online más usada del mundo (mismo sistema que usan Shopify, Amazon, Netflix). Tu tarjeta nunca pasa por mi sitio: la procesa directamente Stripe con encriptación bancaria. Yo no veo ni guardo tus datos.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">¿Qué pasa si no recibo el link el 18 de mayo? <span class="faq-icon">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">Si me mandaste DM con el comprobante de pago, tengo tu lugar guardado. El 18 te escribo personalmente con el link al Skool. Si por algún motivo no te llega ese día, escribime y resolvemos al toque.</div></div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">¿Hay garantía o reembolso? <span class="faq-icon">+</span></button>
+      <div class="faq-a"><div class="faq-a-inner">No se aceptan reembolsos. Al confirmar el pago aceptás que estás comprando un pre-acceso, no acceso inmediato al contenido. Si tenés dudas, mejor preguntame por DM antes de pagar.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2026 AlvaritoNQ · <a href="/terminos.html#bootcamp-preacceso">Términos</a> · <a href="https://instagram.com/alvaritonq" target="_blank">@alvaritonq</a></p>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  btn.classList.toggle('active');
+  const a = btn.nextElementSibling;
+  a.classList.toggle('show');
+}
+</script>
+</body>
+</html>
