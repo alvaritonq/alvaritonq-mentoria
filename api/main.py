@@ -177,40 +177,58 @@ def log_api(msg: str):
     with open(log_file, "a") as f:
         f.write(line + "\n")
 
-def notify_telegram(form: "ApplicationForm"):
-    """Manda notificación al Telegram de Álvaro cuando llega una nueva aplicación."""
-    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
-    chat_id   = os.environ.get("TELEGRAM_CHAT_ID", "")
-    if not bot_token or not chat_id:
-        return
-
-    texto = (
-        f"🔔 *Nueva aplicación — Mentoría*\n\n"
-        f"👤 *{form.nombre}*\n"
-        f"📧 {form.email}\n"
-        f"📱 {form.telefono}\n"
-        f"📸 {form.instagram}\n\n"
-        f"⏱ Experiencia: {form.experiencia}\n"
-        f"📈 Resultados: {form.resultado}\n"
-        f"🔥 Problema: {form.problema}\n"
-        f"🎯 Objetivo: {form.objetivo}\n"
-        f"⏰ Disponibilidad: {form.disponibilidad}\n"
-        f"📅 Horario: {form.horario_llamadas}\n"
-        f"📣 Cómo llegó: {form.como_llego}"
-    )
-
+def _send_telegram_raw(bot_token: str, chat_id: str, texto: str) -> tuple[bool, str]:
+    """Envía un mensaje plano (sin Markdown) al Telegram. Devuelve (ok, detalle)."""
     try:
         url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
         data = urllib.parse.urlencode({
             "chat_id": chat_id,
             "text": texto,
-            "parse_mode": "Markdown"
+            # Sin parse_mode — mensajes plain text. Antes usábamos Markdown
+            # y cualquier asterisco/underscore en los campos del form rompía
+            # el envío (Telegram 400). Plain text es robusto.
         }).encode()
         req = urllib.request.Request(url, data=data)
-        urllib.request.urlopen(req, timeout=5)
-        log_api(f"Telegram notificado: {form.nombre}")
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return True, f"{r.status}"
+    except urllib.error.HTTPError as e:
+        return False, f"HTTP {e.code}: {e.read().decode()[:200]}"
     except Exception as e:
-        log_api(f"Telegram error (no crítico): {e}")
+        return False, f"Error: {e}"
+
+
+def _format_application_for_telegram(data: dict) -> str:
+    """Formatea los datos de una aplicación en mensaje plano para Telegram."""
+    return (
+        f"🔔 NUEVA APLICACIÓN — Mentoría\n\n"
+        f"👤 {data.get('nombre', '—')}\n"
+        f"📧 {data.get('email', '—')}\n"
+        f"📱 {data.get('telefono', '—')}\n"
+        f"📸 {data.get('instagram', '—')}\n\n"
+        f"⏱ Experiencia: {data.get('experiencia', '—')}\n"
+        f"📈 Resultados: {data.get('resultado', '—')}\n"
+        f"🔥 Problema: {data.get('problema', '—')}\n"
+        f"🎯 Objetivo: {data.get('objetivo', '—')}\n"
+        f"⏰ Disponibilidad: {data.get('disponibilidad', '—')}\n"
+        f"📅 Horario: {data.get('horario_llamadas', '—')}\n"
+        f"📣 Cómo llegó: {data.get('como_llego', '—')}"
+    )
+
+
+def notify_telegram(form: "ApplicationForm"):
+    """Manda notificación al Telegram de Álvaro cuando llega una nueva aplicación."""
+    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+    chat_id   = os.environ.get("TELEGRAM_CHAT_ID", "")
+    if not bot_token or not chat_id:
+        log_api("Telegram skipped: bot_token o chat_id faltan en env")
+        return
+
+    texto = _format_application_for_telegram(form.model_dump() if hasattr(form, "model_dump") else form.dict())
+    ok, detalle = _send_telegram_raw(bot_token, chat_id, texto)
+    if ok:
+        log_api(f"Telegram notificado: {form.nombre}")
+    else:
+        log_api(f"Telegram FALLÓ para {form.nombre}: {detalle}")
 
 def send_confirmation_email(form: "ApplicationForm"):
     """Manda email de confirmación al aplicante."""
@@ -447,6 +465,49 @@ def list_students(x_admin_token: Optional[str] = Header(None)):
             "sesiones": sessions_count,
         })
     return {"total": len(students), "students": students}
+
+
+@app.post("/api/applications/resend-telegram")
+def resend_telegram_for_application(
+    archivo: str,
+    x_admin_token: Optional[str] = Header(None),
+    token: Optional[str] = None,
+):
+    """Reenvía la notificación de una aplicación específica al Telegram."""
+    require_admin(x_admin_token or token)
+    # Sanitizar el path (solo archivos directos en APPLICATIONS/)
+    safe = Path(archivo).name  # quita cualquier ../
+    target = APPLICATIONS / safe
+    if not target.exists() or not target.is_file():
+        raise HTTPException(status_code=404, detail=f"Aplicación no encontrada: {safe}")
+
+    try:
+        data = json.loads(target.read_text())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"No se pudo leer la aplicación: {e}")
+
+    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+    chat_id   = os.environ.get("TELEGRAM_CHAT_ID", "")
+    if not bot_token or not chat_id:
+        raise HTTPException(status_code=503, detail="Telegram no configurado")
+
+    texto = _format_application_for_telegram(data)
+    ok, detalle = _send_telegram_raw(bot_token, chat_id, texto)
+    return {"ok": ok, "archivo": safe, "nombre": data.get("nombre"), "detalle": detalle}
+
+
+@app.get("/api/applications/{archivo}")
+def get_application(archivo: str, x_admin_token: Optional[str] = Header(None)):
+    """Devuelve el JSON completo de una aplicación específica."""
+    require_admin(x_admin_token)
+    safe = Path(archivo).name
+    target = APPLICATIONS / safe
+    if not target.exists() or not target.is_file():
+        raise HTTPException(status_code=404, detail=f"Aplicación no encontrada: {safe}")
+    try:
+        return json.loads(target.read_text())
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"No se pudo leer: {e}")
 
 
 @app.get("/api/cron/daily-reels")
