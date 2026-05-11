@@ -944,6 +944,212 @@ section { padding: 100px 0; }
   .valor-final-price sup { font-size: 28px; }
 }
 
+/* ── PSICÓLOGO ── */
+.psico-section {
+  padding: 100px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.psico-header { text-align: center; margin-bottom: 48px; }
+.psico-video-wrap {
+  max-width: 880px;
+  margin: 0 auto 40px;
+  position: relative;
+}
+.psico-video-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #0a0a0a 0%, #161616 100%);
+  border: 1px solid rgba(200,241,53,0.2);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.psico-video-box iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: none;
+}
+.psico-video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  padding: 24px;
+  background-image:
+    radial-gradient(circle at 30% 20%, rgba(200,241,53,0.06), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(200,241,53,0.04), transparent 45%);
+}
+.psico-video-placeholder .play-icon {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  background: rgba(200,241,53,0.1);
+  border: 2px solid rgba(200,241,53,0.4);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  padding-left: 6px;
+}
+.psico-video-placeholder p {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.5;
+}
+.psico-video-placeholder p span {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.psico-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 24px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.psico-profile {
+  background: var(--card);
+  border: 1px solid rgba(200,241,53,0.2);
+  border-radius: 20px;
+  padding: 32px 28px;
+  text-align: center;
+}
+.psico-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(200,241,53,0.18), rgba(200,241,53,0.05));
+  border: 2px solid rgba(200,241,53,0.35);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  margin: 0 auto 18px;
+}
+.psico-name {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.psico-cred {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.psico-loc {
+  font-size: 13px;
+  color: var(--muted2);
+  margin-bottom: 22px;
+}
+.psico-bio {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted2);
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  text-align: left;
+}
+.psico-topics {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px 30px;
+}
+.psico-topics-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 6px 12px;
+  background: rgba(200,241,53,0.08);
+  border: 1px solid rgba(200,241,53,0.25);
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+.psico-topics h3 {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+}
+.psico-topics h3 em { font-style: normal; color: var(--accent); }
+.psico-topic-list { list-style: none; padding: 0; margin: 0 0 24px; }
+.psico-topic-list li {
+  display: flex;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+.psico-topic-list li:last-child { border-bottom: none; }
+.psico-topic-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(200,241,53,0.08);
+  border: 1px solid rgba(200,241,53,0.2);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.psico-topic-text { flex: 1; }
+.psico-topic-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.psico-topic-sub {
+  font-size: 12px;
+  color: var(--muted2);
+  line-height: 1.5;
+}
+.psico-formato {
+  background: rgba(200,241,53,0.04);
+  border: 1px solid rgba(200,241,53,0.18);
+  border-radius: 12px;
+  padding: 16px 18px;
+  font-size: 13px;
+  color: var(--muted2);
+  line-height: 1.55;
+}
+.psico-formato strong { color: var(--accent); display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+@media (max-width: 780px) {
+  .psico-grid { grid-template-columns: 1fr; }
+  .psico-section { padding: 70px 0; }
+  .psico-profile, .psico-topics { padding: 26px 22px; }
+  .psico-video-placeholder .play-icon { width: 64px; height: 64px; font-size: 24px; }
+}
+
 /* ── TESTIMONIALS ── */
 .testi-section { padding: 100px 0; }
 .testi-header { margin-bottom: 52px; }
@@ -1463,9 +1669,9 @@ footer {
     <ul class="nav-links">
       <li><a href="#ebook">Ebook</a></li>
       <li><a href="#bootcamp">Bootcamp</a></li>
+      <li><a href="#psicologo">Psicólogo</a></li>
       <li><a href="#metodologia">Mentoría</a></li>
       <li><a href="#cupos">Cupos</a></li>
-      <li><a href="#valor">Valor</a></li>
       <li><a href="#testimonios">Testimonios</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
@@ -1762,6 +1968,72 @@ footer {
           <p class="bootcamp-disclaimer">
             <strong>Estás comprando pre-acceso al bootcamp</strong>, no el contenido inmediato. El curso completo —42 videos, 10 módulos, comunidad Skool— se libera oficialmente el <strong>18 de mayo de 2026</strong>. Producto digital — sin reembolsos.
           </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PSICÓLOGO -->
+<section id="psicologo" class="psico-section">
+  <div class="container">
+    <div class="psico-header">
+      <div class="tag section-tag">Acompañamiento profesional</div>
+      <h2 class="section-title" style="margin-bottom:14px">Conoce a <em>tu psicólogo.</em></h2>
+      <p class="section-sub">Porque la mentoría no es solo gráficos. El acompañamiento emocional viene de un psicólogo psicoterapeuta de verdad — no de "tips de mindset".</p>
+    </div>
+
+    <div class="psico-video-wrap">
+      <div class="psico-video-box">
+        <!-- Cuando Ángel grabe su video, reemplaza el bloque .psico-video-placeholder por:
+        <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID" title="Conoce a Ángel Romero Lévano" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        -->
+        <div class="psico-video-placeholder">
+          <div class="play-icon">▶</div>
+          <p>Video de presentación<br><span>Ángel Romero Lévano · próximamente</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="psico-grid">
+      <div class="psico-profile">
+        <div class="psico-avatar">AR</div>
+        <div class="psico-name">Ángel Romero Lévano</div>
+        <div class="psico-cred">Psicólogo · Psicoterapeuta</div>
+        <div class="psico-loc">Lima, Perú</div>
+        <p class="psico-bio">Amigo mío de hace años. Lo vi haciendo su trabajo de psicólogo con gente — moviendo grupos, liderando procesos — y me dije que esa era la persona correcta para acompañar emocionalmente a los alumnos de la mentoría. No es un psicólogo random contratado por una hora: es alguien que conozco y en quien confío.</p>
+      </div>
+
+      <div class="psico-topics">
+        <div class="psico-topics-tag">Qué vas a trabajar</div>
+        <h3>Tres frentes que <em>todo trader</em> necesita reforzar.</h3>
+        <ul class="psico-topic-list">
+          <li>
+            <div class="psico-topic-icon">🧘</div>
+            <div class="psico-topic-text">
+              <div class="psico-topic-name">Control emocional</div>
+              <div class="psico-topic-sub">Cómo manejar la respuesta interna ante pérdidas, rachas frías, presión de cuenta y momentos de euforia. La regulación que separa al trader profesional del aficionado.</div>
+            </div>
+          </li>
+          <li>
+            <div class="psico-topic-icon">🔄</div>
+            <div class="psico-topic-text">
+              <div class="psico-topic-name">Terapia dialéctica conductual (DBT)</div>
+              <div class="psico-topic-sub">Herramientas prácticas para tolerar el malestar sin reaccionar, regular emociones intensas y construir una mente más estable en condiciones extremas — exactamente lo que el trading exige.</div>
+            </div>
+          </li>
+          <li>
+            <div class="psico-topic-icon">⚖️</div>
+            <div class="psico-topic-text">
+              <div class="psico-topic-name">Unir lo racional con lo emocional</div>
+              <div class="psico-topic-sub">El sistema es lógico pero quien lo ejecuta es humano. Cómo integrar lo que sabes en la cabeza con lo que sientes en el cuerpo, para que el plan se cumpla incluso cuando hay miedo o avaricia.</div>
+            </div>
+          </li>
+        </ul>
+
+        <div class="psico-formato">
+          <strong>Formato del acompañamiento</strong>
+          Conversatorio grupal de 2 horas con Ángel para todos los alumnos de la cohorte + una sesión individual de 30 minutos para reforzar tus puntos específicos.
         </div>
       </div>
     </div>
