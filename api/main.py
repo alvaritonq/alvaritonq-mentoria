@@ -121,15 +121,27 @@ async def add_security_headers(request: Request, call_next):
     response.headers["X-Content-Type-Options"] = "nosniff"
     # Política de referrer
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
-    # CSP básico — ajustar si agregamos más recursos externos
+    # CSP — ajustado para permitir GA4 + Microsoft Clarity + GTM
     response.headers["Content-Security-Policy"] = (
         "default-src 'self'; "
         "img-src 'self' data: https:; "
-        "script-src 'self' 'unsafe-inline'; "
+        "script-src 'self' 'unsafe-inline' "
+            "https://www.googletagmanager.com "
+            "https://www.google-analytics.com "
+            "https://ssl.google-analytics.com "
+            "https://www.clarity.ms "
+            "https://*.clarity.ms; "
         "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
         "font-src 'self' https://fonts.gstatic.com; "
         "frame-src https://www.youtube.com https://buy.stripe.com; "
-        "connect-src 'self';"
+        "connect-src 'self' "
+            "https://www.google-analytics.com "
+            "https://*.google-analytics.com "
+            "https://analytics.google.com "
+            "https://*.analytics.google.com "
+            "https://stats.g.doubleclick.net "
+            "https://www.clarity.ms "
+            "https://*.clarity.ms;"
     )
     return response
 
