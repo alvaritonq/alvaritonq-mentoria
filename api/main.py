@@ -448,6 +448,53 @@ def list_students(x_admin_token: Optional[str] = Header(None)):
         })
     return {"total": len(students), "students": students}
 
+
+@app.get("/api/cron/daily-reels")
+def cron_daily_reels(
+    x_admin_token: Optional[str] = Header(None),
+    dia: Optional[str] = None,
+):
+    """
+    Endpoint para que cron-job.org dispare a las 8am Lima los 3 reels del día.
+    Si `dia` no se pasa, usa el día actual (Lima TZ).
+    """
+    require_admin(x_admin_token)
+    try:
+        from api import reels_daily as ERD  # type: ignore
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"No se pudo importar el módulo: {e}")
+
+    dia_label, fecha_iso = ERD.resolver_dia(dia)
+    reels_hoy = ERD.REELS.get(dia_label, [])
+    if not reels_hoy:
+        raise HTTPException(status_code=404, detail=f"No hay reels para {dia_label}")
+
+    # Header
+    header = (
+        f"☀️ *BUEN DÍA BRO — {dia_label.upper()} {fecha_iso}*\n\n"
+        f"Tus 3 reels del día con scoring + Notion sync.\n\n"
+        f"Total predicción combinada: *{sum(r['score'] for r in reels_hoy)}/300*"
+    )
+    ERD.send_telegram(header)
+
+    enviados = []
+    for i, reel in enumerate(reels_hoy, 1):
+        notion_url = ERD.create_notion_idea(reel, fecha_iso)
+        msg = ERD.format_reel_message(reel, dia_label, i, notion_url)
+        ok = ERD.send_telegram(msg)
+        enviados.append({"id": reel["id"], "ok": ok, "notion_url": notion_url})
+
+    footer = (
+        f"✅ *{len(reels_hoy)} reels listos en Notion*\n\n"
+        f"Cuando grabes alguno, cambialo a 'Grabado' en la database 'Ideas de Reels'.\n"
+        f"Cuando lo publiques → 'Publicado' + pegá las views.\n\n"
+        f"Mañana 8am vuelvo con los 3 siguientes."
+    )
+    ERD.send_telegram(footer)
+
+    return {"dia": dia_label, "fecha": fecha_iso, "reels": enviados}
+
+
 # ── Serve frontend estático ───────────────────────────────────────────────────
 # Si existe el directorio web/, lo sirve en /
 # Esto permite deployar todo desde un solo server (opcional)
