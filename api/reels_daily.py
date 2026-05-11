@@ -16,10 +16,12 @@ Uso:
     python3 envio_reels_diarios.py --dia 2026-05-12
 
 Requisitos:
-    Variables de entorno:
+    Variables de entorno (configurar en Render env vars):
+      NOTION_TOKEN
+      NOTION_DB_IDEAS         (opcional, default ya seteado)
       TELEGRAM_BOT_TOKEN
       TELEGRAM_CHAT_ID
-    El token de Notion va hardcoded (mismo que notion_create_dbs.py).
+    NUNCA hardcodear tokens en el código — siempre vía env var.
 """
 
 import os
@@ -31,8 +33,9 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 # ─── CONFIG ───────────────────────────────────────────────────────────────
-NOTION_TOKEN = "ntn_f88085180891O92KQulR67vziQf98V6KeNKWpYuqKb6cCh"
-NOTION_DB_IDEAS = "35d20d07-51c9-819f-9f9d-d202c575611d"  # Ideas de Reels
+# El token de Notion se lee de env var. NUNCA hardcodear.
+NOTION_TOKEN = os.environ.get("NOTION_TOKEN", "")
+NOTION_DB_IDEAS = os.environ.get("NOTION_DB_IDEAS", "35d20d07-51c9-819f-9f9d-d202c575611d")
 NOTION_API = "https://api.notion.com/v1"
 NOTION_HEADERS = {
     "Authorization": f"Bearer {NOTION_TOKEN}",
