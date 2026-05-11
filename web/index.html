@@ -29,6 +29,19 @@
   }
 </script>
 
+<!-- ════════════════════════════════════════════════════════════════════
+     MICROSOFT CLARITY — heatmaps + session recordings (gratis, sin límites)
+     Para activar: reemplazá CLARITY_PROJECT_ID por tu Project ID real.
+     Conseguirlo: clarity.microsoft.com → New project → Copy tracking code
+     ════════════════════════════════════════════════════════════════════ -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "CLARITY_PROJECT_ID");
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -2691,6 +2704,11 @@ function fNext(step) {
   updateProgress();
   const next = document.querySelector(`[data-step="${currentStep}"]`);
   if (next) next.classList.add('active');
+
+  // Tracking: avance en form (para ver dónde abandonan)
+  if (typeof gtag === 'function') {
+    gtag('event', 'form_step_completed', { 'step': step, 'next_step': currentStep });
+  }
 }
 
 function fBack() {
@@ -2757,7 +2775,14 @@ function toggleFaq(btn) {
   const item = btn.parentElement;
   const isOpen = item.classList.contains('open');
   document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
+  if (!isOpen) {
+    item.classList.add('open');
+    // Tracking: qué objeciones consulta el visitante
+    if (typeof gtag === 'function') {
+      const q = btn.textContent.replace('+', '').trim().substring(0, 80);
+      gtag('event', 'faq_opened', { 'question': q });
+    }
+  }
 }
 
 function updateActiveSlide(trackId) {
@@ -2793,6 +2818,72 @@ function slideTrack(trackId, dir) {
 function slideResults(dir) { slideTrack('resultsSlider', dir); }
 function slideCerts(dir)   { slideTrack('certsSlider', dir); }
 function slideVideos(dir)  { slideTrack('videosSlider', dir); }
+
+// ════════════════════════════════════════════════════════════════
+// SCROLL DEPTH + TIEMPO EN PÁGINA — analytics adicional
+// ════════════════════════════════════════════════════════════════
+(function() {
+  const sentDepths = new Set();
+  const depthMilestones = [25, 50, 75, 90, 100];
+
+  function getScrollPct() {
+    const h = document.documentElement;
+    const total = h.scrollHeight - h.clientHeight;
+    if (total <= 0) return 100;
+    return Math.round((h.scrollTop / total) * 100);
+  }
+
+  let scrollTicker = null;
+  window.addEventListener('scroll', () => {
+    if (scrollTicker) return;
+    scrollTicker = setTimeout(() => {
+      const pct = getScrollPct();
+      depthMilestones.forEach(m => {
+        if (pct >= m && !sentDepths.has(m)) {
+          sentDepths.add(m);
+          if (typeof gtag === 'function') {
+            gtag('event', 'scroll_depth', { 'depth_pct': m });
+          }
+        }
+      });
+      scrollTicker = null;
+    }, 200);
+  }, { passive: true });
+
+  // Tiempo en página (medible al irse o cada 30s)
+  const startedAt = Date.now();
+  const reportTime = () => {
+    const seconds = Math.round((Date.now() - startedAt) / 1000);
+    if (typeof gtag === 'function' && seconds >= 10) {
+      gtag('event', 'time_on_page', { 'seconds': seconds });
+    }
+  };
+  // Reportar al salir
+  window.addEventListener('beforeunload', reportTime);
+  window.addEventListener('pagehide', reportTime);
+  // Reportar engagement a los 30s, 60s, 120s
+  [30, 60, 120].forEach(s => {
+    setTimeout(() => {
+      if (typeof gtag === 'function') gtag('event', 'engaged_user', { 'seconds': s });
+    }, s * 1000);
+  });
+
+  // Click en links externos
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a');
+    if (!a || !a.href) return;
+    if (a.href.includes('buy.stripe.com')) {
+      if (typeof gtag === 'function') {
+        gtag('event', 'click_stripe_link', { 'href': a.href });
+      }
+    }
+    if (a.href.includes('instagram.com')) {
+      if (typeof gtag === 'function') {
+        gtag('event', 'click_instagram_link', { 'href': a.href });
+      }
+    }
+  });
+})();
 </script>
 </body>
 </html>
