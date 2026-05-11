@@ -456,6 +456,7 @@ def cron_daily_reels(
     dia: Optional[str] = None,
     force: int = 0,
     dry_run: int = 0,
+    clear: int = 0,
 ):
     """
     Endpoint para que cron-job.org dispare a las 8am Lima los 3 reels del día.
@@ -487,6 +488,13 @@ def cron_daily_reels(
             state = json.loads(state_file.read_text())
         except Exception:
             state = {}
+
+    # clear=1 → borra el estado de ese día y devuelve. Útil para "des-seedar"
+    # un día que fue marcado por error con dry_run.
+    if clear:
+        removed = state.pop(fecha_iso, None)
+        state_file.write_text(json.dumps(state, indent=2, ensure_ascii=False))
+        return {"cleared": True, "dia": dia_label, "fecha": fecha_iso, "previous_state": removed}
 
     if state.get(fecha_iso) and not force:
         return {
