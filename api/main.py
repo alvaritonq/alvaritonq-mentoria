@@ -452,13 +452,18 @@ def list_students(x_admin_token: Optional[str] = Header(None)):
 @app.get("/api/cron/daily-reels")
 def cron_daily_reels(
     x_admin_token: Optional[str] = Header(None),
+    token: Optional[str] = None,
     dia: Optional[str] = None,
 ):
     """
     Endpoint para que cron-job.org dispare a las 8am Lima los 3 reels del día.
+    Acepta token como header `X-Admin-Token` o como query `?token=`.
     Si `dia` no se pasa, usa el día actual (Lima TZ).
     """
-    require_admin(x_admin_token)
+    # Si no vino por header, aceptar por query (cron-job.org valida la URL
+    # sin headers, así que necesitamos esta vía para que el preview pase).
+    effective_token = x_admin_token or token
+    require_admin(effective_token)
     try:
         from api import reels_daily as ERD  # type: ignore
     except Exception as e:
