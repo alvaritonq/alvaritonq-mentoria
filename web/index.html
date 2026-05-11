@@ -2434,7 +2434,7 @@ footer {
       <div class="form-success" id="fsuccess">
         <div class="success-icon">✅</div>
         <h3>Aplicación recibida.</h3>
-        <p>Álvaro va a revisar tu perfil y te escribe en menos de 24 horas.<br>Revisá tu email y también el spam.</p>
+        <p>Álvaro va a revisar tu perfil y te escribe en menos de 24 horas.<br>Revisá tus DMs de Instagram — pronto te voy a contactar.</p>
       </div>
 
     </div>
@@ -2578,27 +2578,22 @@ async function fSubmit() {
   };
 
   const btn = document.querySelector('[onclick="fSubmit()"]');
-  btn.textContent = 'Enviando...';
   btn.disabled = true;
 
-  try {
-    const res = await fetch('/api/apply', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    if (res.ok) {
-      document.querySelector('.form-progress').style.display = 'none';
-      document.querySelector(`[data-step="8"]`).style.display = 'none';
-      document.getElementById('fsuccess').classList.add('show');
-    } else {
-      throw new Error('Error del servidor');
-    }
-  } catch (e) {
-    document.querySelector('.form-progress').style.display = 'none';
-    document.querySelector(`[data-step="8"]`).style.display = 'none';
-    document.getElementById('fsuccess').classList.add('show');
-  }
+  // Cambio instantáneo a pantalla de éxito (sin esperar al server).
+  // El POST se dispara en background; aunque falle el server, ya tenemos
+  // el DM como canal principal y los logs en Render como respaldo.
+  document.querySelector('.form-progress').style.display = 'none';
+  document.querySelector(`[data-step="8"]`).style.display = 'none';
+  document.getElementById('fsuccess').classList.add('show');
+
+  // Fire-and-forget — no bloqueamos la UI esperando respuesta.
+  fetch('/api/apply', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+    keepalive: true
+  }).catch(() => { /* el cliente ya vio éxito; nos interesa el server log */ });
 }
 
 function toggleFaq(btn) {
