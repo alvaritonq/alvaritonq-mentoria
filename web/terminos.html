@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos y condiciones — AlvaritoNQ</title>
+<meta name="description" content="Términos y condiciones, descripción detallada de productos y política de reembolsos del ecosistema AlvaritoNQ: Ebook, Bootcamp y Mentoría 1:1.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg:      #090909;
+  --surface: #111111;
+  --card:    #131313;
+  --border:  #1e1e1e;
+  --accent:  #c8f135;
+  --text:    #f2f2f2;
+  --muted:   #555555;
+  --muted2:  #888888;
+  --danger:  #ff5555;
+}
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+.container { width: 100%; max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+/* NAV */
+nav {
+  border-bottom: 1px solid var(--border);
+  background: rgba(9,9,9,0.85);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+.nav-logo { display: inline-flex; align-items: center; }
+.nav-logo img { height: 36px; width: auto; display: block; }
+.nav-back {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--accent); }
+
+/* HEADER */
+.t-header {
+  padding: 70px 0 50px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+.t-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 6px 14px;
+  background: rgba(200,241,53,0.08);
+  border: 1px solid rgba(200,241,53,0.3);
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+.t-header h1 {
+  font-size: clamp(34px, 5vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+.t-header h1 em { font-style: normal; color: var(--accent); }
+.t-header p {
+  font-size: 16px;
+  color: var(--muted2);
+  max-width: 580px;
+  margin: 0 auto;
+}
+.t-updated {
+  display: inline-block;
+  margin-top: 24px;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* CONTENT */
+.t-content { padding: 70px 0 100px; }
+.t-section { margin-bottom: 64px; scroll-margin-top: 100px; }
+.t-section:last-child { margin-bottom: 0; }
+.t-section h2 {
+  font-size: clamp(24px, 3.2vw, 32px);
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.t-section h2 em { font-style: normal; color: var(--accent); }
+.t-section h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 28px 0 12px;
+  color: var(--text);
+}
+.t-section .t-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.t-section p { color: var(--muted2); margin-bottom: 14px; }
+.t-section p.t-lead { font-size: 16px; color: var(--text); margin-bottom: 22px; }
+.t-section ul {
+  list-style: none;
+  margin: 14px 0 22px;
+  padding: 0;
+}
+.t-section ul li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 10px;
+  color: var(--muted2);
+}
+.t-section ul li::before {
+  content: '■';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 10px;
+}
+.t-section strong { color: var(--text); font-weight: 700; }
+
+/* PRODUCT CARDS */
+.product-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 36px;
+  margin-top: 24px;
+}
+.product-card.highlight {
+  border-color: rgba(200,241,53,0.3);
+  background: linear-gradient(180deg, rgba(200,241,53,0.04) 0%, rgba(200,241,53,0.01) 100%);
+}
+.product-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 22px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--border);
+}
+.product-meta-item {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  padding: 6px 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.product-meta-item.accent {
+  color: var(--accent);
+  background: rgba(200,241,53,0.08);
+  border-color: rgba(200,241,53,0.25);
+}
+
+/* WARNING BOX */
+.warning-box {
+  background: rgba(255,85,85,0.06);
+  border: 1px solid rgba(255,85,85,0.3);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin: 22px 0;
+}
+.warning-box strong { color: var(--danger); }
+
+/* REFUND BOX */
+.refund-box {
+  background: rgba(200,241,53,0.05);
+  border: 1px solid rgba(200,241,53,0.3);
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 22px 0;
+}
+.refund-box h3 {
+  margin-top: 0;
+  color: var(--accent);
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* TOC */
+.toc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin: 40px 0;
+}
+.toc-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.toc ul { list-style: none; padding: 0; margin: 0; }
+.toc ul li { padding-left: 0; margin-bottom: 8px; }
+.toc ul li::before { display: none; }
+.toc ul li a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.toc ul li a:hover { color: var(--accent); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  padding: 40px 0;
+  text-align: center;
+}
+footer p {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+footer a:hover { text-decoration: underline; }
+
+@media (max-width: 720px) {
+  .product-card { padding: 26px 22px; }
+  .t-section h2 { font-size: 24px; }
+  .refund-box, .warning-box { padding: 18px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <a href="/" class="nav-logo"><img src="/assets/logo.png" alt="AlvaritoNQ"></a>
+    <a href="/" class="nav-back">← Volver al inicio</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="t-header">
+  <div class="container">
+    <div class="t-tag">Documento oficial</div>
+    <h1>Términos <em>y condiciones.</em></h1>
+    <p>Descripción detallada de cada producto del ecosistema AlvaritoNQ y la política de no reembolsos. Léelos completos antes de comprar.</p>
+    <div class="t-updated">Última actualización: 11 de mayo de 2026</div>
+  </div>
+</header>
+
+<!-- CONTENT -->
+<main class="t-content">
+  <div class="container">
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">Índice</div>
+      <ul>
+        <li><a href="#reembolsos">1. Política de reembolsos</a></li>
+        <li><a href="#ebook">2. Ebook "Pensar como una institución" — $17</a></li>
+        <li><a href="#bootcamp-preacceso">3. Bootcamp AlvaritoNQ — Pre-acceso $57</a></li>
+        <li><a href="#bootcamp-completo">4. Bootcamp AlvaritoNQ — Acceso completo $87</a></li>
+        <li><a href="#mentoria">5. Mentoría 1:1 — $160/mes</a></li>
+        <li><a href="#privacidad">6. Privacidad y datos personales</a></li>
+        <li><a href="#contacto">7. Contacto</a></li>
+      </ul>
+    </div>
+
+    <!-- 1. POLÍTICA DE REEMBOLSOS -->
+    <section id="reembolsos" class="t-section">
+      <div class="t-section-label">Sección 1</div>
+      <h2>Política de <em>reembolsos.</em></h2>
+      <div class="refund-box">
+        <h3>No se aceptan reembolsos bajo ninguna circunstancia.</h3>
+        <p>Esta política aplica de manera uniforme a todos los productos del ecosistema AlvaritoNQ — Ebook, Bootcamp (pre-acceso y regular) y Mentoría 1:1. Una vez procesado el pago, no se realizan devoluciones, ni totales ni parciales, ni proporcionales.</p>
+        <p>En el caso de la Mentoría 1:1, que es una suscripción mensual recurrente, puedes cancelar tu suscripción en cualquier momento desde el portal del cliente de Stripe. La cancelación impide cobros futuros pero no devuelve el mes ya pagado, incluso si decides cancelar el primer día de ese mes.</p>
+        <p>Al confirmar el pago de cualquier producto aceptas explícitamente esta política y confirmas que entiendes la naturaleza del producto que estás adquiriendo.</p>
+      </div>
+    </section>
+
+    <!-- 2. EBOOK -->
+    <section id="ebook" class="t-section">
+      <div class="t-section-label">Sección 2 · Producto digital</div>
+      <h2>Ebook "Pensar como <em>una institución".</em></h2>
+      <div class="product-card highlight">
+        <div class="product-meta">
+          <span class="product-meta-item accent">$17 USD</span>
+          <span class="product-meta-item">Pago único</span>
+          <span class="product-meta-item">Entrega inmediata</span>
+          <span class="product-meta-item">PDF · 13 capítulos</span>
+        </div>
+        <p class="t-lead">Libro digital escrito por Álvaro Tolentino. Explica la lógica institucional del mercado: por qué pierde el 95% de los traders minoristas, cómo operan realmente las instituciones, y qué hacer si quieres pasar al lado correcto de la mesa.</p>
+        <h3>Estructura del ebook (15 piezas)</h3>
+        <ul>
+          <li>Prólogo — La pregunta que cambia todo</li>
+          <li>Capítulo 1 — Cómo entré al trading</li>
+          <li>Capítulo 2 — La pérdida que me cambió</li>
+          <li>Capítulo 3 — Lo que descubrí después</li>
+          <li>Capítulo 4 — El mercado lo mueven instituciones, no patrones</li>
+          <li>Capítulo 5 — Los actores institucionales</li>
+          <li>Capítulo 6 — El Composite Man y el AMD</li>
+          <li>Capítulo 7 — La trampa del huevoncio</li>
+          <li>Capítulo 8 — Los datos reales: por qué pierde el 95%</li>
+          <li>Capítulo 9 — Las tres causas raíz</li>
+          <li>Capítulo 10 — Los tres enemigos del trader</li>
+          <li>Capítulo 11 — El sistema</li>
+          <li>Capítulo 12 — Las prop firms</li>
+          <li>Capítulo 13 — Lo que necesitas para arrancar</li>
+          <li>Cierre — La invitación al siguiente paso</li>
+        </ul>
+        <h3>Formato y entrega</h3>
+        <ul>
+          <li>Formato PDF, optimizado para lectura en pantalla y dispositivos móviles</li>
+          <li>Acceso inmediato tras la confirmación del pago vía Stripe</li>
+          <li>Descarga directa desde una página privada de acceso enviada por la pasarela de pago</li>
+          <li>Sin límite de descargas para el comprador original</li>
+        </ul>
+        <h3>Lo que el ebook NO incluye</h3>
+        <ul>
+          <li>No incluye acceso al Bootcamp (es producto aparte)</li>
+          <li>No incluye sesiones 1:1 con Álvaro (eso es la Mentoría)</li>
+          <li>No incluye soporte personalizado por chat</li>
+          <li>No incluye material en video</li>
+        </ul>
+        <div class="warning-box">
+          <strong>Sobre reembolsos:</strong> El ebook se entrega como producto digital de descarga inmediata. Una vez procesado el pago no se aceptan reembolsos bajo ninguna circunstancia.
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. BOOTCAMP PRE-ACCESO -->
+    <section id="bootcamp-preacceso" class="t-section">
+      <div class="t-section-label">Sección 3 · Producto digital · Reserva anticipada</div>
+      <h2>Bootcamp — <em>Pre-acceso.</em></h2>
+      <div class="product-card highlight">
+        <div class="product-meta">
+          <span class="product-meta-item accent">$57 USD · 35% OFF</span>
+          <span class="product-meta-item">Pago único</span>
+          <span class="product-meta-item">Reserva anticipada</span>
+          <span class="product-meta-item">Lanzamiento: 18 mayo 2026</span>
+        </div>
+
+        <div class="warning-box">
+          <strong>⚠ ESTÁS COMPRANDO EL PRE-ACCESO, NO EL BOOTCAMP COMPLETO.</strong>
+          <p style="margin-top:10px;margin-bottom:0;color:var(--muted2)">El bootcamp se libera oficialmente el lunes 18 de mayo de 2026. Hasta esa fecha NO vas a tener acceso al contenido completo del curso. Lo que estás reservando hoy es tu lugar dentro de la primera cohorte y el precio promocional de pre-acceso.</p>
+        </div>
+
+        <h3>Qué recibes HOY al confirmar el pago</h3>
+        <ul>
+          <li>Tu lugar reservado en la primera cohorte del bootcamp</li>
+          <li>Bloqueo del precio promocional de $57 USD (después del 18 de mayo el precio sube a $87 USD)</li>
+          <li>Acceso inmediato a la comunidad privada en Skool, donde irás conociendo a los demás miembros, podrás hacer preguntas y recibir avisos sobre el lanzamiento</li>
+          <li>Confirmación oficial por email con tus datos de acceso</li>
+        </ul>
+
+        <h3>Qué recibes el LUNES 18 DE MAYO DE 2026</h3>
+        <ul>
+          <li>Acceso completo a los 42 videos del bootcamp organizados en 9 módulos progresivos</li>
+          <li>PDFs descargables de cada módulo, checklists de ejecución y hojas de ruta</li>
+          <li>Módulo 0: fundamentos institucionales y mentalidad del trader profesional</li>
+          <li>Módulos 1-2: acción del precio, velas y estructura de mercado</li>
+          <li>Módulos 3-4: Smart Money Concepts, liquidez y orderflow institucional</li>
+          <li>Módulos 5-6: narrativa de mercado e identificación del Composite Man</li>
+          <li>Módulos 7-8: ejecución, gestión de riesgo y prop firms (Alpha Futures, Goat Funded Futures, My Funded Futures, Tradeify, Lucid Trading)</li>
+          <li>Módulo 9: cierre y plan personal de operación</li>
+          <li>Actualizaciones gratuitas mientras el bootcamp esté activo</li>
+          <li>Acceso vitalicio al bootcamp y a la comunidad Skool</li>
+        </ul>
+
+        <h3>Resumen claro</h3>
+        <ul>
+          <li><strong>HOY</strong> pagas $57 USD y reservas tu lugar + entras a la comunidad Skool</li>
+          <li><strong>El 18 de mayo</strong> se libera el contenido completo del bootcamp para todos los que tienen pre-acceso</li>
+          <li><strong>Después del 18 de mayo</strong> el precio del bootcamp sube a $87 USD para nuevos compradores</li>
+        </ul>
+
+        <div class="warning-box">
+          <strong>Sobre reembolsos:</strong> No se aceptan reembolsos bajo ninguna circunstancia. Al confirmar el pago aceptas estos términos y confirmas que entiendes que estás comprando un pre-acceso, no acceso inmediato al contenido completo del bootcamp.
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. BOOTCAMP COMPLETO -->
+    <section id="bootcamp-completo" class="t-section">
+      <div class="t-section-label">Sección 4 · Producto digital</div>
+      <h2>Bootcamp — <em>Acceso completo.</em></h2>
+      <div class="product-card">
+        <div class="product-meta">
+          <span class="product-meta-item accent">$87 USD</span>
+          <span class="product-meta-item">Pago único</span>
+          <span class="product-meta-item">Acceso vitalicio</span>
+          <span class="product-meta-item">Disponible desde 18 mayo 2026</span>
+        </div>
+        <p class="t-lead">Acceso completo al Bootcamp de Trading Institucional AlvaritoNQ. 42 videos en 9 módulos progresivos donde aprendes a leer el mercado usando lógica institucional: Smart Money Concepts, narrativa de precio y orderflow. Sin indicadores. Sin patrones de manual. Solo el sistema real que mueve los gráficos.</p>
+
+        <h3>Qué incluye</h3>
+        <ul>
+          <li>42 videos en alta definición, organizados en 9 módulos progresivos</li>
+          <li>Acceso vitalicio a la comunidad privada en Skool</li>
+          <li>PDFs descargables de cada módulo y checklists de ejecución</li>
+          <li>Módulo 0: fundamentos institucionales y mentalidad del trader profesional</li>
+          <li>Módulos 1-2: acción del precio, velas y estructura de mercado</li>
+          <li>Módulos 3-4: Smart Money Concepts, liquidez y orderflow institucional</li>
+          <li>Módulos 5-6: narrativa de mercado e identificación del Composite Man</li>
+          <li>Módulos 7-8: ejecución, gestión de riesgo y prop firms (Alpha Futures, Goat Funded Futures, My Funded Futures, Tradeify, Lucid Trading)</li>
+          <li>Módulo 9: cierre y plan personal de operación</li>
+          <li>Actualizaciones gratuitas mientras el bootcamp esté activo</li>
+        </ul>
+
+        <h3>Formato y entrega</h3>
+        <ul>
+          <li>Pago único de $87 USD, sin cuotas mensuales ni renovaciones</li>
+          <li>Acceso permanente a todos los módulos publicados y a la comunidad Skool</li>
+          <li>Confirmación inmediata por email tras el pago</li>
+          <li>Invitación al espacio privado de Skool dentro de las primeras 24 horas hábiles</li>
+        </ul>
+
+        <h3>Lo que el bootcamp NO incluye</h3>
+        <ul>
+          <li>No incluye sesiones 1:1 con Álvaro (eso es la Mentoría)</li>
+          <li>No incluye sesiones con psicólogo profesional</li>
+          <li>No incluye soporte 24/7 personalizado por chat (existe la comunidad Skool grupal)</li>
+        </ul>
+
+        <div class="warning-box">
+          <strong>Sobre reembolsos:</strong> No se aceptan reembolsos bajo ninguna circunstancia.
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. MENTORÍA 1:1 -->
+    <section id="mentoria" class="t-section">
+      <div class="t-section-label">Sección 5 · Suscripción mensual</div>
+      <h2>Mentoría 1:1 — <em>Trading institucional.</em></h2>
+      <div class="product-card highlight">
+        <div class="product-meta">
+          <span class="product-meta-item accent">$160 USD / mes</span>
+          <span class="product-meta-item">Suscripción recurrente</span>
+          <span class="product-meta-item">Cohorte máx 13 alumnos</span>
+          <span class="product-meta-item">Aplicación previa requerida</span>
+        </div>
+        <p class="t-lead">Mentoría individual de trading con Álvaro Tolentino. Programa mensual personalizado para traders que quieren operar con lógica institucional usando Smart Money Concepts, narrativa de precio y orderflow — y dejar atrás la operativa basada en indicadores y patrones de manual.</p>
+
+        <h3>Modelo de cohorte limitada</h3>
+        <p>Esta no es una mentoría masiva. Cohorte limitada a 13 alumnos activos en simultáneo. Cuando los cupos se llenan, las inscripciones cierran hasta que se libere uno. Antes del primer cobro hay un proceso de aplicación previo en <a href="/#aplicar" style="color:var(--accent);text-decoration:none;font-weight:600">alvaritonq.me/#aplicar</a> para asegurar que la mentoría es el siguiente paso correcto para ti.</p>
+
+        <h3>Qué incluye cada mes</h3>
+        <ul>
+          <li>2 sesiones 1:1 por semana con Álvaro (8 sesiones al mes en total)</li>
+          <li>Soporte directo por chat 24/7: revisión de setups, dudas pre-trade, análisis en vivo</li>
+          <li>Plan de trading personalizado desde el día 1, diseñado según tu nivel, tus objetivos y tus horarios</li>
+          <li>Conversatorio grupal de 2 horas con psicólogo profesional especializado en trading</li>
+          <li>Sesión individual de 30 minutos con el mismo psicólogo para reforzar tus puntos específicos</li>
+          <li>Guía completa de prop firms (Alpha Futures, Goat Funded Futures, My Funded Futures, Tradeify, Lucid Trading): qué firma usar según tu perfil, cómo pasar la evaluación, cómo escalar y cómo retirar sin breachear</li>
+          <li>Acceso completo al Bootcamp AlvaritoNQ (42 videos + comunidad Skool) — incluido sin costo extra</li>
+          <li>Ebook "Pensar como una institución" (PDF, 13 capítulos) — incluido sin costo extra</li>
+          <li>Grabaciones de todas tus sesiones para revisar cuando quieras</li>
+          <li>PDFs y material descargable de cada sesión</li>
+        </ul>
+
+        <h3>Modelo de cobro</h3>
+        <ul>
+          <li>Suscripción mensual recurrente de $160 USD procesada automáticamente cada 30 días por Stripe</li>
+          <li>Sin compromiso de permanencia mínima — cancelas cuando quieras</li>
+          <li>La cancelación se gestiona desde el portal del cliente de Stripe (recibes el enlace por email tras el primer pago)</li>
+          <li>Al cancelar dejas de ser cobrado, pero conservas el acceso completo hasta que termine el mes que ya pagaste</li>
+        </ul>
+
+        <div class="warning-box">
+          <strong>Sobre reembolsos:</strong> No se aceptan reembolsos bajo ninguna circunstancia. Una vez procesado el cobro mensual, ese mes queda activo en su totalidad y no se devuelve, ni proporcional ni completo. Si decides no continuar, simplemente cancelas tu suscripción antes del próximo ciclo de cobro mensual y no se realiza ningún cargo adicional.
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. PRIVACIDAD -->
+    <section id="privacidad" class="t-section">
+      <div class="t-section-label">Sección 6</div>
+      <h2>Privacidad y <em>datos personales.</em></h2>
+      <p>Los datos que recolectamos (nombre, email, instagram, ID de pago de Stripe) se usan exclusivamente para entregar el producto comprado, brindarte soporte, y enviarte actualizaciones relevantes del producto. No se venden, no se ceden a terceros y no se usan para fines distintos al servicio contratado.</p>
+      <p>El procesamiento de pagos se realiza íntegramente a través de Stripe. AlvaritoNQ no almacena ni tiene acceso directo a los datos de tu tarjeta de crédito o débito. Toda la información financiera queda en los servidores cifrados de Stripe, certificados PCI-DSS Level 1.</p>
+      <p>Puedes solicitar la eliminación de tus datos personales escribiendo a <a href="https://instagram.com/alvaritonq" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600">@alvaritonq</a> en Instagram. La eliminación se procesa dentro de los 7 días hábiles siguientes a la solicitud.</p>
+    </section>
+
+    <!-- 7. CONTACTO -->
+    <section id="contacto" class="t-section">
+      <div class="t-section-label">Sección 7</div>
+      <h2>Contacto.</h2>
+      <p>Para cualquier consulta sobre productos, soporte, problemas técnicos o términos del servicio, el canal oficial es Instagram. Respondo en horas, no en días.</p>
+      <ul>
+        <li>Instagram: <a href="https://instagram.com/alvaritonq" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600">@alvaritonq</a></li>
+        <li>Sitio: <a href="https://alvaritonq.me" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;font-weight:600">alvaritonq.me</a></li>
+        <li>Ubicación: Lima, Perú</li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>© 2026 Álvaro Tolentino · AlvaritoNQ · Lima, Perú · <a href="/">Volver al inicio</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
