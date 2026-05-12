@@ -1093,14 +1093,14 @@ section { padding: 100px 0; }
 }
 .psico-header { text-align: center; margin-bottom: 48px; }
 .psico-video-wrap {
-  max-width: 880px;
+  max-width: 360px;
   margin: 0 auto 40px;
   position: relative;
 }
 .psico-video-box {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 9 / 16;
   background: linear-gradient(135deg, #0a0a0a 0%, #161616 100%);
   border: 1px solid rgba(200,241,53,0.2);
   border-radius: 20px;
@@ -1822,7 +1822,7 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="tag">Mentoría 1:1 · 10 cupos disponibles</div>
+    <div class="tag">Mentoría 1:1 · 8 cupos disponibles</div>
     <h1>Aprende a operar<br>usando <em>la lógica.</em></h1>
     <p>Sistema basado en lógica institucional, utilizando conceptos Smart Money, Narrativa y Orderflow. 4 semanas para transformar tu trading.</p>
     <div class="hero-ctas">
@@ -1975,12 +1975,7 @@ footer {
       <div class="about-media-box">
         <div class="tag section-tag" style="margin-bottom:20px;">Sobre mí</div>
         <div class="about-video-box">
-          <!-- Reemplazá el src con tu link de YouTube embed cuando lo tengas -->
-          <!-- <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID" allowfullscreen></iframe> -->
-          <div class="about-video-placeholder">
-            <div class="play-icon">▶</div>
-            <p>Video de presentación<br><span style="font-size:11px;color:var(--muted)">De quemar cuentas a ser rentable</span></p>
-          </div>
+          <iframe src="https://www.youtube.com/embed/PyFpQZRGMy4" title="Sobre mí — AlvaritoNQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="about-badge">
           <div class="about-badge-dot"></div>
@@ -2126,13 +2121,7 @@ footer {
 
     <div class="psico-video-wrap">
       <div class="psico-video-box">
-        <!-- Cuando Ángel grabe su video, reemplaza el bloque .psico-video-placeholder por:
-        <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID" title="Conoce a Ángel Romero Lévano" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        -->
-        <div class="psico-video-placeholder">
-          <div class="play-icon">▶</div>
-          <p>Video de presentación<br><span>Próximamente</span></p>
-        </div>
+        <iframe src="https://www.youtube.com/embed/fO9rbBj0_MM" title="Conoce a Ángel Romero Lévano" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </div>
 
@@ -2334,15 +2323,15 @@ footer {
   <div class="container">
     <div class="cupos-card">
       <div class="cupos-tag">Grupo actual</div>
-      <h2 class="cupos-title">10 cupos abiertos.<br><em>13 alumnos en total.</em></h2>
-      <p class="cupos-sub">Trabajo con un máximo de 13 alumnos al mismo tiempo: 3 que ya vienen conmigo (Hilvin, Fátima y Valeria) y 10 cupos nuevos que se abren ahora. Cuando se llenen, cierro el grupo y el siguiente abre solo si alguien se va.</p>
+      <h2 class="cupos-title">8 cupos abiertos.<br><em>13 alumnos en total.</em></h2>
+      <p class="cupos-sub">Trabajo con un máximo de 13 alumnos al mismo tiempo: 5 ya están dentro (3 que vienen conmigo desde antes — Hilvin, Fátima y Valeria — y 2 nuevos del grupo). Quedan 8 cupos para completar el grupo. Cuando se llenen, cierro y el siguiente abre solo si alguien se va.</p>
       <div class="cupos-visual">
         <div class="cupos-dots" aria-label="13 cupos totales: 3 ocupados, 10 disponibles">
           <span class="cupo-dot filled" title="Ocupado"></span>
           <span class="cupo-dot filled" title="Ocupado"></span>
           <span class="cupo-dot filled" title="Ocupado"></span>
-          <span class="cupo-dot" title="Disponible"></span>
-          <span class="cupo-dot" title="Disponible"></span>
+          <span class="cupo-dot filled" title="Ocupado"></span>
+          <span class="cupo-dot filled" title="Ocupado"></span>
           <span class="cupo-dot" title="Disponible"></span>
           <span class="cupo-dot" title="Disponible"></span>
           <span class="cupo-dot" title="Disponible"></span>
@@ -2353,11 +2342,11 @@ footer {
           <span class="cupo-dot" title="Disponible"></span>
         </div>
         <div class="cupos-legend">
-          <div class="cupos-legend-item"><span class="cupo-dot filled"></span> Ocupados (3)</div>
-          <div class="cupos-legend-item"><span class="cupo-dot"></span> Disponibles (10)</div>
+          <div class="cupos-legend-item"><span class="cupo-dot filled"></span> Ocupados (5)</div>
+          <div class="cupos-legend-item"><span class="cupo-dot"></span> Disponibles (8)</div>
         </div>
       </div>
-      <a href="#aplicar" class="cupos-cta" onclick="trackCTA('cupos_aplicar')">Quiero uno de los 10 cupos →</a>
+      <a href="#aplicar" class="cupos-cta" onclick="trackCTA('cupos_aplicar')">Quiero uno de los 8 cupos →</a>
     </div>
   </div>
 </section>
@@ -2451,7 +2440,7 @@ footer {
       <button class="btn-pricing" onclick="trackCTA('pricing_aplicar');document.getElementById('aplicar').scrollIntoView({behavior:'smooth'})">
         Quiero aplicar →
       </button>
-      <p class="pricing-note">10 cupos disponibles · Grupo de 13 alumnos máximo</p>
+      <p class="pricing-note">8 cupos disponibles · Grupo de 13 alumnos máximo</p>
     </div>
 
     <!-- BANNER ESCALERA — alternativas si $160 es mucho -->
@@ -2635,7 +2624,7 @@ footer {
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">¿Cuántos alumnos tomas en total? <span class="faq-icon">+</span></button>
-        <div class="faq-a"><div class="faq-a-inner">Trabajo con un máximo de 13 alumnos al mismo tiempo. Actualmente tengo 3 activos (Hilvin, Fátima y Valeria) y abro 10 cupos nuevos para este grupo. Cuando se llenen, cierro inscripciones hasta que se libere un cupo. La mentoría es personalizada y necesito garantizar calidad de atención para cada uno.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">Trabajo con un máximo de 13 alumnos al mismo tiempo. Actualmente tengo 5 activos (3 que venían conmigo desde antes y 2 nuevos del grupo) y quedan 8 cupos para completar. Cuando se llenen, cierro inscripciones hasta que se libere un cupo. La mentoría es personalizada y necesito garantizar calidad de atención para cada uno.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">¿La mentoría incluye el ebook y el bootcamp? <span class="faq-icon">+</span></button>
