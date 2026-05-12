@@ -641,9 +641,7 @@ if WEB_DIR.exists():
     # términos, descargas, etc.) por nombre limpio sin .html.
     _SAFE_PAGES = {
         "comprar-ebook",
-        "comprar-bootcamp",
         "descarga-ebook",
-        "descarga-bootcamp",
         "terminos",
     }
 
@@ -664,7 +662,6 @@ if WEB_DIR.exists():
     # Servir las páginas ocultas con hash en su path completo
     _HIDDEN_PATHS = {
         "g7f2k9x4q1m8p3w6": "g7f2k9x4q1m8p3w6/acceso.html",
-        "h5n8r2v9j4t1y7l3": "h5n8r2v9j4t1y7l3/acceso.html",
         "m9k4p7t2v6x1z8b5": "m9k4p7t2v6x1z8b5/acceso.html",
     }
 
