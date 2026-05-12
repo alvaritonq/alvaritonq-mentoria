@@ -176,6 +176,20 @@ nav {
   gap: 16px;
   flex-wrap: wrap;
 }
+.hero-ctas-stacked {
+  flex-direction: column;
+  gap: 6px;
+}
+.hero-price-line {
+  font-size: 14px;
+  color: var(--muted2);
+  margin-top: 2px;
+  letter-spacing: 0.01em;
+}
+.hero-price-line strong {
+  color: var(--accent);
+  font-weight: 800;
+}
 .btn-primary {
   background: var(--accent);
   color: #090909;
@@ -1827,12 +1841,13 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="tag">Mentoría 1:1 · 8 cupos disponibles</div>
+    <div class="tag">Mentoría 1:1 · $160/mes · 8 cupos disponibles</div>
     <h1>Aprende a operar<br>usando <em>la lógica.</em></h1>
     <p>Sistema basado en lógica institucional, utilizando conceptos Smart Money, Narrativa y Orderflow. 4 semanas para transformar tu trading.</p>
-    <div class="hero-ctas">
+    <div class="hero-ctas hero-ctas-stacked">
       <a href="#aplicar" class="btn-primary" onclick="trackCTA('hero_aplicar')">Quiero aplicar →</a>
-      <a href="#metodologia" class="btn-secondary">Ver metodología</a>
+      <div class="hero-price-line">Solo por <strong>$160/mes</strong> · sin permanencia mínima</div>
+      <a href="#metodologia" class="btn-secondary" style="margin-top:8px">Ver metodología</a>
     </div>
   </div>
 </section>
@@ -2292,60 +2307,6 @@ footer {
         </div>
       </div>
       <a href="#aplicar" class="cupos-cta" onclick="trackCTA('cupos_aplicar')">Quiero uno de los 8 cupos →</a>
-    </div>
-  </div>
-</section>
-
-<!-- VALOR (COMPARATIVA) -->
-<section id="valor" class="valor-section">
-  <div class="container">
-    <div class="valor-header">
-      <div class="tag section-tag">Valor real</div>
-      <h2 class="section-title" style="margin-bottom:14px">Suma lo que costaría<br><em>por separado.</em></h2>
-      <p class="section-sub">Cada pieza del ecosistema tiene su propio precio. Dentro de la mentoría 1:1 las recibes todas juntas — y por mucho menos.</p>
-    </div>
-
-    <div class="valor-wrap">
-      <div class="valor-list">
-        <div class="valor-item">
-          <div class="valor-item-icon">📘</div>
-          <div class="valor-item-text">
-            <div class="valor-item-name">Ebook "Pensar como una institución"</div>
-            <div class="valor-item-sub">PDF · 13 capítulos · lógica institucional completa</div>
-          </div>
-          <div class="valor-item-price">$17</div>
-        </div>
-        <div class="valor-item">
-          <div class="valor-item-icon">🧠</div>
-          <div class="valor-item-text">
-            <div class="valor-item-name">Sesión con psicólogo profesional</div>
-            <div class="valor-item-sub">Conversatorio grupal 2 h + individual 30 min</div>
-          </div>
-          <div class="valor-item-price">$30</div>
-        </div>
-        <div class="valor-item">
-          <div class="valor-item-icon">📞</div>
-          <div class="valor-item-text">
-            <div class="valor-item-name">Acompañamiento personalizado</div>
-            <div class="valor-item-sub">Sesiones 1:1 directas con Álvaro + soporte 24/7</div>
-          </div>
-          <div class="valor-item-price">$80</div>
-        </div>
-
-        <div class="valor-subtotal">
-          <div class="valor-subtotal-label">Si lo compras por separado</div>
-          <div class="valor-subtotal-price">$127</div>
-        </div>
-      </div>
-
-      <div class="valor-final">
-        <div class="valor-final-label">Pero dentro de la Mentoría 1:1</div>
-        <div class="valor-final-price"><sup>$</sup>160</div>
-        <div class="valor-final-period">por mes · todo incluido</div>
-        <div class="valor-final-savings">Más sesiones 1:1 reales · soporte 24/7 · grupo de 13</div>
-        <br>
-        <a href="#aplicar" class="valor-final-cta" onclick="trackCTA('valor_final_aplicar')">Llévate todo por $160 →</a>
-      </div>
     </div>
   </div>
 </section>
